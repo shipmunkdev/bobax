@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Getting Started with Boba X
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ensure the project is following [Airbnb](https://github.com/airbnb/javascript/tree/master/react) styleguide.
+
+Folder/file structure has been pre-made for reference.
 
 ## Available Scripts
 
