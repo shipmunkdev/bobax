@@ -26,4 +26,4 @@ const bobalist = [
   },
 ];
 
-export default bobalist
+export default bobalist;
