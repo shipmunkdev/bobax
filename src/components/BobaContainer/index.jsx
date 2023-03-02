@@ -6,7 +6,7 @@ const BobaContainer = () => {
   return (
     <div className='indBoba'>
       {bobaList.map((boba) => (
-        <IndCard key={boba.name} boba={boba}/>
+        <IndCard key={boba.name} boba={boba} />
       ))}
     </div>
   );

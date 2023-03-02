@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import ShoppingCart from './shoppingcart.jsx'
+import ShoppingCart from './shoppingcart.jsx';
 
 const NavigationBar = () => {
   return (

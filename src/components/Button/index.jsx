@@ -1,15 +1,13 @@
-import Button from 'react-bootstrap/Button'
-import PropTypes from 'prop-types'
+import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
 
-const ButtonX = ({variant,text}) =>{
-    return (
-        <Button variant={variant}>{text}</Button>
-    )
-}
+const ButtonX = ({ variant, text }) => {
+  return <Button variant={variant}>{text}</Button>;
+};
 
 ButtonX.propTypes = {
-    variant : PropTypes.string,
-    text : PropTypes.string
-}
+  variant: PropTypes.string,
+  text: PropTypes.string,
+};
 
-export default ButtonX
+export default ButtonX;
