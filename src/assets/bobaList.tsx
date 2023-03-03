@@ -7,6 +7,10 @@ interface BobaListProps {
     imageLink: string;
     milk: Array<{name: string}>;
     toppings: Array<{name: string, price: number}>;
+    defaultOptions: {
+        milk: string;
+        toppings: Array<string>;
+    };
 }
 
 export const bobaList: BobaListProps[] = [
@@ -34,7 +38,11 @@ export const bobaList: BobaListProps[] = [
             {name: 'Pudding', price: 0.50},
             {name: 'Milk Foam', price: 1.00},
             {name: 'Jelly', price: 0.50},
-        ]
+        ],
+        defaultOptions: {
+            milk: 'Whole Milk',
+            toppings: ['Boba'],
+        },
     },
     {
         id: 'bobax-2',
@@ -60,7 +68,11 @@ export const bobaList: BobaListProps[] = [
             {name: 'Pudding', price: 0.50},
             {name: 'Milk Foam', price: 1.00},
             {name: 'Jelly', price: 0.50},
-        ]
+        ],
+        defaultOptions: {
+            milk: 'Whole Milk',
+            toppings: ['Boba', 'Mango Jelly'],
+        },
     },
     {
         id: 'bobax-3',
@@ -86,7 +98,11 @@ export const bobaList: BobaListProps[] = [
             {name: 'Pudding', price: 0.50},
             {name: 'Milk Foam', price: 1.00},
             {name: 'Jelly', price: 0.50},
-        ]
+        ],
+        defaultOptions: {
+            milk: 'Whole Milk',
+            toppings: ['Boba', 'Milk Foam'],
+        },
     },
     {
         id: 'bobax-4',
@@ -112,7 +128,11 @@ export const bobaList: BobaListProps[] = [
             {name: 'Pudding', price: 0.50},
             {name: 'Milk Foam', price: 1.00},
             {name: 'Jelly', price: 0.50},
-        ]
+        ],
+        defaultOptions: {
+            milk: 'Whole Milk',
+            toppings: ['Boba'],
+        },
     },
     {
         id: 'bobax-5',
@@ -138,7 +158,11 @@ export const bobaList: BobaListProps[] = [
             {name: 'Pudding', price: 0.50},
             {name: 'Milk Foam', price: 1.00},
             {name: 'Jelly', price: 0.50},
-        ]
+        ],
+        defaultOptions: {
+            milk: 'Oat Milk',
+            toppings: ['Boba'],
+        },
     },
     {
         id: 'bobax-6',
@@ -164,7 +188,11 @@ export const bobaList: BobaListProps[] = [
             {name: 'Pudding', price: 0.50},
             {name: 'Milk Foam', price: 1.00},
             {name: 'Jelly', price: 0.50},
-        ]
+        ],
+        defaultOptions: {
+            milk: 'Whole Milk',
+            toppings: ['Boba', 'Aloe Vera'],
+        },
     },
     {
         id: 'bobax-8',
@@ -190,7 +218,11 @@ export const bobaList: BobaListProps[] = [
             {name: 'Pudding', price: 0.50},
             {name: 'Milk Foam', price: 1.00},
             {name: 'Jelly', price: 0.50},
-        ]
+        ],
+        defaultOptions: {
+            milk: 'Whole Milk',
+            toppings: ['Boba', 'Popping Boba'],
+        },
     },
     {
         id: 'bobax-9',
@@ -216,7 +248,11 @@ export const bobaList: BobaListProps[] = [
             {name: 'Pudding', price: 0.50},
             {name: 'Milk Foam', price: 1.00},
             {name: 'Jelly', price: 0.50},
-        ]
+        ],
+        defaultOptions: {
+            milk: 'Whole Milk',
+            toppings: ['Boba', 'Popping Boba'],
+        },
     },
     {
         id: 'bobax-10',
@@ -242,6 +278,10 @@ export const bobaList: BobaListProps[] = [
             {name: 'Pudding', price: 0.50},
             {name: 'Milk Foam', price: 1.00},
             {name: 'Jelly', price: 0.50},
-        ]
+        ],
+        defaultOptions: {
+            milk: 'Whole Milk',
+            toppings: ['Milk Foam', 'Pudding'],
+        },
     }
 ];
