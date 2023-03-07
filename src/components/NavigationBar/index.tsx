@@ -2,7 +2,9 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import ShoppingCart from './shoppingcart.jsx';
 
-const NavigationBar = () => {
+
+const NavigationBar = ({order}:{order:object}) => {
+
   return (
     <Navbar bg='light' expand='lg'>
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -12,7 +14,7 @@ const NavigationBar = () => {
           <Nav.Link href='#aboutus'>About Us</Nav.Link>
         </Nav>
       </Navbar.Collapse>
-      <ShoppingCart />
+      <ShoppingCart order={order}/>
     </Navbar>
   );
 };

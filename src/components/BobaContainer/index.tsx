@@ -5,7 +5,7 @@ import bobaList from './bobalist.jsx';
 import BobaCard from '../Card/index.jsx';
 import './index.css';
 
-const BobaContainer = () => {
+const BobaContainer = ({order}:{order:object}) => {
   // const [show, setShow] = useState (false)
   // const togglemodal = () => {setShow(true)}
   return (
@@ -18,7 +18,7 @@ const BobaContainer = () => {
             key={boba.name}
             // onClick={togglemodal}
           >
-            <BobaCard key={boba.name} product={boba} />
+            <BobaCard key={boba.name} product={boba} order={order}/>
           </Col>
         ))}
       </Row>
