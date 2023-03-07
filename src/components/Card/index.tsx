@@ -1,10 +1,10 @@
 // import Modalx from './cardmodal.jsx'
-import { BobaListProps } from '../../assets/sampleBobaAPI.js';
+import { BobaProps } from '../../assets/sampleBobaAPI.js';
 import Card from 'react-bootstrap/Card';
 import Buttonx from '../Button/index.jsx';
 import './index.css';
 
-const BobaCard = ({ product }: { product: BobaListProps }) => {
+const BobaCard = ({ product }: { product: BobaProps }) => {
   const { name, price, description } = product;
 
   return (

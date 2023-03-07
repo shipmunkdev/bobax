@@ -1,9 +1,8 @@
 // import React, {useState} from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-// import bobaList from './bobalist.jsx';
 import BobaCard from '../Card';
-import { bobaList, BobaListProps } from '../../assets/sampleBobaAPI';
+import { bobaList, BobaProps } from '../../assets/sampleBobaAPI';
 import './index.css';
 
 const BobaContainer = () => {
@@ -14,7 +13,7 @@ const BobaContainer = () => {
   return (
     <div className='indBoba'>
       <Row>
-        {bobaList.map((boba: BobaListProps) => (
+        {bobaList.map((boba: BobaProps) => (
           <Col
             className='boba_col'
             md='auto'

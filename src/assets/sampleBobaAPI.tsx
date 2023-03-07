@@ -1,5 +1,5 @@
-//  Raw sample data for BobaList component
-export interface BobaListProps {
+//  Raw sample data for Boba component
+export interface BobaProps {
   id: string;
   name: string;
   description: string;
@@ -20,7 +20,7 @@ interface MilkProps {
   name: string;
 }
 
-export const bobaList: BobaListProps[] = [
+export const bobaList: BobaProps[] = [
   {
     id: 'bobax-1',
     name: 'Pandan Caramel Matcha',
@@ -176,29 +176,4 @@ export const toppingsList: ToppingsProps[] = [
   { name: 'Jelly', price: 0.5 },
 ];
 
-// Mock API function to get boba options using GET method and endpoint
-/**
- * @param {string} method - HTTP method
- * @param {string} endpoint - API endpoint
- * @returns {object} - boba options
- */
 
-export const getBobaOptions = (method = 'GET', endpoint = '/') => {
-  if (method === 'GET') {
-    if (endpoint === '/') {
-      return {
-        bobaList,
-        milkList,
-        toppingsList,
-      };
-    } else if (endpoint === '/bobalist') {
-      return bobaList;
-    } else if (endpoint === '/milklist') {
-      return milkList;
-    } else if (endpoint === '/toppingslist') {
-      return toppingsList;
-    }
-  } else {
-    return {};
-  }
-};
