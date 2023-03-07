@@ -1,5 +1,4 @@
 import Row from 'react-bootstrap/Row';
-
 import bobaList from './bobalist.jsx';
 import IndCard from '../Card/index.jsx';
 import './index.css';

@@ -1,0 +1,29 @@
+[33mcommit 8634f5fa3cd234a15850e36c041483730f411a70[m[33m ([m[1;36mHEAD -> [m[1;32msimon_bobax-21[m[33m, [m[1;31morigin/simon_bobax-21[m[33m)[m
+Author: Simon <simon.tan09@gmail.com>
+Date:   Thu Mar 2 00:10:36 2023 -0800
+
+    updated with eslint and prettier v2
+
+[33mcommit 1d627d8f6c20418ce58a9ca383a27b85130bcaaa[m
+Author: Simon <simon.tan09@gmail.com>
+Date:   Thu Mar 2 00:03:43 2023 -0800
+
+    try modal from react-bootstrap
+
+[33mcommit 3a4898d98b25cc4881b2da3ea7294dfbee45d79b[m
+Author: Simon <simon.tan09@gmail.com>
+Date:   Wed Mar 1 23:39:59 2023 -0800
+
+    make the card css padding and used Col and Row from react-bootstrap
+
+[33mcommit 35e045e9b717783a3caf20773a480cc60df220b0[m
+Author: Simon <simon.tan09@gmail.com>
+Date:   Wed Mar 1 23:21:08 2023 -0800
+
+    forget eslint and prettier
+
+[33mcommit e77989b3636e33595dd098d69a1d578252cea543[m
+Author: Simon <simon.tan09@gmail.com>
+Date:   Wed Mar 1 23:20:05 2023 -0800
+
+    add static shopping cart with number
