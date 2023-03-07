@@ -1,0 +1,15 @@
+The order:
+[
+    {
+        Name : "String"
+        price : number
+        description : "String"
+        quantity : number
+        size : {'string' : $} , ... : {"medium": 5} -> object{}
+        topping options : { Boba: 0.75,...} [{Boba: 0.75},{Almond: 1.00}] -> array[object{}]
+        milk/base options
+    },
+    {
+      ...
+    } ,...
+]

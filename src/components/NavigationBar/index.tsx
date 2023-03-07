@@ -1,5 +1,5 @@
-import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
+import ShoppingCart from './ShoppingCart';
 
 const NavigationBar = () => {
   return (
@@ -11,6 +11,7 @@ const NavigationBar = () => {
           <Nav.Link href='#aboutus'>About Us</Nav.Link>
         </Nav>
       </Navbar.Collapse>
+      <ShoppingCart />
     </Navbar>
   );
 };

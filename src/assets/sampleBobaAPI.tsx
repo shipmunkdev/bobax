@@ -1,5 +1,5 @@
 //  Raw sample data for BobaList component
-interface BobaListProps {
+export interface BobaListProps {
   id: string;
   name: string;
   description: string;
