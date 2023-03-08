@@ -17,9 +17,6 @@ const ShoppingCart = () => {
       <Badge bg='danger' className='badge badge-warning' id='lblCartCount'>
         {6}
       </Badge>
-      {/* <span >
-        5
-      </span> */}
     </div>
   );
 };

@@ -1,4 +1,3 @@
-// import Modalx from './cardmodal.jsx'
 import { BobaListProps } from '../../assets/sampleBobaAPI.js';
 import Card from 'react-bootstrap/Card';
 import Buttonx from '../Button/index.jsx';
@@ -9,7 +8,6 @@ const BobaCard = ({ product }: { product: BobaListProps }) => {
 
   return (
     <Card key={name} style={{ width: '18rem' }}>
-      {/* <Card.Img variant='top' src='holder.js/100px180' /> */}
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>
