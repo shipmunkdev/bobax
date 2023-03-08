@@ -4,10 +4,11 @@ import Buttonx from '../Button/index.jsx';
 import './index.css';
 
 const BobaCard = ({ product }: { product: BobaListProps }) => {
-  const { name, price, description } = product;
+  const { name, price, imageLink, description } = product;
 
   return (
     <Card key={name} style={{ width: '18rem' }}>
+      <Card.Img variant='top' src={imageLink} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>
