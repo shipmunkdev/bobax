@@ -5,11 +5,7 @@ import BobaCard from '../Card';
 import { bobaList, BobaProps } from '../../assets/sampleBobaAPI';
 import './index.css';
 
-const BobaContainer = () => {
-  // const [show, setShow] = useState (false)
-  // const togglemodal = () => {setShow(true)}
-  // const boba = getBobaOptions('GET','/')
-
+const BobaContainer = ({ order }: { order: BobaProps[] }) => {
   return (
     <div className='indBoba'>
       <Row>
@@ -20,7 +16,7 @@ const BobaContainer = () => {
             key={boba.name}
             // onClick={togglemodal}
           >
-            <BobaCard key={boba.name} product={boba} />
+            <BobaCard key={boba.name} product={boba} order={order} />
           </Col>
         ))}
       </Row>

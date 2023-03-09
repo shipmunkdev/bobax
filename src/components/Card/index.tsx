@@ -1,10 +1,10 @@
 // import Modalx from './cardmodal.jsx'
 import { BobaProps } from '../../assets/sampleBobaAPI.js';
 import Card from 'react-bootstrap/Card';
-import Buttonx from '../Button/index.jsx';
+import Buttonx from '../Button';
 import './index.css';
 
-const BobaCard = ({ product }: { product: BobaProps }) => {
+const BobaCard = ({ product, order }: { product: BobaProps; order: BobaProps[] }) => {
   const { name, price, description } = product;
 
   return (
@@ -16,7 +16,7 @@ const BobaCard = ({ product }: { product: BobaProps }) => {
           <div className='boba_desc'>{description}</div>
           <div>${price}</div>
         </Card.Text>
-        <Buttonx variant={'primary'} text={'Add to cart'} />
+        <Buttonx variant={'primary'} text={'Add to cart'} order={order} product={product} />
       </Card.Body>
     </Card>
   );

@@ -1,11 +1,11 @@
 //  Raw sample data for Boba component
 export interface BobaProps {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  imageLink: string;
-  defaultOptions: {
+  id?: string;
+  name?: string;
+  description?: string;
+  price?: number;
+  imageLink?: string;
+  defaultOptions?: {
     milk: string;
     toppings: Array<{ name: string; price: number }>;
   };
