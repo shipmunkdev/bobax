@@ -30,7 +30,7 @@ export const bobaList: BobaProps[] = [
     imageLink:
       'https://boba-guys.square.site/uploads/1/2/6/1/126110068/s634804415629712800_p936_i3_w1400.jpeg?dpr=2',
     defaultOptions: {
-      milk: 'Whole Milk',git 
+      milk: 'Whole Milk',
       toppings: [{ name: 'Boba', price: 0.5 }],
     },
   },
