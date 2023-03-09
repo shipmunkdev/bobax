@@ -1,5 +1,5 @@
 //  Raw sample data for BobaList component
-export interface BobaListProps {
+export interface BobaProps {
   id: string;
   name: string;
   description: string;
@@ -20,7 +20,7 @@ interface MilkProps {
   name: string;
 }
 
-export const bobaList: BobaListProps[] = [
+export const bobaList: BobaProps[] = [
   {
     id: 'bobax-1',
     name: 'Pandan Caramel Matcha',
