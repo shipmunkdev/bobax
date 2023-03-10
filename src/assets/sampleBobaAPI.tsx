@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-//  Raw sample data for Boba component
-export interface BobaProps {
-  id?: string;
-  name?: string;
-  description?: string;
-  price?: number;
-  imageLink?: string;
-  defaultOptions?: {
-=======
 //  Raw sample data for BobaList component
 export interface BobaProps {
   id: string;
@@ -16,7 +6,6 @@ export interface BobaProps {
   price: number;
   imageLink: string;
   defaultOptions: {
->>>>>>> develop
     milk: string;
     toppings: Array<{ name: string; price: number }>;
   };

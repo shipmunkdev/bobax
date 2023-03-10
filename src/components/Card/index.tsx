@@ -3,8 +3,20 @@ import Card from 'react-bootstrap/Card';
 import Button from '../Button';
 import './index.css';
 
-const BobaCard = ({ product }: { product: BobaProps }) => {
+interface BobaCardProps {
+  order: BobaProps[];
+  product: BobaProps;
+  setOrder: (order: BobaProps[]) => void;
+}
+
+const BobaCard = (props: BobaCardProps): JSX.Element => {
+  const { order, setOrder, product } = props;
   const { name, price, imageLink, description } = product;
+
+  const handleClick = () => {
+    const total = [...order, product];
+    setOrder(total);
+  };
 
   return (
     <Card key={name} style={{ width: '18rem' }}>
@@ -15,7 +27,7 @@ const BobaCard = ({ product }: { product: BobaProps }) => {
           <div className='boba_desc'>{description}</div>
           <div>${price}</div>
         </Card.Text>
-        <Button variant={'primary'} label={'Add to cart'} />
+        <Button variant={'primary'} label={'Add to cart'} onClick={handleClick} />
       </Card.Body>
     </Card>
   );
