@@ -1,8 +1,14 @@
 import Badge from 'react-bootstrap/Badge';
 import './shoppingcart.css';
 import { BobaProps } from '../../assets/sampleBobaAPI';
+import { useEffect } from 'react';
 
 const ShoppingCart = ({ order }: { order: BobaProps[] }) => {
+  console.log(order, 'this is insideshoppingcart 1')
+  useEffect(() => {
+  console.log(order,'this is inside shoppingcart 2')
+  },[order])
+
   return (
     <div className='cartwrapper'>
       <svg
