@@ -1,6 +1,6 @@
 import { BobaProps } from '../../assets/sampleBobaAPI.js';
 import Card from 'react-bootstrap/Card';
-import Buttonx from '../Button/index.jsx';
+import Button from '../Button';
 import './index.css';
 
 const BobaCard = ({ product }: { product: BobaProps }) => {
@@ -15,7 +15,7 @@ const BobaCard = ({ product }: { product: BobaProps }) => {
           <div className='boba_desc'>{description}</div>
           <div>${price}</div>
         </Card.Text>
-        <Buttonx variant={'primary'} text={'Add to cart'} />
+        <Button variant={'primary'} label={'Add to cart'} />
       </Card.Body>
     </Card>
   );
