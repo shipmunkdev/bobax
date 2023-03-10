@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container } from 'react-bootstrap';
 import BobaContainer from '../../components/BobaContainer';
 import { BobaProps } from '../../assets/sampleBobaAPI';

@@ -1,40 +1,24 @@
-import Button from 'react-bootstrap/Button';
-import { BobaProps } from '../../assets/sampleBobaAPI';
-import React, { useEffect, useState } from 'react';
+import BootstrapButton, { ButtonProps as BootstrapButtonProps } from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
 
-const ButtonX = ({
-  variant,
-  text,
-  order,
-  product,
-}: {
-  order: BobaProps[];
-  text: string;
-  variant: string;
-  product: BobaProps;
-}) => {
-  const [orderx, setOrderx] = useState<BobaProps[]>(order);
+interface ButtonProps extends BootstrapButtonProps {
+  label: string;
+  onClick?: () => void; // optional onClick handler
+  [key: string]: unknown; // allow additional props
+}
 
-  console.log(orderx, 'this is inside button 1')
-  useEffect(() => {
-    // setOrderx(order);
-    console.log(order, 'this is inside button 12')
-  }, [order]);
-
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const total = [...orderx, product];
-    console.log(total, 'this is inside button 2')
-    setOrderx(total);
-    order.push(product)
-    console.log(order, 'this is inside button 3')
-  };
-
+const Button: React.FC<ButtonProps> = ({ variant, label, ...rest }) => {
   return (
-    <Button variant={variant} onClick={handleClick}>
-      {text}{' '}
-    </Button>
+    <BootstrapButton variant={variant} {...rest}>
+      {label}
+    </BootstrapButton>
   );
 };
 
-export default ButtonX;
+Button.propTypes = {
+  variant: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+};
+
+export default Button;

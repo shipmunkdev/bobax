@@ -24,9 +24,6 @@ const ShoppingCart = ({ order }: { order: BobaProps[] }) => {
       <Badge bg='danger' className='badge badge-warning' id='lblCartCount'>
         {order.length}
       </Badge>
-      {/* <span >
-        5
-      </span> */}
     </div>
   );
 };
