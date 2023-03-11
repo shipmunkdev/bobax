@@ -16,7 +16,7 @@ const BobaContainer = (props: BobaContainerProps): JSX.Element => {
       <Row>
         {bobaList.map((boba: BobaProps) => (
           <Col className='boba_col' md='auto' key={boba.name}>
-            <BobaCard key={boba.name} product={boba} order={order} setOrder={setOrder} />
+            <BobaCard key={boba.id} product={boba} order={order} setOrder={setOrder} />
           </Col>
         ))}
       </Row>

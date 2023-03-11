@@ -1,5 +1,5 @@
-import NavigationBar from '../NavigationBar';
-import Homepage from '../../pages/Home';
+import NavigationBar from '../../components/NavigationBar';
+import Homepage from '../Home';
 import { useState } from 'react';
 import { BobaProps } from '../../assets/sampleBobaAPI';
 
@@ -8,8 +8,8 @@ const MainPage = () => {
 
   return (
     <>
-      <NavigationBar order={order} />
-      <Homepage setOrder={setOrder} order={order} />
+      <NavigationBar length={order.length} />
+      <Homepage order={order} setOrder={setOrder} />
     </>
   );
 };

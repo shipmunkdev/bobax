@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ThemeProvider from 'react-bootstrap/ThemeProvider';
-import MainPage from './components/MainPage';
+import MainPage from './pages/MainPage';
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(

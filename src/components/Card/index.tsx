@@ -11,15 +11,15 @@ interface BobaCardProps {
 
 const BobaCard = (props: BobaCardProps): JSX.Element => {
   const { order, setOrder, product } = props;
-  const { name, price, imageLink, description } = product;
+  const { id, name, price, imageLink, description } = product;
 
-  const handleClick = () => {
-    const total = [...order, product];
-    setOrder(total);
+  const handleAddItemToCart = () => {
+    const cartList = [...order, product];
+    setOrder(cartList);
   };
 
   return (
-    <Card key={name} style={{ width: '18rem' }}>
+    <Card key={id} style={{ width: '18rem' }}>
       <Card.Img variant='top' src={imageLink} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
@@ -27,7 +27,7 @@ const BobaCard = (props: BobaCardProps): JSX.Element => {
           <div className='boba_desc'>{description}</div>
           <div>${price}</div>
         </Card.Text>
-        <Button variant={'primary'} label={'Add to cart'} onClick={handleClick} />
+        <Button variant={'primary'} label={'Add to cart'} onClick={handleAddItemToCart} />
       </Card.Body>
     </Card>
   );
