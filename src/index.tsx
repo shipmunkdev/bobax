@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ThemeProvider from 'react-bootstrap/ThemeProvider';
-import MainPage from './pages/MainPage';
+import Main from './pages/Main';
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
@@ -11,7 +12,7 @@ root.render(
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
       minBreakpoint='xxs'
     >
-      <MainPage />
+      <Main />
     </ThemeProvider>
   </React.StrictMode>,
 );

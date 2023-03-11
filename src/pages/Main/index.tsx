@@ -3,15 +3,15 @@ import Homepage from '../Home';
 import { useState } from 'react';
 import { BobaProps } from '../../assets/sampleBobaAPI';
 
-const MainPage = () => {
+const Main = () => {
   const [order, setOrder] = useState<BobaProps[]>([]);
 
   return (
     <>
-      <NavigationBar length={order.length} />
+      <NavigationBar cartItemsCount={order.length} />
       <Homepage order={order} setOrder={setOrder} />
     </>
   );
 };
 
-export default MainPage;
+export default Main;

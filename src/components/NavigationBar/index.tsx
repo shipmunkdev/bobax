@@ -2,9 +2,9 @@ import { Navbar, Nav } from 'react-bootstrap';
 import ShoppingCart from './ShoppingCart';
 
 interface NavProps {
-  length: number;
+  cartItemsCount: number;
 }
-const NavigationBar = ({ length }: NavProps) => {
+const NavigationBar = ({ cartItemsCount }: NavProps) => {
   return (
     <Navbar bg='light' expand='lg'>
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -14,7 +14,7 @@ const NavigationBar = ({ length }: NavProps) => {
           <Nav.Link href='#aboutus'>About Us</Nav.Link>
         </Nav>
       </Navbar.Collapse>
-      <ShoppingCart length={length} />
+      <ShoppingCart cartItemsCount={cartItemsCount} />
     </Navbar>
   );
 };
