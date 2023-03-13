@@ -1,10 +1,8 @@
 import { Navbar, Nav } from 'react-bootstrap';
 import ShoppingCart from './ShoppingCart';
+import { CartItemCountProps } from 'types/common/main';
 
-interface NavProps {
-  cartItemsCount: number;
-}
-const NavigationBar = ({ cartItemsCount }: NavProps) => {
+const NavigationBar = ({ cartItemsCount }: CartItemCountProps) => {
   return (
     <Navbar bg='light' expand='lg'>
       <Navbar.Toggle aria-controls='basic-navbar-nav' />

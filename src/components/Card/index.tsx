@@ -1,12 +1,10 @@
-import { BobaProps } from 'assets/sampleBobaAPI.js';
 import Card from 'react-bootstrap/Card';
 import Button from 'components/Button';
+import { OrderProps, BobaProps } from 'types/common/main';
 import './index.css';
 
-interface BobaCardProps {
-  order: BobaProps[];
+interface BobaCardProps extends OrderProps {
   product: BobaProps;
-  setOrder: (order: BobaProps[]) => void;
 }
 
 const BobaCard = (props: BobaCardProps): JSX.Element => {
