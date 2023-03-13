@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 interface ButtonProps extends BootstrapButtonProps {
   label: string;
-  onClick?: () => void; // optional onClick handler
+  onClick?: React.MouseEventHandler; // optional onClick handler
   [key: string]: unknown; // allow additional props
 }
 

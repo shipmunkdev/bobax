@@ -1,16 +1,19 @@
 import { Container } from 'react-bootstrap';
-<<<<<<< Updated upstream
-import BobaContainer from '../../components/BobaContainer';
-=======
+
 import BobaContainer from 'components/BobaContainer';
 import { BobaProps } from 'assets/sampleBobaAPI';
->>>>>>> Stashed changes
 
-const Homepage = () => {
+interface HomePageProps {
+  order: BobaProps[];
+  setOrder: (order: BobaProps[]) => void;
+}
+
+const Homepage = (props: HomePageProps): JSX.Element => {
+  const { order, setOrder } = props;
   return (
     <Container>
       <h1>Boba Drinks Card Content</h1>
-      <BobaContainer />
+      <BobaContainer order={order} setOrder={setOrder} />
     </Container>
   );
 };
