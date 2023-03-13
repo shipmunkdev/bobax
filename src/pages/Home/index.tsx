@@ -1,5 +1,10 @@
 import { Container } from 'react-bootstrap';
+<<<<<<< Updated upstream
 import BobaContainer from '../../components/BobaContainer';
+=======
+import BobaContainer from 'components/BobaContainer';
+import { BobaProps } from 'assets/sampleBobaAPI';
+>>>>>>> Stashed changes
 
 const Homepage = () => {
   return (

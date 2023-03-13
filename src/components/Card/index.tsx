@@ -1,6 +1,6 @@
-import { BobaProps } from '../../assets/sampleBobaAPI.js';
+import { BobaProps } from 'assets/sampleBobaAPI.js';
 import Card from 'react-bootstrap/Card';
-import Button from '../Button';
+import Button from 'components/Button';
 import './index.css';
 
 const BobaCard = ({ product }: { product: BobaProps }) => {

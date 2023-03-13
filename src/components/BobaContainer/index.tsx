@@ -1,7 +1,7 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import BobaCard from '../Card';
-import { bobaList, BobaProps } from '../../assets/sampleBobaAPI';
+import BobaCard from 'components/Card';
+import { bobaList, BobaProps } from 'assets/sampleBobaAPI';
 import './index.css';
 
 const BobaContainer = () => {

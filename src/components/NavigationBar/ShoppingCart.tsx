@@ -1,7 +1,15 @@
 import Badge from 'react-bootstrap/Badge';
 import './shoppingcart.css';
 
+<<<<<<< Updated upstream
 const ShoppingCart = () => {
+=======
+interface ShoppingCartProps {
+  cartItemsCount: number;
+}
+
+const ShoppingCart = ({ cartItemsCount }: ShoppingCartProps) => {
+>>>>>>> Stashed changes
   return (
     <div className='cartwrapper'>
       <svg
