@@ -1,7 +1,7 @@
-import NavigationBar from '../../components/NavigationBar';
-import Homepage from '../Home';
+import NavigationBar from 'components/NavigationBar';
+import Homepage from 'pages/Home';
 import { useState } from 'react';
-import { BobaProps } from '../../assets/sampleBobaAPI';
+import { BobaProps } from 'types/common/main';
 
 const Main = () => {
   const [order, setOrder] = useState<BobaProps[]>([]);

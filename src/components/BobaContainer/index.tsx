@@ -1,15 +1,11 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import BobaCard from '../Card';
-import { bobaList, BobaProps } from '../../assets/sampleBobaAPI';
+import BobaCard from 'components/Card';
+import { bobaList } from 'assets/sampleBobaAPI';
+import { OrderProps, BobaProps } from 'types/common/main';
 import './index.css';
 
-interface BobaContainerProps {
-  order: BobaProps[];
-  setOrder: (order: BobaProps[]) => void;
-}
-
-const BobaContainer = (props: BobaContainerProps): JSX.Element => {
+const BobaContainer = (props: OrderProps): JSX.Element => {
   const { order, setOrder } = props;
   return (
     <div className='indBoba'>

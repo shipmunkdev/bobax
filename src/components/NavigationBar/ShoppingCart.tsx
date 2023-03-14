@@ -1,10 +1,8 @@
 import Badge from 'react-bootstrap/Badge';
+import { CartItemCountProps } from 'types/common/main';
 import './shoppingcart.css';
 
-interface ShoppingCartProps {
-  cartItemsCount: number;
-}
-const ShoppingCart = ({ cartItemsCount }: ShoppingCartProps) => {
+const ShoppingCart = ({ cartItemsCount }: CartItemCountProps) => {
   return (
     <div className='cartwrapper'>
       <svg
