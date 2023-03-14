@@ -18,3 +18,8 @@ export interface OrderProps {
 export interface CartItemCountProps {
   cartItemsCount: number;
 }
+
+export interface SearchBarProps {
+  searchQuery: string;
+  setSearchQuery: (searchQuery: string) => void;
+}
