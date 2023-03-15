@@ -8,8 +8,7 @@ interface BobaContainerProps extends OrderProps {
   bobaListx: BobaProps[];
 }
 
-const BobaContainer = (props: BobaContainerProps): JSX.Element => {
-  const { order, setOrder, bobaListx } = props;
+const BobaContainer = ({ order, setOrder, bobaListx }: BobaContainerProps): JSX.Element => {
   return (
     <div className='indBoba'>
       {bobaListx ? (

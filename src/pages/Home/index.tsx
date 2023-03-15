@@ -5,13 +5,12 @@ import { bobaList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 
-const Homepage = (props: OrderProps): JSX.Element => {
-  const { order, setOrder } = props;
+const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
 
-  const [bobaListx, setBobaListx] = useState<BobaProps[]>(bobaList);
+  const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(bobaList);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  const filteredfunction = (bobaList: BobaProps[], query: string): BobaProps[] => {
+  const filterBobaList = (bobaList: BobaProps[], query: string): BobaProps[] => {
     return bobaList.filter((filtered: BobaProps) =>
       filtered.name.toLowerCase().includes(query.toLowerCase()),
     );
@@ -19,14 +18,14 @@ const Homepage = (props: OrderProps): JSX.Element => {
 
   useEffect(() => {
     if (searchQuery) {
-      const filterlist = filteredfunction(bobaList, searchQuery);
-      if (!filterlist) {
-        setBobaListx([]);
+      const filterlist = filterBobaList(bobaList, searchQuery);
+      if (filterlist.length === 0) {
+        setFilteredBobaList([]);
       } else {
-        setBobaListx(filterlist);
+        setFilteredBobaList(filterlist);
       }
     } else {
-      setBobaListx(bobaList);
+      setFilteredBobaList(bobaList);
     }
   }, [searchQuery]);
 
@@ -34,7 +33,7 @@ const Homepage = (props: OrderProps): JSX.Element => {
     <Container>
       <h1>Boba Drinks Card Content</h1>
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <BobaContainer order={order} setOrder={setOrder} bobaListx={bobaListx} />
+      <BobaContainer order={order} setOrder={setOrder} bobaListx={filteredBobaList} />
     </Container>
   );
 };

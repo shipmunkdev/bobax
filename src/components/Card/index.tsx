@@ -7,8 +7,8 @@ interface BobaCardProps extends OrderProps {
   product: BobaProps;
 }
 
-const BobaCard = (props: BobaCardProps): JSX.Element => {
-  const { order, setOrder, product } = props;
+const BobaCard = ({ order, setOrder, product }: BobaCardProps): JSX.Element => {
+
   const { id, name, price, imageLink, description } = product;
 
   const handleAddItemToCart = () => {

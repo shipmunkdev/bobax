@@ -1,8 +1,8 @@
 import Form from 'react-bootstrap/Form';
 import { SearchBarProps } from 'types/common/main';
 
-const SearchBar = (props: SearchBarProps) => {
-  const { searchQuery, setSearchQuery } = props;
+const SearchBar = ({ searchQuery, setSearchQuery }: SearchBarProps) => {
+
 
   return (
     <div>
@@ -19,7 +19,7 @@ const SearchBar = (props: SearchBarProps) => {
       <Form>
         <Form.Group className='mb-3'>
           <Form.Control
-            type='email'
+            type='text'
             placeholder={'Search Drink Here'}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
