@@ -7,6 +7,7 @@ on:
 
 jobs:
   lint-and-format:
+    name: Check Source Code
     runs-on: ubuntu-latest
 
     steps:
