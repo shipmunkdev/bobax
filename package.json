@@ -1,6 +1,5 @@
 {
   "name": "bobax",
-  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -30,7 +29,7 @@
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
+    "build-storybook": "build-storybook -o docs-build -s ./src/stories/assets",
     "test-storybook": "test-storybook"
   },
   "eslintConfig": {
