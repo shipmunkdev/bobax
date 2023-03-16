@@ -6,7 +6,6 @@ import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
-
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(bobaList);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
