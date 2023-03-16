@@ -1,17 +1,17 @@
-name: Check the source code 🧋
+name: 🧋 BOBAX Core Build and Test
 on:
   pull_request:
     branches:
       - '*'
 jobs:
   test:
-    name: Check the source code 🛎️
+    name: 🛎️ Check the source code
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependency packages 🧶
+      - name: 🧶 Install dependency packages
         run: yarn install
-      - name: Lint 🔎
+      - name: 🔎 Lint
         run: yarn run lint
-      - name: Prettier 💅
+      - name: 💅 Prettier
         run: yarn run format
