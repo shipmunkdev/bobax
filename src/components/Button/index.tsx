@@ -7,17 +7,18 @@ interface ButtonProps extends BootstrapButtonProps {
   [key: string]: unknown; // allow additional props
 }
 
-const Button: React.FC<ButtonProps> = ({ variant, label, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({ 
+  variant, 
+  label, ...rest }) => {
   return (
-    <BootstrapButton variant={variant} {...rest}>
-      {label}
+      <BootstrapButton variant={variant} {...rest}>
+        {label}
     </BootstrapButton>
   );
 };
 
 Button.propTypes = {
-  variant: PropTypes.string,
-  label: PropTypes.string.isRequired,
+  variant: PropTypes.string, label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
