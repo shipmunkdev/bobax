@@ -6,6 +6,7 @@
     },
     "extends": [
         "eslint:recommended",
+        "eslint-typescript",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
         "prettier"
