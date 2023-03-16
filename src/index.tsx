@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ThemeProvider from 'react-bootstrap/ThemeProvider';
-import Main from './pages/Main';
+import Main from 'pages/Main';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 

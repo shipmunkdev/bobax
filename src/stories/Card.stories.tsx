@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import BobaCard from '../components/Card';
+import BobaCard from 'components/Card';
 
 export default {
   title: 'BobaX/BobaCard',
