@@ -23,6 +23,7 @@ To get started contributing to our project, follow these steps:
 - Push your changes to your forked repository.
 - Create a pull request to our repository and describe your changes.
 - Assign yourself in Assignee and add labels such `Enhancements`, `CICD`, `Bug`, etc.
+- Ensure the project is following [Airbnb](https://github.com/airbnb/javascript/tree/master/react) styleguide.
 
 ## Git branch naming
 

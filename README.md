@@ -2,11 +2,7 @@
 
 ### [Preview the Web Application](https://bobax.netlify.app/)
 
-# Getting Started with Boba X
-
-Ensure the project is following [Airbnb](https://github.com/airbnb/javascript/tree/master/react) styleguide.
-
-# Boba Project
+# BobaX Project
 
 ## This is a React project for a boba website that uses TypeScript, Yarn, ESLint, and Storybook.
 
