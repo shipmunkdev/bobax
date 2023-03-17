@@ -1,5 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/71c82350-3828-425b-a8d9-6b4411e6ec60/deploy-status)](https://app.netlify.com/sites/bobax/deploys)
 
+### [Preview the Web Application](https://bobax.netlify.app/)
+
 # Getting Started with Boba X
 
 Ensure the project is following [Airbnb](https://github.com/airbnb/javascript/tree/master/react) styleguide.
