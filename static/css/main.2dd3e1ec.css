@@ -1,0 +1,9 @@
+.boba_desc {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+
+/*# sourceMappingURL=main.2dd3e1ec.css.map*/
