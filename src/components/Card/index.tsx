@@ -16,13 +16,15 @@ const BobaCard = ({ order, setOrder, product }: BobaCardProps): JSX.Element => {
   };
 
   return (
-    <Card key={id} style={{ width: '18rem' }}>
+    <Card key={id} data-testid={id} style={{ width: '18rem' }}>
       <Card.Img variant='top' src={imageLink} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
+        <Card.Text className="boba_desc">
+          {description}
+        </Card.Text>
         <Card.Text>
-          <div className='boba_desc'>{description}</div>
-          <div>${price}</div>
+          ${price}
         </Card.Text>
         <Button variant={'primary'} label={'Add to cart'} onClick={handleAddItemToCart} />
       </Card.Body>
