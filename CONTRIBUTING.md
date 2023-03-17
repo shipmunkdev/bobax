@@ -48,7 +48,7 @@ By following this naming convention, contributors can ensure that their contribu
 
 - When a pull request is created, the pipeline is triggered automatically. If the code does not pass the checks, the pull request will not be reviewed until the issues are fixed. This ensures that the project is maintainable and consistent, and that code quality is not compromised.
 
-- Once the code passes the checks, it will be reviewed by the team and, if approved, merged into the main branch. This process ensures that the codebase is always up-to-date and consistent with the coding standards, while also preventing any regressions or issues from being introduced into the codebase.
+- Once the code passes the checks, it will be reviewed by the team and, if approved, merged into the develop branch. This process ensures that the codebase is always up-to-date and consistent with the coding standards, while also preventing any regressions or issues from being introduced into the codebase.
 
 ## Code of Conduct
 
