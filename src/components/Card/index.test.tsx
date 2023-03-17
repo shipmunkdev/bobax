@@ -9,7 +9,7 @@ const sampleBoba = {
   description: 'A test boba drink with milk tea and tapioca pearls.',
   defaultOptions: {
     milk: 'Whole Milk',
-    toppings: [{ name: 'Boba', price: 0.50 }],
+    toppings: [{ name: 'Boba', price: 0.5 }],
   },
 };
 
@@ -30,7 +30,7 @@ describe('BobaCard', () => {
   it('calls the onClick function when the "Add to cart" button is clicked', () => {
     const setOrderMock = jest.fn();
     render(<BobaCard order={[]} setOrder={setOrderMock} product={sampleBoba} />);
-    
+
     const addToCartButton = screen.getByText('Add to cart');
     fireEvent.click(addToCartButton);
     expect(setOrderMock).toHaveBeenCalledWith([sampleBoba]);

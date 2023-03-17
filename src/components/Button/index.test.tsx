@@ -12,11 +12,11 @@ describe('Button', () => {
     render(<Button label='Click me' variant='primary' />);
     expect(screen.getByRole('button')).toHaveClass('btn-primary');
   });
-  
+
   it('renders a button with the given variant', () => {
     render(<Button label='Click me' variant='secondary' />);
     expect(screen.getByRole('button')).toHaveClass('btn-secondary');
-});
+  });
 
   it('calls the given onClick handler when clicked', () => {
     const onClick = jest.fn();

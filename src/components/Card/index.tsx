@@ -20,12 +20,8 @@ const BobaCard = ({ order, setOrder, product }: BobaCardProps): JSX.Element => {
       <Card.Img variant='top' src={imageLink} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
-        <Card.Text className="boba_desc">
-          {description}
-        </Card.Text>
-        <Card.Text>
-          ${price}
-        </Card.Text>
+        <Card.Text className='boba_desc'>{description}</Card.Text>
+        <Card.Text>${price}</Card.Text>
         <Button variant={'primary'} label={'Add to cart'} onClick={handleAddItemToCart} />
       </Card.Body>
     </Card>
