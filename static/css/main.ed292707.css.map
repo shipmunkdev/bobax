@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.ed292707.css","mappings":"AAAA;AACA;AACA;AACA","sources":["webpack://bobax/./src/components/Card/index.css"],"sourcesContent":[".boba_desc {\n  overflow: hidden;\n  height: 60px;\n}\n"],"names":[],"sourceRoot":""}
