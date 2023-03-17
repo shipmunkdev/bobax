@@ -32,7 +32,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     <Container>
       <h1>Boba Drinks Card Content</h1>
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <BobaContainer order={order} setOrder={setOrder} bobaListx={filteredBobaList} />
+      <BobaContainer order={order} setOrder={setOrder} bobaList={filteredBobaList} />
     </Container>
   );
 };
