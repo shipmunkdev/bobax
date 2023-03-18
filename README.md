@@ -1,48 +1,101 @@
-# Getting Started with Boba X
+[![Netlify Status](https://api.netlify.com/api/v1/badges/71c82350-3828-425b-a8d9-6b4411e6ec60/deploy-status)](https://app.netlify.com/sites/bobax/deploys)
 
-Ensure the project is following [Airbnb](https://github.com/airbnb/javascript/tree/master/react) styleguide.
+### [Preview the Web Application](https://bobax.netlify.app/)
 
-Folder/file structure has been pre-made for reference.
+# BobaX Project
+
+## This is a React project for a boba website that uses TypeScript, Yarn, ESLint, and Storybook.
+
+## Getting Started
+
+To get started with this project, follow these steps:
+
+- Clone this repository to your local machine using git clone.
+- Install the necessary dependencies using yarn install.
+- Start the development server using yarn start.
+- Open http://localhost:3000 to view the app in the browser.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+## `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in the development mode. Open http://localhost:3000 to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The page will reload if you make edits. You will also see any lint errors in the console.
 
-### `yarn test`
+## `yarn build`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Builds the app for production to the build folder. It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### `yarn build`
+The build is minified and the filenames include the hashes. Your app is ready to be deployed!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## `yarn test`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Launches the test runner in the interactive watch mode.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## `yarn lint`
 
-### `yarn eject`
+Runs ESLint to check for any linting errors in the project.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## `yarn lint:fix`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Runs ESLint to fix for any linting errors in the project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## `yarn format`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Runs Prettier to fix for any formatting errors in the project.
 
-## Learn More
+## `yarn storybook`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Launches Storybook, an isolated development environment for UI components.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## `yarn test-storybook`
+
+Requires `yarn storybook` instance to be running before running this command.
+Launches Storybook Test Runner, an isolated development environment for testing UI components.
+
+## Project Structure
+
+The project has the following directory structure:
+
+```
+bobax-project/        - Main project folder
+node_modules/         - Folder containing all installed dependencies
+.github/workflows     - Folder containing GitHub Actions workflows
+README.md             - A file containing project documentation
+package.json          - A file containing project metadata and dependencies
+tsconfig.json         - A file containing TypeScript compiler options
+yarn.lock             - A file containing exact versions of all installed dependencies
+public/               - Folder containing public files
+    index.html        - The main HTML file that is used to render the app
+    favicon.ico       - The favicon for the app
+src/                  - Folder containing source code
+    index.tsx         - The main entry point for the app
+assets/              - Folder containing assets used in the app
+components/          - Folder containing UI components
+    Button/           - A sub-folder containing a Button component
+        index.tsx     - The code for the Button component
+    Card/             - A sub-folder containing a Card component
+        index.tsx     - The code for the Card component
+pages/               - Folder containing page components
+    Main/            - A sub-folder containing the main page component
+        index.tsx    - The code for the main page component
+    Home/            - A sub-folder containing the home page component
+        index.tsx    - The code for the home page component
+stories/             - Folder containing Storybook stories
+    Button.stories.tsx - The story for the Button component
+    Card.stories.tsx   - The story for the Card component
+types/               - Folder containing TypeScript types
+hooks/               - Folder containing custom React hooks
+utils/               - Folder containing utility functions and modules
+```
+
+## Contributing
+
+If you would like to contribute to this project, please follow the guidelines outlined in [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md) file for details.

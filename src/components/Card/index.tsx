@@ -29,7 +29,7 @@ const BobaCard = ({
   };
 
   return (
-    <Card key={id} style={{ width: '18rem' }}>
+    <Card key={id} data-testid={id} style={{ width: '18rem' }}>
       <Card.Img variant='top' src={imageLink} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
