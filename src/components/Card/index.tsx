@@ -5,9 +5,11 @@ import './index.css';
 
 interface BobaCardProps extends OrderProps {
   product: BobaProps;
+  setModalShow:(modalShow:boolean)=> void;
+  setBobaInfoModal:(bobaInfoModal:BobaProps) => void;
 }
 
-const BobaCard = ({ order, setOrder, product }: BobaCardProps): JSX.Element => {
+const BobaCard = ({ order, setOrder, product,setModalShow ,setBobaInfoModal}: BobaCardProps): JSX.Element => {
 
   const { id, name, price, imageLink, description } = product;
 
@@ -15,6 +17,11 @@ const BobaCard = ({ order, setOrder, product }: BobaCardProps): JSX.Element => {
     const cartList = [...order, product];
     setOrder(cartList);
   };
+
+  const customizeBoba = () =>{
+    setModalShow(true)
+    setBobaInfoModal(product)
+  }
 
   return (
     <Card key={id} style={{ width: '18rem' }}>
@@ -25,7 +32,8 @@ const BobaCard = ({ order, setOrder, product }: BobaCardProps): JSX.Element => {
           <div className='boba_desc'>{description}</div>
           <div>${price}</div>
         </Card.Text>
-        <Button variant={'primary'} label={'Add to cart'} onClick={handleAddItemToCart} />
+        <Button variant={'primary'} label={'Customize'} onClick={customizeBoba} />
+        <Button variant={'success'} label={'Add to cart'} onClick={handleAddItemToCart} />
       </Card.Body>
     </Card>
   );

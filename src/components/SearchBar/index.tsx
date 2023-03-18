@@ -3,7 +3,6 @@ import { SearchBarProps } from 'types/common/main';
 
 const SearchBar = ({ searchQuery, setSearchQuery }: SearchBarProps) => {
 
-
   return (
     <div>
       <svg
