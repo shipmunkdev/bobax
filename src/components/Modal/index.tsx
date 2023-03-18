@@ -9,7 +9,7 @@ import React from 'react';
 function BobaCustomizeableModal(props: ModalProps) {
   const { bobaInfoModal, modalShow, onHide } = props;
   return (
-    <Modal show={modalShow} aria-labelledby='contained-modal-title-vcenter' centered>
+    <Modal show={modalShow} onHide={onHide}aria-labelledby='contained-modal-title-vcenter' centered>
       <Modal.Header closeButton>
         <Modal.Title id='contained-modal-title-vcenter'>{bobaInfoModal?.id}</Modal.Title>
       </Modal.Header>
