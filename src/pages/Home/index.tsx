@@ -4,14 +4,19 @@ import { OrderProps, BobaProps } from 'types/common/main';
 import { bobaList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
-import BobaCustomizeableModal from 'components/Modal'
+import BobaCustomizeableModal from 'components/Modal';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
-
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(bobaList);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [modalShow, setModalShow] = useState<boolean>(false)
-  const [bobaInfoModal,setBobaInfoModal] = useState<object>({});
+  const [modalShow, setModalShow] = useState<boolean>(false);
+  const [bobaInfoModal, setBobaInfoModal] = useState<BobaProps>({
+    id: '',
+    name: '',
+    description: '',
+    price: 0,
+    imageLink: '',
+  });
 
   const filterBobaList = (bobaList: BobaProps[], query: string): BobaProps[] => {
     return bobaList.filter((filtered: BobaProps) =>
@@ -36,8 +41,18 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     <Container>
       <h1>Boba Drinks Card Content</h1>
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <BobaContainer order={order} setOrder={setOrder} bobaListx={filteredBobaList} setModalShow={setModalShow} setBobaInfoModal={setBobaInfoModal}/>
-      <BobaCustomizeableModal bobaInfoModal={bobaInfoModal} modalShow={modalShow} onHide={()=>setModalShow(false)}/>
+      <BobaContainer
+        order={order}
+        setOrder={setOrder}
+        bobaListx={filteredBobaList}
+        setModalShow={setModalShow}
+        setBobaInfoModal={setBobaInfoModal}
+      />
+      <BobaCustomizeableModal
+        bobaInfoModal={bobaInfoModal}
+        modalShow={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </Container>
   );
 };

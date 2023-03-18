@@ -6,16 +6,14 @@ import Row from 'react-bootstrap/Row';
 import { ModalProps } from 'types/common/main';
 import React from 'react';
 
-function BobaCustomizeableModal(props:ModalProps) {
-    const {bobaInfoModal,modalShow, onHide} = props
-    return (
-      <Modal show={modalShow} aria-labelledby="contained-modal-title-vcenter" centered>
+function BobaCustomizeableModal(props: ModalProps) {
+  const { bobaInfoModal, modalShow, onHide } = props;
+  return (
+    <Modal show={modalShow} aria-labelledby='contained-modal-title-vcenter' centered>
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          {bobaInfoModal?.id}
-        </Modal.Title>
+        <Modal.Title id='contained-modal-title-vcenter'>{bobaInfoModal?.id}</Modal.Title>
       </Modal.Header>
-      <Modal.Body className="show-grid">
+      <Modal.Body className='show-grid'>
         <Container>
           <Row>
             <Col xs={12} md={8}>
@@ -46,4 +44,4 @@ function BobaCustomizeableModal(props:ModalProps) {
   );
 }
 
-  export default BobaCustomizeableModal;
+export default BobaCustomizeableModal;

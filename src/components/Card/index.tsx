@@ -5,12 +5,17 @@ import './index.css';
 
 interface BobaCardProps extends OrderProps {
   product: BobaProps;
-  setModalShow:(modalShow:boolean)=> void;
-  setBobaInfoModal:(bobaInfoModal:BobaProps) => void;
+  setModalShow: (modalShow: boolean) => void;
+  setBobaInfoModal: (bobaInfoModal: BobaProps) => void;
 }
 
-const BobaCard = ({ order, setOrder, product,setModalShow ,setBobaInfoModal}: BobaCardProps): JSX.Element => {
-
+const BobaCard = ({
+  order,
+  setOrder,
+  product,
+  setModalShow,
+  setBobaInfoModal,
+}: BobaCardProps): JSX.Element => {
   const { id, name, price, imageLink, description } = product;
 
   const handleAddItemToCart = () => {
@@ -18,10 +23,10 @@ const BobaCard = ({ order, setOrder, product,setModalShow ,setBobaInfoModal}: Bo
     setOrder(cartList);
   };
 
-  const customizeBoba = () =>{
-    setModalShow(true)
-    setBobaInfoModal(product)
-  }
+  const customizeBoba = () => {
+    setModalShow(true);
+    setBobaInfoModal(product);
+  };
 
   return (
     <Card key={id} style={{ width: '18rem' }}>

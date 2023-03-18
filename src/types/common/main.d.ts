@@ -4,7 +4,7 @@ export interface BobaProps {
   description: string;
   price: number;
   imageLink: string;
-  defaultOptions: {
+  defaultOptions?: {
     milk: string;
     toppings: Array<{ name: string; price: number }>;
   };
@@ -25,7 +25,7 @@ export interface SearchBarProps {
 }
 
 export interface ModalProps {
-  bobaInfoModal : BobaProps | object ;
-  modalShow : boolean;
+  bobaInfoModal: BobaProps;
+  modalShow: boolean;
   onHide: () => void;
 }

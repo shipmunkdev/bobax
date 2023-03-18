@@ -2,7 +2,6 @@ import Form from 'react-bootstrap/Form';
 import { SearchBarProps } from 'types/common/main';
 
 const SearchBar = ({ searchQuery, setSearchQuery }: SearchBarProps) => {
-
   return (
     <div>
       <svg
