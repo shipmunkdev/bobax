@@ -5,7 +5,7 @@ import { OrderProps, BobaProps } from 'types/common/main';
 import './index.css';
 
 interface BobaContainerProps extends OrderProps {
-  bobaListx: BobaProps[];
+  bobaList: BobaProps[];
   setModalShow: (modalShow: boolean) => void;
   setBobaInfoModal: (bobaInfoModal: BobaProps) => void;
 }
@@ -13,31 +13,29 @@ interface BobaContainerProps extends OrderProps {
 const BobaContainer = ({
   order,
   setOrder,
-  bobaListx,
+  bobaList,
   setModalShow,
   setBobaInfoModal,
 }: BobaContainerProps): JSX.Element => {
-  return (
+  return bobaList ? (
     <div className='indBoba'>
-      {bobaListx ? (
-        <Row>
-          {bobaListx.map((boba: BobaProps) => (
-            <Col className='boba_col' md='auto' key={boba.name}>
-              <BobaCard
-                key={boba.id}
-                product={boba}
-                order={order}
-                setOrder={setOrder}
-                setModalShow={setModalShow}
-                setBobaInfoModal={setBobaInfoModal}
-              />
-            </Col>
-          ))}
-        </Row>
-      ) : (
-        <div>Not Found</div>
-      )}
+      <Row>
+        {bobaList.map((boba: BobaProps) => (
+          <Col className='boba_col' md='auto' key={boba.name}>
+            <BobaCard
+              key={boba.id}
+              product={boba}
+              order={order}
+              setOrder={setOrder}
+              setModalShow={setModalShow}
+              setBobaInfoModal={setBobaInfoModal}
+            />
+          </Col>
+        ))}
+      </Row>
     </div>
+  ) : (
+    <div>Not Found</div>
   );
 };
 

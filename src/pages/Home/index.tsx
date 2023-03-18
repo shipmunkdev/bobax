@@ -44,7 +44,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
       <BobaContainer
         order={order}
         setOrder={setOrder}
-        bobaListx={filteredBobaList}
+        bobaList={filteredBobaList}
         setModalShow={setModalShow}
         setBobaInfoModal={setBobaInfoModal}
       />

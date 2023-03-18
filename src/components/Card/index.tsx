@@ -33,10 +33,8 @@ const BobaCard = ({
       <Card.Img variant='top' src={imageLink} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
-        <Card.Text>
-          <div className='boba_desc'>{description}</div>
-          <div>${price}</div>
-        </Card.Text>
+        <Card.Text className='boba_desc'>{description}</Card.Text>
+        <Card.Text>${price}</Card.Text>
         <Button variant={'primary'} label={'Customize'} onClick={customizeBoba} />
         <Button variant={'success'} label={'Add to cart'} onClick={handleAddItemToCart} />
       </Card.Body>
