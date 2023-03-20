@@ -24,8 +24,17 @@ export interface SearchBarProps {
   setSearchQuery: (searchQuery: string) => void;
 }
 
+export interface ToppingProps {
+  name: string;
+  price: number;
+}
+
 export interface ModalProps {
   bobaInfoModal: BobaProps;
   modalShow: boolean;
+  milk: string;
+  setMilk: (milk: string) => void;
+  toppings: ToppingProps[];
+  addTopping: (topping: string, checked: boolean) => void;
   onHide: () => void;
 }
