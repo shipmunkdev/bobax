@@ -24,7 +24,7 @@ describe('BobaCard', () => {
         setOrder={() => setOrderMock}
         product={sampleBoba}
         setModalShow={() => setModalMock}
-        setBobaInfoModal={() => setBobaInfoModalMock}
+        setCustomizationModal={() => setBobaInfoModalMock}
       />,
     );
     expect(screen.getByText(sampleBoba.name)).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe('BobaCard', () => {
         setOrder={() => setOrderMock}
         product={sampleBoba}
         setModalShow={() => setModalMock}
-        setBobaInfoModal={() => setBobaInfoModalMock}
+        setCustomizationModal={() => setBobaInfoModalMock}
       />,
     );
     expect(screen.getByText(sampleBoba.description)).toBeInTheDocument();
@@ -57,7 +57,7 @@ describe('BobaCard', () => {
         setOrder={setOrderMock}
         product={sampleBoba}
         setModalShow={() => setModalMock}
-        setBobaInfoModal={() => setBobaInfoModalMock}
+        setCustomizationModal={() => setBobaInfoModalMock}
       />,
     );
 
@@ -76,7 +76,7 @@ describe('BobaCard', () => {
         setOrder={setOrderMock}
         product={sampleBoba}
         setModalShow={() => setModalMock}
-        setBobaInfoModal={() => setBobaInfoModalMock}
+        setCustomizationModal={() => setBobaInfoModalMock}
       />,
     );
 

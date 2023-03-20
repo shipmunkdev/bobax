@@ -28,7 +28,7 @@ const BobaContainer = ({
               order={order}
               setOrder={setOrder}
               setModalShow={setModalShow}
-              setBobaInfoModal={setBobaInfoModal}
+              setCustomizationModal={setBobaInfoModal}
             />
           </Col>
         ))}

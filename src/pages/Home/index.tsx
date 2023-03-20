@@ -4,7 +4,7 @@ import { OrderProps, BobaProps } from 'types/common/main';
 import { bobaList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
-import BobaCustomizeableModal from 'components/Modal';
+import CustomizeBobaModal from 'components/Modal';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(bobaList);
@@ -48,7 +48,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         setModalShow={setModalShow}
         setBobaInfoModal={setBobaInfoModal}
       />
-      <BobaCustomizeableModal
+      <CustomizeBobaModal
         bobaInfoModal={bobaInfoModal}
         modalShow={modalShow}
         onHide={() => setModalShow(false)}

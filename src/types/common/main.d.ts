@@ -24,7 +24,7 @@ export interface SearchBarProps {
   setSearchQuery: (searchQuery: string) => void;
 }
 
-export interface ModalProps {
+export interface CustomizeBobaModalProps {
   bobaInfoModal: BobaProps;
   modalShow: boolean;
   onHide: () => void;

@@ -1,12 +1,12 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import { ModalProps } from 'types/common/main';
-import React from 'react';
+// import Col from 'react-bootstrap/Col';
+// import Row from 'react-bootstrap/Row';
+import { CustomizeBobaModalProps } from 'types/common/main';
+// import React from 'react';
 
-function BobaCustomizeableModal(props: ModalProps) {
+function CustomizeBobaModal(props: CustomizeBobaModalProps) {
   const { bobaInfoModal, modalShow, onHide } = props;
   const { imageLink, description } = bobaInfoModal;
   return (
@@ -21,8 +21,8 @@ function BobaCustomizeableModal(props: ModalProps) {
       </Modal.Header>
       <Modal.Body className='show-grid'>
         <Container>
-        <img style={{ width: '24rem' }} src={imageLink}></img>
-        <p>{description}</p>
+          <img style={{ width: '24rem' }} src={imageLink}></img>
+          <p>{description}</p>
         </Container>
       </Modal.Body>
       <Modal.Footer>
@@ -32,4 +32,4 @@ function BobaCustomizeableModal(props: ModalProps) {
   );
 }
 
-export default BobaCustomizeableModal;
+export default CustomizeBobaModal;
