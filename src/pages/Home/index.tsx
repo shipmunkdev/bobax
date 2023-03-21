@@ -37,6 +37,11 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     }
   }, [searchQuery]);
 
+  const BobaModalBody = ({name, description, imageLink}: BobaProps) => <>
+    <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
+    <p>{description}</p>
+  </>
+
   return (
     <Container>
       <h1>Boba Drinks Card Content</h1>
@@ -56,7 +61,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         title={bobaInfoModal.name}
         modalShow={modalShow}
         onHide={() => setModalShow(false)}
-        ModalBody={() => <div>Custom Modal Body</div>}
+        ModalBody={() => BobaModalBody(bobaInfoModal)}
       />
     </Container>
   );
