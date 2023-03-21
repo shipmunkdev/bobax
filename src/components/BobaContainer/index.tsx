@@ -12,8 +12,8 @@ interface BobaContainerProps extends OrderProps {
 
 const BobaContainer = ({
   order,
-  setOrder,
   bobaList,
+  setOrder,
   setModalShow,
   setBobaInfoModal,
 }: BobaContainerProps): JSX.Element => {
@@ -24,8 +24,8 @@ const BobaContainer = ({
           <Col className='boba_col' md='auto' key={boba.name}>
             <BobaCard
               key={boba.id}
-              product={boba}
               order={order}
+              product={boba}
               setOrder={setOrder}
               setModalShow={setModalShow}
               setCustomizationModal={setBobaInfoModal}
