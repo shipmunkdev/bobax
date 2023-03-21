@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import PropTypes from 'prop-types';
 
-interface BaseModalProps {
+export interface BaseModalProps {
   title: string;
   modalShow: boolean;
   onHide: () => void;
@@ -28,7 +28,7 @@ const BaseModal: React.FC<BaseModalProps> = ({ title, modalShow, onHide, Contain
       </Modal.Footer>
     </Modal>
   );
-}
+};
 
 BaseModal.propTypes = {
   title: PropTypes.string.isRequired,
