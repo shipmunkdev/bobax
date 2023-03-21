@@ -16,20 +16,50 @@ const sampleBoba = {
 describe('BobaCard', () => {
   it('renders the product name and price', () => {
     const setOrderMock = jest.fn();
-    render(<BobaCard order={[]} setOrder={() => setOrderMock} product={sampleBoba} />);
+    const setModalMock = jest.fn();
+    const setBobaInfoModalMock = jest.fn();
+    render(
+      <BobaCard
+        order={[]}
+        setOrder={() => setOrderMock}
+        product={sampleBoba}
+        setModalShow={() => setModalMock}
+        setCustomizationModal={() => setBobaInfoModalMock}
+      />,
+    );
     expect(screen.getByText(sampleBoba.name)).toBeInTheDocument();
     expect(screen.getByText(`$${sampleBoba.price}`)).toBeInTheDocument();
   });
 
   it('renders the product description', () => {
     const setOrderMock = jest.fn();
-    render(<BobaCard order={[]} setOrder={() => setOrderMock} product={sampleBoba} />);
+    const setModalMock = jest.fn();
+    const setBobaInfoModalMock = jest.fn();
+    render(
+      <BobaCard
+        order={[]}
+        setOrder={() => setOrderMock}
+        product={sampleBoba}
+        setModalShow={() => setModalMock}
+        setCustomizationModal={() => setBobaInfoModalMock}
+      />,
+    );
     expect(screen.getByText(sampleBoba.description)).toBeInTheDocument();
   });
 
   it('calls the onClick function when the "Add to cart" button is clicked', () => {
     const setOrderMock = jest.fn();
-    render(<BobaCard order={[]} setOrder={setOrderMock} product={sampleBoba} />);
+    const setModalMock = jest.fn();
+    const setBobaInfoModalMock = jest.fn();
+    render(
+      <BobaCard
+        order={[]}
+        setOrder={setOrderMock}
+        product={sampleBoba}
+        setModalShow={() => setModalMock}
+        setCustomizationModal={() => setBobaInfoModalMock}
+      />,
+    );
 
     const addToCartButton = screen.getByText('Add to cart');
     fireEvent.click(addToCartButton);
@@ -38,7 +68,17 @@ describe('BobaCard', () => {
 
   it('adds product to cart when "Add to cart" button is clicked', () => {
     const setOrderMock = jest.fn();
-    render(<BobaCard order={[]} setOrder={setOrderMock} product={sampleBoba} />);
+    const setModalMock = jest.fn();
+    const setBobaInfoModalMock = jest.fn();
+    render(
+      <BobaCard
+        order={[]}
+        setOrder={setOrderMock}
+        product={sampleBoba}
+        setModalShow={() => setModalMock}
+        setCustomizationModal={() => setBobaInfoModalMock}
+      />,
+    );
 
     fireEvent.click(screen.getByText('Add to cart'));
     expect(setOrderMock).toHaveBeenCalledWith([sampleBoba]);

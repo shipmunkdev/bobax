@@ -4,7 +4,7 @@ export interface BobaProps {
   description: string;
   price: number;
   imageLink: string;
-  defaultOptions: {
+  defaultOptions?: {
     milk: string;
     toppings: Array<{ name: string; price: number }>;
   };
@@ -22,4 +22,10 @@ export interface CartItemCountProps {
 export interface SearchBarProps {
   searchQuery: string;
   setSearchQuery: (searchQuery: string) => void;
+}
+
+export interface CustomizeBobaModalProps {
+  bobaInfoModal: BobaProps;
+  modalShow: boolean;
+  onHide: () => void;
 }

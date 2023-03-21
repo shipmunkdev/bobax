@@ -6,15 +6,30 @@ import './index.css';
 
 interface BobaContainerProps extends OrderProps {
   bobaList: BobaProps[];
+  setModalShow: (modalShow: boolean) => void;
+  setBobaInfoModal: (bobaInfoModal: BobaProps) => void;
 }
 
-const BobaContainer = ({ order, setOrder, bobaList }: BobaContainerProps): JSX.Element => {
+const BobaContainer = ({
+  order,
+  setOrder,
+  bobaList,
+  setModalShow,
+  setBobaInfoModal,
+}: BobaContainerProps): JSX.Element => {
   return bobaList ? (
-    <div className='indBoba' data-testid='bobaList'>
+    <div className='indBoba'>
       <Row>
         {bobaList.map((boba: BobaProps) => (
           <Col className='boba_col' md='auto' key={boba.name}>
-            <BobaCard key={boba.id} product={boba} order={order} setOrder={setOrder} />
+            <BobaCard
+              key={boba.id}
+              product={boba}
+              order={order}
+              setOrder={setOrder}
+              setModalShow={setModalShow}
+              setCustomizationModal={setBobaInfoModal}
+            />
           </Col>
         ))}
       </Row>
