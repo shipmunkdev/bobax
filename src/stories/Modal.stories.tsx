@@ -10,8 +10,8 @@ export default {
 const TestContainer: React.FC = () => {
   return (
     <div>
-      <h1>Test Container Content</h1>
-      <p>This is a test container.</p>
+      <h1>Test Container</h1>
+      <p>This is a test container paragraph.</p>
     </div>
   );
 };
@@ -29,7 +29,7 @@ export const ModalClosed = (): JSX.Element => {
         title='Modal Title'
         modalShow={modalShow}
         onHide={() => setModalShow(false)}
-        Container={() => <TestContainer />}
+        ModalBody={() => <TestContainer />}
       />
     </>
   );
@@ -48,7 +48,7 @@ export const ModalOpened = (): JSX.Element => {
         title='Modal Title'
         modalShow={modalShow}
         onHide={() => setModalShow(false)}
-        Container={() => <TestContainer />}
+        ModalBody={() => <TestContainer />}
       />
     </>
   );

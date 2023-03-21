@@ -52,7 +52,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         title={bobaInfoModal.name}
         modalShow={modalShow}
         onHide={() => setModalShow(false)}
-        Container={() => <div>Custom Modal Body</div>}
+        ModalBody={() => <div>Custom Modal Body</div>}
       />
     </Container>
   );
