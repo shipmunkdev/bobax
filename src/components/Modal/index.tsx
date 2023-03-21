@@ -1,14 +1,15 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Container from 'react-bootstrap/Container';
-// import Col from 'react-bootstrap/Col';
-// import Row from 'react-bootstrap/Row';
-import { CustomizeBobaModalProps } from 'types/common/main';
-// import React from 'react';
+import PropTypes from 'prop-types';
 
-function CustomizeBobaModal(props: CustomizeBobaModalProps) {
-  const { bobaInfoModal, modalShow, onHide } = props;
-  const { imageLink, description } = bobaInfoModal;
+interface BaseModalProps {
+  title: string;
+  modalShow: boolean;
+  onHide: () => void;
+  Container: React.FC;
+}
+
+const BaseModal: React.FC<BaseModalProps> = ({ title, modalShow, onHide, Container }) => {
   return (
     <Modal
       show={modalShow}
@@ -17,13 +18,10 @@ function CustomizeBobaModal(props: CustomizeBobaModalProps) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id='contained-modal-title-vcenter'>{bobaInfoModal?.name}</Modal.Title>
+        <Modal.Title id='contained-modal-title-vcenter'>{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body className='show-grid'>
-        <Container>
-          <img style={{ width: '24rem' }} src={imageLink}></img>
-          <p>{description}</p>
-        </Container>
+        <Container />
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={onHide}>Close</Button>
@@ -32,4 +30,11 @@ function CustomizeBobaModal(props: CustomizeBobaModalProps) {
   );
 }
 
-export default CustomizeBobaModal;
+BaseModal.propTypes = {
+  title: PropTypes.string.isRequired,
+  modalShow: PropTypes.bool.isRequired,
+  onHide: PropTypes.func.isRequired,
+  Container: PropTypes.func.isRequired,
+};
+
+export default BaseModal;
