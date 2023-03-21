@@ -37,10 +37,12 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     }
   }, [searchQuery]);
 
-  const BobaModalBody = ({name, description, imageLink}: BobaProps) => <>
-    <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
-    <p>{description}</p>
-  </>
+  const BobaModalBody = ({ name, description, imageLink }: BobaProps) => (
+    <>
+      <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
+      <p>{description}</p>
+    </>
+  );
 
   return (
     <Container>

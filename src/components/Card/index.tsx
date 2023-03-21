@@ -30,7 +30,7 @@ const BobaCard = ({
 
   return (
     <Card key={id} data-testid={id} style={{ width: '18rem' }}>
-      <Card.Img variant='top' src={imageLink} alt={name}/>
+      <Card.Img variant='top' src={imageLink} alt={name} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text className='boba_desc'>{description}</Card.Text>
