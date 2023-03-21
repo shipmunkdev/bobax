@@ -19,11 +19,6 @@ export interface CartItemCountProps {
   cartItemsCount: number;
 }
 
-export interface SearchBarProps {
-  searchQuery: string;
-  setSearchQuery: (searchQuery: string) => void;
-}
-
 export interface CustomizeBobaModalProps {
   bobaInfoModal: BobaProps;
   modalShow: boolean;
