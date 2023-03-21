@@ -6,7 +6,7 @@ export interface BaseModalProps {
   title: string;
   modalShow: boolean;
   onHide: () => void;
-  ModalBody: React.FC;
+  ModalBody?: React.FC;
 }
 
 const BaseModal: React.FC<BaseModalProps> = ({ title, modalShow, onHide, ModalBody }) => {
@@ -18,13 +18,21 @@ const BaseModal: React.FC<BaseModalProps> = ({ title, modalShow, onHide, ModalBo
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id='contained-modal-title-vcenter'>{title}</Modal.Title>
+        <Modal.Title id='contained-modal-title-vcenter' data-testid='modal-title'>
+          {title}
+        </Modal.Title>
       </Modal.Header>
-      <Modal.Body className='show-grid'>
-        <ModalBody />
-      </Modal.Body>
+      {ModalBody ? (
+        <Modal.Body id='modal-body' data-testid='modal-body' className='show-grid'>
+          <ModalBody />
+        </Modal.Body>
+      ) : (
+        <></>
+      )}
       <Modal.Footer>
-        <Button onClick={onHide}>Close</Button>
+        <Button id='modal-close-button' data-testid='modal-close-button' onClick={onHide}>
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );
@@ -34,7 +42,7 @@ BaseModal.propTypes = {
   title: PropTypes.string.isRequired,
   modalShow: PropTypes.bool.isRequired,
   onHide: PropTypes.func.isRequired,
-  ModalBody: PropTypes.func.isRequired,
+  ModalBody: PropTypes.func,
 };
 
 export default BaseModal;
