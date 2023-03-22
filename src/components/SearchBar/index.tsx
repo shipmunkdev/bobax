@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import BinocularIcon from './BinocularIcon';
 
-interface SearchBarProps {
+export interface SearchBarProps {
   searchLabel: string;
   searchQuery: string;
   setSearchQuery: (searchQuery: string) => void;
@@ -15,6 +15,7 @@ const SearchBar = ({ searchLabel, searchQuery, setSearchQuery }: SearchBarProps)
         <BinocularIcon />
       </InputGroup.Text>
       <Form.Control
+        data-testid='test-search-bar'
         type='text'
         placeholder={searchLabel}
         value={searchQuery}
