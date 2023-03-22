@@ -8,6 +8,9 @@ describe('SearchBar', () => {
 
     const searchInput = screen.getByTestId('test-search-bar');
     expect(searchInput).toBeInTheDocument();
+
+    const testSearchIcon = screen.getByTestId('test-search-icon');
+    expect(testSearchIcon).toBeInTheDocument();
   });
 
   it('calls setSearchQuery on input change', () => {
@@ -20,5 +23,6 @@ describe('SearchBar', () => {
     const searchInput = screen.getByTestId('test-search-bar');
     fireEvent.change(searchInput, { target: { value: 'Hello' } });
     expect(setSearchQuery).toHaveBeenCalledWith('Hello');
+    expect(setSearchQuery).toHaveBeenCalledTimes(1);
   });
 });
