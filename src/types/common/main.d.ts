@@ -22,23 +22,25 @@ export interface CustomizeBobaModalProps {
 }
 
 export interface ToppingsProps {
-  name: string,
+  name: string;
   price: number;
 }
 
 export interface MilkProps {
-  name: string,
-  price: number
+  name: string;
+  price: number;
 }
 
 export interface MilkList {
-  [key:string]: {
-    name: string,
-    price: number}
+  [key: string]: {
+    name: string;
+    price: number;
+  };
 }
 
 export interface ToppingList {
-  [key:string]:{
-    name: string,
-    price: number;}
+  [key: string]: {
+    name: string;
+    price: number;
+  };
 }
