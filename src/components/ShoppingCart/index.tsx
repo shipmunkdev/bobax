@@ -1,5 +1,5 @@
 import Badge from 'react-bootstrap/Badge';
-import ShoppingCartIcon from './ShoppingCartIcon';
+import ShoppingCartIcon from '../Icons/ShoppingCartIcon';
 import './index.css';
 
 const ShoppingCart = ({ cartItemsCount }: { cartItemsCount: number }) => {

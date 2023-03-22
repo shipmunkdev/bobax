@@ -1,7 +1,8 @@
 import React from 'react';
 
-const BinocularIcon: React.FC = () => (
+const SearchIcon: React.FC = () => (
   <svg
+    data-testid='test-search-icon'
     xmlns='http://www.w3.org/2000/svg'
     width='16'
     height='16'
@@ -13,4 +14,4 @@ const BinocularIcon: React.FC = () => (
   </svg>
 );
 
-export default BinocularIcon;
+export default SearchIcon;
