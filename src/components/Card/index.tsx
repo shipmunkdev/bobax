@@ -11,8 +11,8 @@ interface BobaCardProps extends OrderProps {
 
 const BobaCard = ({
   order,
-  setOrder,
   product,
+  setOrder,
   setModalShow,
   setCustomizationModal,
 }: BobaCardProps): JSX.Element => {
@@ -23,7 +23,7 @@ const BobaCard = ({
     setOrder(cartList);
   };
 
-  const setCustomization = () => {
+  const handleCustomization = () => {
     setModalShow(true);
     setCustomizationModal(product);
   };
@@ -35,7 +35,7 @@ const BobaCard = ({
         <Card.Title>{name}</Card.Title>
         <Card.Text className='boba_desc'>{description}</Card.Text>
         <Card.Text>${price}</Card.Text>
-        <Button variant={'primary'} label={'Customize'} onClick={setCustomization} />
+        <Button variant={'primary'} label={'Customize'} onClick={handleCustomization} />
         <Button variant={'success'} label={'Add to cart'} onClick={handleAddItemToCart} />
       </Card.Body>
     </Card>
