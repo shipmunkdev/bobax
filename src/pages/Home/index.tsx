@@ -4,7 +4,7 @@ import { OrderProps, BobaProps } from 'types/common/main';
 import { bobaList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
-import CustomizeBobaModal from 'components/Modal';
+import CustomizeModal from 'components/Modal';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(bobaList);
@@ -37,10 +37,20 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     }
   }, [searchQuery]);
 
+  const BobaModalBody = ({ name, description, imageLink }: BobaProps) => (
+    <>
+      <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
+      <p>{description}</p>
+    </>
+  );
+
   return (
     <Container>
-      <h1>Boba Drinks Card Content</h1>
-      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <SearchBar
+        searchLabel='Search Drink Here'
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
       <BobaContainer
         order={order}
         setOrder={setOrder}
@@ -48,10 +58,11 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         setModalShow={setModalShow}
         setBobaInfoModal={setBobaInfoModal}
       />
-      <CustomizeBobaModal
-        bobaInfoModal={bobaInfoModal}
+      <CustomizeModal
+        title={bobaInfoModal.name}
         modalShow={modalShow}
         onHide={() => setModalShow(false)}
+        ModalBody={() => BobaModalBody(bobaInfoModal)}
       />
     </Container>
   );
