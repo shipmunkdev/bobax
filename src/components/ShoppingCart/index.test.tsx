@@ -12,7 +12,6 @@ describe('ShoppingCart', () => {
     const testCartIcon = screen.getByTestId('test-cart-icon');
     expect(testCartIcon).toBeInTheDocument();
   });
-  
 
   it('renders correct number in badge', () => {
     render(<ShoppingCart cartItemsCount={3} />);
