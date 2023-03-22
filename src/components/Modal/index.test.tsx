@@ -8,10 +8,8 @@ describe('BaseModal', () => {
     const handleClose = jest.fn();
     const modalShow = true;
 
-    render(
-      <BaseModal title='Test Modal Title' modalShow={modalShow} onHide={handleClose} />,
-    );
-    
+    render(<BaseModal title='Test Modal Title' modalShow={modalShow} onHide={handleClose} />);
+
     const { getByText } = within(screen.getByTestId('modal-title'));
     expect(getByText('Test Modal Title')).toBeInTheDocument();
     expect(screen.getByTestId('modal-title')).toBeInTheDocument();
