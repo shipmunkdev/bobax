@@ -1,11 +1,10 @@
 import Badge from 'react-bootstrap/Badge';
-import ShoppingCartIcon from './ShoppingCartIcon';
-import { CartItemCountProps } from 'types/common/main';
-import './shoppingcart.css';
+import ShoppingCartIcon from '../Icons/ShoppingCartIcon';
+import './index.css';
 
-const ShoppingCart = ({ cartItemsCount }: CartItemCountProps) => {
+const ShoppingCart = ({ cartItemsCount }: { cartItemsCount: number }) => {
   return (
-    <div className='cartwrapper'>
+    <div data-testid='test-shopping-cart' className='cartwrapper'>
       <ShoppingCartIcon />
       <Badge bg='danger' className='badge badge-warning' id='lblCartCount'>
         {cartItemsCount}
