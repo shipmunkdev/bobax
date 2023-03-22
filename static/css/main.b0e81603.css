@@ -1,0 +1,21 @@
+.boba_desc {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+#lblCartCount {
+  font-size: 12px;
+  background: #ff0000;
+  color: #fff;
+  padding: 0 5px;
+  vertical-align: top;
+  margin-left: -5px;
+}
+.cartwrapper:hover {
+  cursor: pointer;
+}
+
+
+/*# sourceMappingURL=main.b0e81603.css.map*/
