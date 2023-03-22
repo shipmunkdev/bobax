@@ -46,7 +46,6 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
 
   return (
     <Container>
-      <h1>Boba Drinks Card Content</h1>
       <SearchBar
         searchLabel='Search Drink Here'
         searchQuery={searchQuery}
