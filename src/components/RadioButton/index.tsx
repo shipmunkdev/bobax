@@ -30,6 +30,6 @@ const CustomizeRadioButton = ({ milkList, milk, setMilk }: RadioButton) => {
       })}
     </>
   );
-}
+};
 
 export default CustomizeRadioButton;
