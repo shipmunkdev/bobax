@@ -38,11 +38,4 @@ const BaseModal = ({ title, modalShow, onHide, ModalBody }: BaseModalProps) => {
   );
 };
 
-// BaseModal.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   modalShow: PropTypes.bool.isRequired,
-//   onHide: PropTypes.func.isRequired,
-//   ModalBody: PropTypes.func,
-// };
-
 export default BaseModal;

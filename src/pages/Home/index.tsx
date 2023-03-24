@@ -5,7 +5,7 @@ import { bobaList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 import CustomizeModal from 'components/Modal';
-import BobaModalform from 'pages/Home/CustomizeBobaModalBody';
+import BobaModalform from './CustomizeBobaModalBody';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(bobaList);

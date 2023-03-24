@@ -13,19 +13,19 @@ export interface BobaProps {
 
 interface ToppingsProps {
   name: string;
-  price: number;
+  // price: number;
 }
 
 interface MilkProps {
   name: string;
-  price: number;
+  // price: number;
 }
 
-interface MilkList {
+interface MilkListProps {
   [key: string]: MilkProps;
 }
 
-interface ToppingList {
+interface ToppingListProps {
   [key: string]: ToppingsProps;
 }
 
@@ -164,23 +164,23 @@ export const bobaList: BobaProps[] = [
   },
 ];
 
-export const milkList: MilkList = {
-  milk1: { name: 'Whole Milk', price: 0.0 },
-  milk2: { name: '2% Milk', price: 0.5 },
-  milk3: { name: 'Almond Milk', price: 0.5 },
-  milk4: { name: 'Soy Milk', price: 0.5 },
-  milk5: { name: 'Oat Milk', price: 0.5 },
+export const milkList: MilkListProps = {
+  milk1: { name: 'Whole Milk' },
+  milk2: { name: '2% Milk' },
+  milk3: { name: 'Almond Milk' },
+  milk4: { name: 'Soy Milk' },
+  milk5: { name: 'Oat Milk' },
 };
 
-export const toppingsList: ToppingList = {
-  top1: { name: 'Boba', price: 0.5 },
-  top2: { name: 'Popping Boba', price: 0.75 },
-  top3: { name: 'Aloe Vera', price: 0.75 },
-  top4: { name: 'Lychee Jelly', price: 0.75 },
-  top5: { name: 'Coconut Jelly', price: 0.75 },
-  top6: { name: 'Red Bean', price: 0.75 },
-  top7: { name: 'Mango Jelly', price: 0.75 },
-  top8: { name: 'Pudding', price: 0.5 },
-  top9: { name: 'Milk Foam', price: 1.0 },
-  top10: { name: 'Jelly', price: 0.5 },
+export const toppingsList: ToppingListProps = {
+  top1: { name: 'Boba' },
+  top2: { name: 'Popping Boba' },
+  top3: { name: 'Aloe Vera' },
+  top4: { name: 'Lychee Jelly' },
+  top5: { name: 'Coconut Jelly' },
+  top6: { name: 'Red Bean' },
+  top7: { name: 'Mango Jelly' },
+  top8: { name: 'Pudding' },
+  top9: { name: 'Milk Foam' },
+  top10: { name: 'Jelly' },
 };

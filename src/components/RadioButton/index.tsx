@@ -1,9 +1,9 @@
-import { MilkList } from 'types/common/main';
+import { MilkListProps } from 'types/common/main';
 import Form from 'react-bootstrap/Form';
 import React from 'react';
 
 interface RadioButton {
-  milkList: MilkList;
+  milkList: MilkListProps;
   milk: string;
   setMilk: (milk: string) => void;
 }

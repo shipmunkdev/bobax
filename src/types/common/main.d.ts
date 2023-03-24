@@ -31,10 +31,10 @@ export interface MilkProps {
   price: number;
 }
 
-export interface MilkList {
+export interface MilkListProps {
   [key: string]: {
     name: string;
-    price: number;
+    // price: number;
   };
 }
 
