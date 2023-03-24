@@ -3,8 +3,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
 import React from 'react';
+import CustomizeRadioButton from 'components/RadioButton';
+import { milkList } from 'assets/sampleBobaAPI';
 
-const BobaModalform = () => {
+const BobaModalform = ({ milk, setMilk }: { milk: string; setMilk: (milk: string) => void }) => {
   return (
     <Form>
       <Container>
@@ -16,6 +18,12 @@ const BobaModalform = () => {
             number
           </Col>
         </Row>
+        <Col xs={12} md={8}>
+          Milk(Required)
+          <Form.Group>
+            <CustomizeRadioButton milkList={milkList} milk={milk} setMilk={setMilk} />
+          </Form.Group>
+        </Col>
       </Container>
     </Form>
   );
