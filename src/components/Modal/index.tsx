@@ -1,6 +1,5 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import PropTypes from 'prop-types';
 
 export interface BaseModalProps {
   title: string;
@@ -9,7 +8,7 @@ export interface BaseModalProps {
   ModalBody?: React.FC;
 }
 
-const BaseModal: React.FC<BaseModalProps> = ({ title, modalShow, onHide, ModalBody }) => {
+const BaseModal = ({ title, modalShow, onHide, ModalBody }: BaseModalProps) => {
   return (
     <Modal
       show={modalShow}
@@ -36,13 +35,6 @@ const BaseModal: React.FC<BaseModalProps> = ({ title, modalShow, onHide, ModalBo
       </Modal.Footer>
     </Modal>
   );
-};
-
-BaseModal.propTypes = {
-  title: PropTypes.string.isRequired,
-  modalShow: PropTypes.bool.isRequired,
-  onHide: PropTypes.func.isRequired,
-  ModalBody: PropTypes.func,
 };
 
 export default BaseModal;
