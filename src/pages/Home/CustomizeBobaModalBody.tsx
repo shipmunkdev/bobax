@@ -1,10 +1,10 @@
+import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
-import React from 'react';
-import CustomizeRadioButton from 'components/RadioButton';
 import { milkList } from 'assets/sampleBobaAPI';
+import CustomizeRadioButton from 'components/RadioButton';
 
 const BobaModalform = ({ milk, setMilk }: { milk: string; setMilk: (milk: string) => void }) => {
   return (

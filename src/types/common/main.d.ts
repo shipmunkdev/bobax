@@ -21,26 +21,22 @@ export interface CustomizeBobaModalProps {
   onHide: () => void;
 }
 
-export interface ToppingsProps {
+export interface ToppingProps {
   name: string;
-  price: number;
 }
 
 export interface MilkProps {
   name: string;
-  price: number;
 }
 
 export interface MilkListProps {
   [key: string]: {
     name: string;
-    // price: number;
   };
 }
 
-export interface ToppingList {
+export interface ToppingListProps {
   [key: string]: {
     name: string;
-    price: number;
   };
 }

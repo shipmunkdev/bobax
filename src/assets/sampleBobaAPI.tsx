@@ -11,14 +11,12 @@ export interface BobaProps {
   };
 }
 
-interface ToppingsProps {
+interface ToppingProps {
   name: string;
-  // price: number;
 }
 
 interface MilkProps {
   name: string;
-  // price: number;
 }
 
 interface MilkListProps {
@@ -26,7 +24,7 @@ interface MilkListProps {
 }
 
 interface ToppingListProps {
-  [key: string]: ToppingsProps;
+  [key: string]: ToppingProps;
 }
 
 export const bobaList: BobaProps[] = [
