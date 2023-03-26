@@ -1,35 +1,43 @@
-import { MilkListProps } from 'types/common/main';
+import { ModalOptionProps } from 'types/common/main';
 import Form from 'react-bootstrap/Form';
 import React from 'react';
 
 interface RadioButton {
-  milkList: MilkListProps;
-  milk: string;
-  setMilk: (milk: string) => void;
+  type: 'radio' | 'checkbox';
+  key: string;
+  OptionList: ModalOptionProps;
+  option: string | string[];
+  setOption: (option: string | string[]) => void;
 }
 
-const CustomizeRadioButton = ({ milkList, milk, setMilk }: RadioButton) => {
+const CustomizeRadioButton = ({ type, key, OptionList, option, setOption }: RadioButton) => {
+  const handleOptionChange = (optionValue: string) => {
+    if (type === 'radio') {
+      setOption(optionValue);
+    } else if (type === 'checkbox') {
+      if (Array.isArray(option)) {
+        if (option.includes(optionValue)) {
+          setOption(option.filter((value) => value !== optionValue));
+        } else {
+          setOption([...option, optionValue]);
+        }
+      } else {
+        setOption([optionValue]);
+      }
+    }
+  };
   return (
-    <>
-      {Object.keys(milkList).map((key) => {
-        const milkOption = milkList[key];
-        return (
-          <div key={key}>
-            <Form.Check
-              type={'radio'}
-              id={`milk-${key}`}
-              label={milkOption.name}
-              value={milkOption.name}
-              onChange={(e) => {
-                setMilk(e.target.value);
-              }}
-              checked={milk === milkOption.name}
-            />
-          </div>
-        );
-      })}
-    </>
+    <div key={key}>
+      <Form.Check
+        type={type}
+        id={key}
+        label={OptionList.name}
+        onChange={() => handleOptionChange(OptionList.name)}
+        checked={
+          Array.isArray(option) ? option.includes(OptionList.name) : option === OptionList.name
+        }
+      />
+    </div>
   );
 };
-
 export default CustomizeRadioButton;

@@ -19,6 +19,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     imageLink: '',
   });
   const [milk, setMilk] = useState<string>('');
+  const [toppings, setToppings] = useState<string[]>([]);
 
   const filterBobaList = (bobaList: BobaProps[], query: string): BobaProps[] => {
     return bobaList.filter((filtered: BobaProps) =>
@@ -43,7 +44,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     <>
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
       <p>{description}</p>
-      <BobaModalform milk={milk} setMilk={setMilk} />
+      <BobaModalform milk={milk} toppings={toppings} setMilk={setMilk} setToppings={setToppings} />
     </>
   );
 
