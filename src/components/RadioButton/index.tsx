@@ -5,21 +5,19 @@ interface RadioButton {
   type: 'radio' | 'checkbox';
   id: string;
   label: string;
-  handlechange: (value: string) => void;
+  handleChange: (value: string) => void;
   check: boolean;
 }
 
-const CustomizeRadioButton = ({ type, id, label, handlechange, check }: RadioButton) => {
+const RadioCheckboxGroup = ({ type, id, label, handleChange, check }: RadioButton) => {
   return (
-    <div key={id}>
       <Form.Check
         type={type}
         id={id}
         label={label}
-        onChange={(e) => handlechange(e.target.id)}
+        onChange={(e) => handleChange(e.target.id)}
         checked={check}
       />
-    </div>
   );
 };
-export default CustomizeRadioButton;
+export default RadioCheckboxGroup;

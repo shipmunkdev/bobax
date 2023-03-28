@@ -21,18 +21,3 @@ export interface CustomizeBobaModalProps {
   onHide: () => void;
 }
 
-export interface ModalOptionProps {
-  name: string;
-}
-
-export interface MilkListProps {
-  [key: string]: {
-    name: string;
-  };
-}
-
-export interface ToppingListProps {
-  [key: string]: {
-    name: string;
-  };
-}

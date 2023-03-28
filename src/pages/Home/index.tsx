@@ -63,7 +63,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     <>
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
       <p>{description}</p>
-      <BobaModalform milk={milk} setMilk={setMilk} />
+      <BobaModalform milkType={milk} setMilkType={setMilk} />
     </>
   );
 

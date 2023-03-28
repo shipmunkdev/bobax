@@ -164,22 +164,22 @@ export const bobaList: BobaProps[] = [
 ];
 
 export const milkList: MilkListProps = {
-  milk1: { name: 'Whole Milk' },
-  milk2: { name: '2% Milk' },
-  milk3: { name: 'Almond Milk' },
-  milk4: { name: 'Soy Milk' },
-  milk5: { name: 'Oat Milk' },
+  'milk-1': { name: 'Whole Milk' },
+  'milk-2': { name: '2% Milk' },
+  'milk-3': { name: 'Almond Milk' },
+  'milk-4': { name: 'Soy Milk' },
+  'milk-5': { name: 'Oat Milk' },
 };
 
 export const toppingsList: ToppingListProps = {
-  top1: { name: 'Boba', price: 0.5 },
-  top2: { name: 'Popping Boba', price: 0.5 },
-  top3: { name: 'Aloe Vera', price: 0.5 },
-  top4: { name: 'Lychee Jelly', price: 0.5 },
-  top5: { name: 'Coconut Jelly', price: 1 },
-  top6: { name: 'Red Bean', price: 1 },
-  top7: { name: 'Mango Jelly', price: 1 },
-  top8: { name: 'Pudding', price: 1.5 },
-  top9: { name: 'Milk Foam', price: 1.5 },
-  top10: { name: 'Jelly', price: 0.5 },
+  'topping-1': { name: 'Boba', price: 0.5 },
+  'topping-2': { name: 'Popping Boba', price: 0.5 },
+  'topping-3': { name: 'Aloe Vera', price: 0.5 },
+  'topping-4': { name: 'Lychee Jelly', price: 0.5 },
+  'topping-5': { name: 'Coconut Jelly', price: 1 },
+  'topping-6': { name: 'Red Bean', price: 1 },
+  'topping-7': { name: 'Mango Jelly', price: 1 },
+  'topping-8': { name: 'Pudding', price: 1.5 },
+  'topping-9': { name: 'Milk Foam', price: 1.5 },
+  'topping-10': { name: 'Jelly', price: 0.5 },
 };

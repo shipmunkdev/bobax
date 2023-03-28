@@ -4,19 +4,20 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
 import { milkList } from 'assets/sampleBobaAPI';
-import CustomizeRadioButton from 'components/RadioButton';
+import RadioCheckboxGroup from 'components/RadioButton';
 
 interface BobaModalProps {
-  milk: string;
+  milkType: string;
   // toppings: {[key: string]:boolean};
-  setMilk: (milk: string) => void;
+  setMilkType: (milkType: string) => void;
   // setToppings: (toppings: {[key: string]:boolean}) => void;
 }
 
-const BobaModalform = ({ milk, setMilk }: BobaModalProps) => {
-  const radioBoxHandler = (option: string) => {
-    setMilk(option);
-  };
+const BobaModalform = ({ milkType, setMilkType }: BobaModalProps) => {
+
+  // const radioBoxHandler = (option: string) => {
+  //   setMilkType(option);
+  // };
 
   // const checkBoxHandler = (option:string) => {
   //   if (toppings[option]){
@@ -30,6 +31,7 @@ const BobaModalform = ({ milk, setMilk }: BobaModalProps) => {
   //   }
 
   // }
+  
   return (
     <Form>
       <Container>
@@ -42,18 +44,18 @@ const BobaModalform = ({ milk, setMilk }: BobaModalProps) => {
           </Col>
         </Row>
         <Col xs={12} md={8}>
-          Milk(Required)
+          Milk(Required)*
           <Form.Group>
             {Object.keys(milkList).map((key) => {
               const milkOption = milkList[key];
               return (
-                <CustomizeRadioButton
+                <RadioCheckboxGroup
                   type={'radio'}
                   id={key}
                   key={key}
                   label={milkOption.name}
-                  handlechange={radioBoxHandler}
-                  check={milk === key}
+                  check={milkType === key}
+                  handleChange={setMilkType}
                 />
               );
             })}
@@ -66,12 +68,12 @@ const BobaModalform = ({ milk, setMilk }: BobaModalProps) => {
                   const toppingOptions = toppingsList[key];
                   const checkbool = toppings[key] ? toppings[key] : false
                   return (
-                    <CustomizeRadioButton
+                    <RadioCheckboxGroup
                       type={'checkbox'}
                       key={key}
                       label={toppingOptions.name}
-                      handlechange={checkBoxHandler}
                       check={checkbool}
+                      handlechange={checkBoxHandler}
                     />
                   );
                 })}
