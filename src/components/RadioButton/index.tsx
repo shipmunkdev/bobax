@@ -5,11 +5,11 @@ interface RadioButton {
   type: 'radio' | 'checkbox';
   id: string;
   label: string;
-  handleChange: (value: string) => void;
   check: boolean;
+  handleChange: (value: string) => void;
 }
 
-const RadioCheckboxGroup = ({ type, id, label, handleChange, check }: RadioButton) => {
+const RadioCheckboxGroup = ({ type, id, label, check, handleChange }: RadioButton) => {
   return (
     <Form.Check
       type={type}

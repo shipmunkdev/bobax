@@ -1,47 +1,100 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import RadioCheckboxGroup from 'components/RadioButton';
-import { milkList } from 'assets/sampleBobaAPI';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Form from 'react-bootstrap/Form';
+
+const milkList: { [key: string]: { name: string } } = {
+  'milk-1': { name: 'Whole Milk' },
+  'milk-2': { name: '2% Milk' },
+  'milk-3': { name: 'Almond Milk' },
+};
 
 export default {
   title: 'Bobax/RadioCheckboxGroup',
   component: RadioCheckboxGroup,
-};
+} as ComponentMeta<typeof RadioCheckboxGroup>;
 
-export const SingleRadioButton = (): JSX.Element => {
-  const [milk, setMilk] = useState<string>('');
+const Template: ComponentStory<typeof RadioCheckboxGroup> = (args) => (
+  <RadioCheckboxGroup {...args} />
+);
+
+type Args = {
+  type: 'radio' | 'checkbox';
+  id: string;
+  label: string;
+};
+export const SingleRadioButton = (args: Args) => {
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = () => {
+    setChecked(true);
+  };
+
   return (
-    <>
-      <RadioCheckboxGroup
-        type={'radio'}
-        id={'milk-1'}
-        label={'Oat Milk'}
-        handleChange={setMilk}
-        check={milk === 'milk-1'}
-      />
-    </>
+    <Form>
+      <RadioCheckboxGroup check={checked} handleChange={handleChange} {...args} />
+    </Form>
   );
 };
 
-export const MultipleRadioButtons = (): JSX.Element => {
-  const [milk, setMilk] = useState<string>('');
+SingleRadioButton.args = {
+  type: 'radio',
+  id: 'milk-1',
+  label: 'Oat Milk',
+};
+
+SingleRadioButton.argTypes = {
+  type: {
+    control: {
+      type: 'radio',
+      options: ['radio', 'checkbox'],
+    },
+  },
+  label: {
+    control: 'text',
+  },
+};
+
+type MultiArgs = {
+  type: 'radio' | 'checkbox';
+};
+export const MultipleRadioButtons = (type: MultiArgs) => {
+  const [selectedMilk, setSelectedMilk] = useState<string>('');
+
   return (
     <>
       <Form.Group>
         {Object.keys(milkList).map((key) => {
           const milkOption = milkList[key];
           return (
-            <RadioCheckboxGroup
-              type={'radio'}
-              id={key}
+            <Template
               key={key}
+              {...type}
+              id={key}
               label={milkOption.name}
-              check={milk === key}
-              handleChange={setMilk}
+              handleChange={() => setSelectedMilk(key)}
+              check={selectedMilk === key}
             />
           );
         })}
       </Form.Group>
     </>
   );
+};
+
+MultipleRadioButtons.args = {
+  type: 'radio',
+};
+
+MultipleRadioButtons.argTypes = {
+  type: {
+    control: {
+      type: 'radio',
+      options: ['radio', 'checkbox'],
+    },
+  },
+  label: {
+    control: 'text',
+    defaultValue: 'Milk',
+  },
 };

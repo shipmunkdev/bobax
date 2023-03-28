@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
 import { milkList } from 'assets/sampleBobaAPI';
 import RadioCheckboxGroup from 'components/RadioButton';
+import './CustomizeBobaModalBody.css';
 
 interface BobaModalProps {
   milkType: string;
@@ -43,7 +44,7 @@ const BobaModalform = ({ milkType, setMilkType }: BobaModalProps) => {
           </Col>
         </Row>
         <Col xs={12} md={8}>
-          Milk(Required)*
+          <div className={'starlabel'}>Milk</div>
           <Form.Group>
             {Object.keys(milkList).map((key) => {
               const milkOption = milkList[key];
