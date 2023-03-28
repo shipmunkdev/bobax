@@ -14,7 +14,6 @@ interface BobaModalProps {
 }
 
 const BobaModalform = ({ milkType, setMilkType }: BobaModalProps) => {
-
   // const radioBoxHandler = (option: string) => {
   //   setMilkType(option);
   // };
@@ -31,7 +30,7 @@ const BobaModalform = ({ milkType, setMilkType }: BobaModalProps) => {
   //   }
 
   // }
-  
+
   return (
     <Form>
       <Container>

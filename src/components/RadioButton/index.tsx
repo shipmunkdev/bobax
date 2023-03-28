@@ -11,13 +11,13 @@ interface RadioButton {
 
 const RadioCheckboxGroup = ({ type, id, label, handleChange, check }: RadioButton) => {
   return (
-      <Form.Check
-        type={type}
-        id={id}
-        label={label}
-        onChange={(e) => handleChange(e.target.id)}
-        checked={check}
-      />
+    <Form.Check
+      type={type}
+      id={id}
+      label={label}
+      onChange={(e) => handleChange(e.target.id)}
+      checked={check}
+    />
   );
 };
 export default RadioCheckboxGroup;

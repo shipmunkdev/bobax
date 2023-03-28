@@ -20,4 +20,3 @@ export interface CustomizeBobaModalProps {
   modalShow: boolean;
   onHide: () => void;
 }
-
