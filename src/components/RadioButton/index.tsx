@@ -1,41 +1,23 @@
-import { ModalOptionProps } from 'types/common/main';
 import Form from 'react-bootstrap/Form';
 import React from 'react';
 
 interface RadioButton {
   type: 'radio' | 'checkbox';
-  key: string;
-  OptionList: ModalOptionProps;
-  option: string | string[];
-  setOption: (option: string | string[]) => void;
+  id: string;
+  label: string;
+  handlechange: (value: string) => void;
+  check: boolean;
 }
 
-const CustomizeRadioButton = ({ type, key, OptionList, option, setOption }: RadioButton) => {
-  const handleOptionChange = (optionValue: string) => {
-    if (type === 'radio') {
-      setOption(optionValue);
-    } else if (type === 'checkbox') {
-      if (Array.isArray(option)) {
-        if (option.includes(optionValue)) {
-          setOption(option.filter((value) => value !== optionValue));
-        } else {
-          setOption([...option, optionValue]);
-        }
-      } else {
-        setOption([optionValue]);
-      }
-    }
-  };
+const CustomizeRadioButton = ({ type, id, label, handlechange, check }: RadioButton) => {
   return (
-    <div key={key}>
+    <div key={id}>
       <Form.Check
         type={type}
-        id={key}
-        label={OptionList.name}
-        onChange={() => handleOptionChange(OptionList.name)}
-        checked={
-          Array.isArray(option) ? option.includes(OptionList.name) : option === OptionList.name
-        }
+        id={id}
+        label={label}
+        onChange={(e) => handlechange(e.target.id)}
+        checked={check}
       />
     </div>
   );

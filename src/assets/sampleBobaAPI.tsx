@@ -13,6 +13,7 @@ export interface BobaProps {
 
 interface ToppingProps {
   name: string;
+  price: number;
 }
 
 interface MilkProps {
@@ -171,14 +172,14 @@ export const milkList: MilkListProps = {
 };
 
 export const toppingsList: ToppingListProps = {
-  top1: { name: 'Boba' },
-  top2: { name: 'Popping Boba' },
-  top3: { name: 'Aloe Vera' },
-  top4: { name: 'Lychee Jelly' },
-  top5: { name: 'Coconut Jelly' },
-  top6: { name: 'Red Bean' },
-  top7: { name: 'Mango Jelly' },
-  top8: { name: 'Pudding' },
-  top9: { name: 'Milk Foam' },
-  top10: { name: 'Jelly' },
+  top1: { name: 'Boba', price: 0.5 },
+  top2: { name: 'Popping Boba', price: 0.5 },
+  top3: { name: 'Aloe Vera', price: 0.5 },
+  top4: { name: 'Lychee Jelly', price: 0.5 },
+  top5: { name: 'Coconut Jelly', price: 1 },
+  top6: { name: 'Red Bean', price: 1 },
+  top7: { name: 'Mango Jelly', price: 1 },
+  top8: { name: 'Pudding', price: 1.5 },
+  top9: { name: 'Milk Foam', price: 1.5 },
+  top10: { name: 'Jelly', price: 0.5 },
 };
