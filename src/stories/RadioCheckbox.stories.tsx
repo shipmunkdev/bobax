@@ -9,6 +9,12 @@ const milkList: { [key: string]: { name: string } } = {
   'milk-3': { name: 'Almond Milk' },
 };
 
+const toppingsList: { [key: string]: { name: string; price: number } } = {
+  'topping-1': { name: 'Boba', price: 0.5 },
+  'topping-2': { name: 'Popping Boba', price: 0.5 },
+  'topping-3': { name: 'Aloe Vera', price: 0.5 },
+};
+
 export default {
   title: 'Bobax/RadioCheckboxGroup',
   component: RadioCheckboxGroup,
@@ -47,7 +53,37 @@ SingleRadioButton.argTypes = {
   type: {
     control: {
       type: 'radio',
-      options: ['radio', 'checkbox'],
+    },
+  },
+  label: {
+    control: 'text',
+  },
+};
+
+export const SingleCheckBoxButton = (args: Args) => {
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = () => {
+    setChecked(!checked);
+  };
+
+  return (
+    <Form>
+      <RadioCheckboxGroup check={checked} handleChange={handleChange} {...args} />
+    </Form>
+  );
+};
+
+SingleCheckBoxButton.args = {
+  type: 'checkbox',
+  id: 'milk-1',
+  label: 'Oat Milk',
+};
+
+SingleCheckBoxButton.argTypes = {
+  type: {
+    control: {
+      type: 'checkbox',
     },
   },
   label: {
@@ -68,12 +104,12 @@ export const MultipleRadioButtons = (type: MultiArgs) => {
           const milkOption = milkList[key];
           return (
             <Template
-              key={key}
               {...type}
               id={key}
+              key={key}
               label={milkOption.name}
-              handleChange={() => setSelectedMilk(key)}
               check={selectedMilk === key}
+              handleChange={() => setSelectedMilk(key)}
             />
           );
         })}
@@ -100,21 +136,29 @@ MultipleRadioButtons.argTypes = {
 };
 
 export const MultipleCheckBoxButtons = (type: MultiArgs) => {
-  const [selectedMilk, setSelectedMilk] = useState<string>('');
+  const [selectedToppings, setSelectedToppings] = useState<{ [key: string]: boolean }>({});
+
+  const checkBoxHandler = (option: string) => {
+    if (selectedToppings[option]) {
+      setSelectedToppings({ ...selectedToppings, [option]: !selectedToppings[option] });
+    } else {
+      setSelectedToppings({ ...selectedToppings, [option]: true });
+    }
+  };
 
   return (
     <>
       <Form.Group>
-        {Object.keys(milkList).map((key) => {
-          const milkOption = milkList[key];
+        {Object.keys(toppingsList).map((key) => {
+          const toppingOptions = toppingsList[key];
           return (
             <Template
-              key={key}
               {...type}
               id={key}
-              label={milkOption.name}
-              handleChange={() => setSelectedMilk(key)}
-              check={selectedMilk === key}
+              key={key}
+              label={toppingOptions.name}
+              check={selectedToppings[key] ? selectedToppings[key] : false}
+              handleChange={checkBoxHandler}
             />
           );
         })}
@@ -124,18 +168,68 @@ export const MultipleCheckBoxButtons = (type: MultiArgs) => {
 };
 
 MultipleCheckBoxButtons.args = {
-  type: 'radio',
+  type: 'checkbox',
 };
 
 MultipleCheckBoxButtons.argTypes = {
   type: {
     control: {
-      type: 'radio',
+      type: 'checkbox',
       options: ['radio', 'checkbox'],
     },
   },
   label: {
     control: 'text',
-    defaultValue: 'Milk',
+    defaultValue: 'Boba',
+  },
+};
+
+export const MultipleCheckBoxButtonsdisabled = (type: MultiArgs) => {
+  const [selectedToppings, setSelectedToppings] = useState<{ [key: string]: boolean }>({});
+
+  const checkBoxHandler = (option: string) => {
+    if (selectedToppings[option]) {
+      setSelectedToppings({ ...selectedToppings, [option]: !selectedToppings[option] });
+    } else {
+      setSelectedToppings({ ...selectedToppings, [option]: true });
+    }
+  };
+
+  return (
+    <>
+      <Form.Group>
+        {Object.keys(toppingsList).map((key) => {
+          const toppingOptions = toppingsList[key];
+          return (
+            <Template
+              {...type}
+              id={key}
+              key={key}
+              label={toppingOptions.name}
+              check={selectedToppings[key] ? selectedToppings[key] : false}
+              disabled={toppingOptions.name == 'Boba'}
+              handleChange={checkBoxHandler}
+            />
+          );
+        })}
+      </Form.Group>
+    </>
+  );
+};
+
+MultipleCheckBoxButtonsdisabled.args = {
+  type: 'checkbox',
+};
+
+MultipleCheckBoxButtonsdisabled.argTypes = {
+  type: {
+    control: {
+      type: 'checkbox',
+      options: ['radio', 'checkbox'],
+    },
+  },
+  label: {
+    control: 'text',
+    defaultValue: 'Boba',
   },
 };

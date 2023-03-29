@@ -14,7 +14,12 @@ interface BobaModalProps {
   setToppingsType: (toppings: { [key: string]: boolean }) => void;
 }
 
-const BobaModalForm = ({ milkType, toppingsType, setMilkType, setToppingsType }: BobaModalProps) => {
+const BobaModalForm = ({
+  milkType,
+  toppingsType,
+  setMilkType,
+  setToppingsType,
+}: BobaModalProps) => {
   const checkBoxHandler = (option: string) => {
     if (toppingsType[option]) {
       setToppingsType({ ...toppingsType, [option]: !toppingsType[option] });

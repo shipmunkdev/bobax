@@ -6,12 +6,21 @@ interface RadioButtonProps {
   id: string;
   label: string;
   check: boolean;
+  disabled?: boolean;
   handleChange: (value: string) => void;
 }
 
-const RadioCheckboxGroup = ({ type, id, label, check, handleChange }: RadioButtonProps) => {
+const RadioCheckboxGroup = ({
+  type,
+  id,
+  label,
+  check,
+  handleChange,
+  disabled,
+}: RadioButtonProps) => {
   return (
     <Form.Check
+      disabled={disabled}
       type={type}
       id={id}
       label={label}
