@@ -4,22 +4,22 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
 import { milkList, toppingsList } from 'assets/sampleBobaAPI';
-import RadioCheckboxGroup from 'components/RadioButton';
+import RadioCheckboxGroup from 'components/RadioCheckboxButton';
 import './CustomizeBobaModalBody.css';
 
 interface BobaModalProps {
   milkType: string;
-  toppings: { [key: string]: boolean };
+  toppingsType: { [key: string]: boolean };
   setMilkType: (milkType: string) => void;
-  setToppings: (toppings: { [key: string]: boolean }) => void;
+  setToppingsType: (toppings: { [key: string]: boolean }) => void;
 }
 
-const BobaModalform = ({ milkType, toppings, setMilkType, setToppings }: BobaModalProps) => {
+const BobaModalForm = ({ milkType, toppingsType, setMilkType, setToppingsType }: BobaModalProps) => {
   const checkBoxHandler = (option: string) => {
-    if (toppings[option]) {
-      setToppings({ ...toppings, [option]: !toppings[option] });
+    if (toppingsType[option]) {
+      setToppingsType({ ...toppingsType, [option]: !toppingsType[option] });
     } else {
-      setToppings({ ...toppings, [option]: true });
+      setToppingsType({ ...toppingsType, [option]: true });
     }
   };
 
@@ -53,17 +53,17 @@ const BobaModalform = ({ milkType, toppings, setMilkType, setToppings }: BobaMod
           </Form.Group>
         </Col>
         <Col xs={12} md={8}>
-          Toppings(Optional)
+          Toppings (Optional)
           <Form.Group>
             {Object.keys(toppingsList).map((key) => {
-              const toppingOptions = toppingsList[key];
+              const toppingOption = toppingsList[key];
               return (
                 <RadioCheckboxGroup
                   type={'checkbox'}
                   id={key}
                   key={key}
-                  label={toppingOptions.name}
-                  check={toppings[key] ? toppings[key] : false}
+                  label={toppingOption.name}
+                  check={toppingsType[key] ? toppingsType[key] : false}
                   handleChange={checkBoxHandler}
                 />
               );
@@ -75,4 +75,4 @@ const BobaModalform = ({ milkType, toppings, setMilkType, setToppings }: BobaMod
   );
 };
 
-export default BobaModalform;
+export default BobaModalForm;

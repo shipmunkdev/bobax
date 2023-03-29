@@ -1,7 +1,7 @@
 import Form from 'react-bootstrap/Form';
 import React from 'react';
 
-interface RadioButton {
+interface RadioButtonProps {
   type: 'radio' | 'checkbox';
   id: string;
   label: string;
@@ -9,7 +9,7 @@ interface RadioButton {
   handleChange: (value: string) => void;
 }
 
-const RadioCheckboxGroup = ({ type, id, label, check, handleChange }: RadioButton) => {
+const RadioCheckboxGroup = ({ type, id, label, check, handleChange }: RadioButtonProps) => {
   return (
     <Form.Check
       type={type}

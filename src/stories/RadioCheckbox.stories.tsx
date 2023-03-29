@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import RadioCheckboxGroup from 'components/RadioButton';
+import RadioCheckboxGroup from 'components/RadioCheckboxButton';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Form from 'react-bootstrap/Form';
 
@@ -87,6 +87,47 @@ MultipleRadioButtons.args = {
 };
 
 MultipleRadioButtons.argTypes = {
+  type: {
+    control: {
+      type: 'radio',
+      options: ['radio', 'checkbox'],
+    },
+  },
+  label: {
+    control: 'text',
+    defaultValue: 'Milk',
+  },
+};
+
+export const MultipleCheckBoxButtons = (type: MultiArgs) => {
+  const [selectedMilk, setSelectedMilk] = useState<string>('');
+
+  return (
+    <>
+      <Form.Group>
+        {Object.keys(milkList).map((key) => {
+          const milkOption = milkList[key];
+          return (
+            <Template
+              key={key}
+              {...type}
+              id={key}
+              label={milkOption.name}
+              handleChange={() => setSelectedMilk(key)}
+              check={selectedMilk === key}
+            />
+          );
+        })}
+      </Form.Group>
+    </>
+  );
+};
+
+MultipleCheckBoxButtons.args = {
+  type: 'radio',
+};
+
+MultipleCheckBoxButtons.argTypes = {
   type: {
     control: {
       type: 'radio',

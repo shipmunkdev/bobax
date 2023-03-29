@@ -5,7 +5,7 @@ import { bobaList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 import CustomizeModal from 'components/Modal';
-import BobaModalform from './CustomizeBobaModalBody';
+import BobaModalForm from './CustomizeBobaModalBody';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(bobaList);
@@ -44,11 +44,11 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     <>
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
       <p>{description}</p>
-      <BobaModalform
+      <BobaModalForm
         milkType={milk}
-        toppings={toppings}
+        toppingsType={toppings}
         setMilkType={setMilk}
-        setToppings={setToppings}
+        setToppingsType={setToppings}
       />
     </>
   );
