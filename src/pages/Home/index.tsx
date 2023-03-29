@@ -5,7 +5,7 @@ import { bobaList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 import CustomizeModal from 'components/Modal';
-import BobaModalform from './CustomizeBobaModalBody';
+import BobaModalForm from './CustomizeBobaModalBody';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(bobaList);
@@ -19,6 +19,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     imageLink: '',
   });
   const [milk, setMilk] = useState<string>('');
+  const [toppings, setToppings] = useState<{ [key: string]: boolean }>({});
 
   const filterBobaList = (bobaList: BobaProps[], query: string): BobaProps[] => {
     return bobaList.filter((filtered: BobaProps) =>
@@ -43,7 +44,12 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     <>
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
       <p>{description}</p>
-      <BobaModalform milk={milk} setMilk={setMilk} />
+      <BobaModalForm
+        milkType={milk}
+        toppingsType={toppings}
+        setMilkType={setMilk}
+        setToppingsType={setToppings}
+      />
     </>
   );
 
@@ -64,7 +70,11 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
       <CustomizeModal
         title={bobaInfoModal.name}
         modalShow={modalShow}
-        onHide={() => setModalShow(false)}
+        onHide={() => {
+          setModalShow(false);
+          setMilk('');
+          setToppings({});
+        }}
         ModalBody={() => BobaModalBody(bobaInfoModal)}
       />
     </Container>
