@@ -15,16 +15,16 @@ const RadioCheckboxGroup = ({
   id,
   label,
   check,
-  handleChange,
   disabled,
+  handleChange,
 }: RadioButtonProps) => {
   return (
     <Form.Check
-      disabled={disabled}
       type={type}
       id={id}
       label={label}
       checked={check}
+      disabled={disabled}
       onChange={(e) => handleChange(e.target.id)}
     />
   );

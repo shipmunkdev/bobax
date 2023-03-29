@@ -60,7 +60,7 @@ SingleRadioButton.argTypes = {
   },
 };
 
-export const SingleCheckBoxButton = (args: Args) => {
+export const SingleCheckboxButton = (args: Args) => {
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
@@ -74,13 +74,13 @@ export const SingleCheckBoxButton = (args: Args) => {
   );
 };
 
-SingleCheckBoxButton.args = {
+SingleCheckboxButton.args = {
   type: 'checkbox',
   id: 'milk-1',
   label: 'Oat Milk',
 };
 
-SingleCheckBoxButton.argTypes = {
+SingleCheckboxButton.argTypes = {
   type: {
     control: {
       type: 'checkbox',
@@ -135,7 +135,7 @@ MultipleRadioButtons.argTypes = {
   },
 };
 
-export const MultipleCheckBoxButtons = (type: MultiArgs) => {
+export const MultipleCheckboxButtons = (type: MultiArgs) => {
   const [selectedToppings, setSelectedToppings] = useState<{ [key: string]: boolean }>({});
 
   const checkBoxHandler = (option: string) => {
@@ -167,11 +167,11 @@ export const MultipleCheckBoxButtons = (type: MultiArgs) => {
   );
 };
 
-MultipleCheckBoxButtons.args = {
+MultipleCheckboxButtons.args = {
   type: 'checkbox',
 };
 
-MultipleCheckBoxButtons.argTypes = {
+MultipleCheckboxButtons.argTypes = {
   type: {
     control: {
       type: 'checkbox',
@@ -184,7 +184,7 @@ MultipleCheckBoxButtons.argTypes = {
   },
 };
 
-export const MultipleCheckBoxButtonsdisabled = (type: MultiArgs) => {
+export const MultipleCheckboxButtonsDisabled = (type: MultiArgs) => {
   const [selectedToppings, setSelectedToppings] = useState<{ [key: string]: boolean }>({});
 
   const checkBoxHandler = (option: string) => {
@@ -217,11 +217,11 @@ export const MultipleCheckBoxButtonsdisabled = (type: MultiArgs) => {
   );
 };
 
-MultipleCheckBoxButtonsdisabled.args = {
+MultipleCheckboxButtonsDisabled.args = {
   type: 'checkbox',
 };
 
-MultipleCheckBoxButtonsdisabled.argTypes = {
+MultipleCheckboxButtonsDisabled.argTypes = {
   type: {
     control: {
       type: 'checkbox',
