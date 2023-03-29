@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import RadioCheckboxGroup from 'components/RadioCheckboxButton';
+import RadioCheckboxGroup from 'components/RadioCheckboxGroup';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Form from 'react-bootstrap/Form';
 
@@ -138,7 +138,7 @@ MultipleRadioButtons.argTypes = {
 export const MultipleCheckboxButtons = (type: MultiArgs) => {
   const [selectedToppings, setSelectedToppings] = useState<{ [key: string]: boolean }>({});
 
-  const checkBoxHandler = (option: string) => {
+  const checkboxHandler = (option: string) => {
     if (selectedToppings[option]) {
       setSelectedToppings({ ...selectedToppings, [option]: !selectedToppings[option] });
     } else {
@@ -158,7 +158,7 @@ export const MultipleCheckboxButtons = (type: MultiArgs) => {
               key={key}
               label={toppingOptions.name}
               check={selectedToppings[key] ? selectedToppings[key] : false}
-              handleChange={checkBoxHandler}
+              handleChange={checkboxHandler}
             />
           );
         })}
@@ -187,7 +187,7 @@ MultipleCheckboxButtons.argTypes = {
 export const MultipleCheckboxButtonsDisabled = (type: MultiArgs) => {
   const [selectedToppings, setSelectedToppings] = useState<{ [key: string]: boolean }>({});
 
-  const checkBoxHandler = (option: string) => {
+  const checkboxHandler = (option: string) => {
     if (selectedToppings[option]) {
       setSelectedToppings({ ...selectedToppings, [option]: !selectedToppings[option] });
     } else {
@@ -208,7 +208,7 @@ export const MultipleCheckboxButtonsDisabled = (type: MultiArgs) => {
               label={toppingOptions.name}
               check={selectedToppings[key] ? selectedToppings[key] : false}
               disabled={toppingOptions.name == 'Boba'}
-              handleChange={checkBoxHandler}
+              handleChange={checkboxHandler}
             />
           );
         })}

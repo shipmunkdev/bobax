@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
 import { milkList, toppingsList } from 'assets/sampleBobaAPI';
-import RadioCheckboxGroup from 'components/RadioCheckboxButton';
+import RadioCheckboxGroup from 'components/RadioCheckboxGroup';
 import './CustomizeBobaModalBody.css';
 
 interface BobaModalProps {
@@ -20,7 +20,7 @@ const BobaModalForm = ({
   setMilkType,
   setToppingsType,
 }: BobaModalProps) => {
-  const checkBoxHandler = (option: string) => {
+  const checkboxHandler = (option: string) => {
     if (toppingsType[option]) {
       setToppingsType({ ...toppingsType, [option]: !toppingsType[option] });
     } else {
@@ -69,7 +69,7 @@ const BobaModalForm = ({
                   key={key}
                   label={toppingOption.name}
                   check={toppingsType[key] ? toppingsType[key] : false}
-                  handleChange={checkBoxHandler}
+                  handleChange={checkboxHandler}
                 />
               );
             })}
