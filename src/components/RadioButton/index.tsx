@@ -15,8 +15,8 @@ const RadioCheckboxGroup = ({ type, id, label, check, handleChange }: RadioButto
       type={type}
       id={id}
       label={label}
-      onChange={(e) => handleChange(e.target.id)}
       checked={check}
+      onChange={(e) => handleChange(e.target.id)}
     />
   );
 };

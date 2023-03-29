@@ -19,26 +19,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     imageLink: '',
   });
   const [milk, setMilk] = useState<string>('');
-  // const [toppings, setToppings] = useState<{[key: string]:boolean}>({});
-
-  // ["BOBA", "Popping Boba"] => ["Popping Boba"] =["Popping Boba","BOBA"]
-  // time = n , space = n
-  // {"Boba" : true,"Popping Boba" : true }
-  // list["Popping Boba"] = 1
-  // first list["Popping Boba"] , if true , then list["Popping Boba"] = false
-  // if false , list["Mango"] = true
-  // {"Boba" : true , "Popping Boba" : false, "Mango" : true }
-  // time = 1
-  // Conclusion: so if you edit/add use object
-  // toppingsList[top1].price  => 0.5
-  // toppingsList[top2].price  => 0.5
-  // checklist = [top1: { name: 'Boba' , price : 0.5},
-  // top2: { name: 'Popping Boba' }]
-  // total = drink.price
-  // checklist.map((check) => {
-  // total += check.price
-  // })
-  // return total
+  const [toppings, setToppings] = useState<{ [key: string]: boolean }>({});
 
   const filterBobaList = (bobaList: BobaProps[], query: string): BobaProps[] => {
     return bobaList.filter((filtered: BobaProps) =>
@@ -63,7 +44,12 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     <>
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
       <p>{description}</p>
-      <BobaModalform milkType={milk} setMilkType={setMilk} />
+      <BobaModalform
+        milkType={milk}
+        toppings={toppings}
+        setMilkType={setMilk}
+        setToppings={setToppings}
+      />
     </>
   );
 
@@ -84,7 +70,11 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
       <CustomizeModal
         title={bobaInfoModal.name}
         modalShow={modalShow}
-        onHide={() => setModalShow(false)}
+        onHide={() => {
+          setModalShow(false);
+          setMilk('');
+          setToppings({});
+        }}
         ModalBody={() => BobaModalBody(bobaInfoModal)}
       />
     </Container>

@@ -3,34 +3,25 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
-import { milkList } from 'assets/sampleBobaAPI';
+import { milkList, toppingsList } from 'assets/sampleBobaAPI';
 import RadioCheckboxGroup from 'components/RadioButton';
 import './CustomizeBobaModalBody.css';
 
 interface BobaModalProps {
   milkType: string;
-  // toppings: {[key: string]:boolean};
+  toppings: { [key: string]: boolean };
   setMilkType: (milkType: string) => void;
-  // setToppings: (toppings: {[key: string]:boolean}) => void;
+  setToppings: (toppings: { [key: string]: boolean }) => void;
 }
 
-const BobaModalform = ({ milkType, setMilkType }: BobaModalProps) => {
-  // const radioBoxHandler = (option: string) => {
-  //   setMilkType(option);
-  // };
-
-  // const checkBoxHandler = (option:string) => {
-  //   if (toppings[option]){
-  //     if(toppings[option] == true) {
-  //       toppings[option] = false
-  //     }else{
-  //       toppings[option] = true
-  //     }
-  //   }else{
-  //     toppings[option] = true
-  //   }
-
-  // }
+const BobaModalform = ({ milkType, toppings, setMilkType, setToppings }: BobaModalProps) => {
+  const checkBoxHandler = (option: string) => {
+    if (toppings[option]) {
+      setToppings({ ...toppings, [option]: !toppings[option] });
+    } else {
+      setToppings({ ...toppings, [option]: true });
+    }
+  };
 
   return (
     <Form>
@@ -61,24 +52,24 @@ const BobaModalform = ({ milkType, setMilkType }: BobaModalProps) => {
             })}
           </Form.Group>
         </Col>
-        {/* <Col xs={12} md={8}>
+        <Col xs={12} md={8}>
           Toppings(Optional)
           <Form.Group>
-              {Object.keys(toppingsList).map((key) => {
-                  const toppingOptions = toppingsList[key];
-                  const checkbool = toppings[key] ? toppings[key] : false
-                  return (
-                    <RadioCheckboxGroup
-                      type={'checkbox'}
-                      key={key}
-                      label={toppingOptions.name}
-                      check={checkbool}
-                      handlechange={checkBoxHandler}
-                    />
-                  );
-                })}
+            {Object.keys(toppingsList).map((key) => {
+              const toppingOptions = toppingsList[key];
+              return (
+                <RadioCheckboxGroup
+                  type={'checkbox'}
+                  id={key}
+                  key={key}
+                  label={toppingOptions.name}
+                  check={toppings[key] ? toppings[key] : false}
+                  handleChange={checkBoxHandler}
+                />
+              );
+            })}
           </Form.Group>
-        </Col> */}
+        </Col>
       </Container>
     </Form>
   );
