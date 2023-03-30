@@ -29,6 +29,9 @@ const BaseModal = ({ title, modalShow, onHide, ModalBody }: BaseModalProps) => {
         <></>
       )}
       <Modal.Footer>
+        <Button id='modal-close-button' data-testid='modal-close-button'>
+          Add to cart
+        </Button>
         <Button id='modal-close-button' data-testid='modal-close-button' onClick={onHide}>
           Close
         </Button>
