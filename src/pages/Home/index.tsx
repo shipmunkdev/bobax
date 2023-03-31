@@ -40,7 +40,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     const bobaInfoModalWithOptions = {
       ...bobaInfoModal,
       options: {
-        milk: milkList[milk].name,
+        milk: milkList[milk],
         toppings: selectedtopping,
       },
     };

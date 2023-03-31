@@ -6,7 +6,7 @@ export interface BobaProps {
   price: number;
   imageLink: string;
   options: {
-    milk: string;
+    milk: Array<{ name: string }>;
     toppings: Array<{ name: string; price: number }>;
   };
 }
@@ -38,7 +38,7 @@ export const bobaList: BobaProps[] = [
     imageLink:
       'https://boba-guys.square.site/uploads/1/2/6/1/126110068/s634804415629712800_p936_i3_w1400.jpeg?dpr=2',
     options: {
-      milk: 'Whole Milk',
+      milk: [{ name: 'Whole Milk' }],
       toppings: [{ name: 'Boba', price: 0.5 }],
     },
   },
@@ -51,7 +51,7 @@ export const bobaList: BobaProps[] = [
     imageLink:
       'https://boba-guys.square.site/uploads/1/2/6/1/126110068/s634804415629712800_p1074_i1_w1400.jpeg?dpr=2',
     options: {
-      milk: 'Whole Milk',
+      milk: [{ name: 'Whole Milk' }],
       toppings: [
         { name: 'Boba', price: 0.5 },
         { name: 'Mango Jelly', price: 0.75 },
@@ -67,7 +67,7 @@ export const bobaList: BobaProps[] = [
     imageLink:
       'https://boba-guys.square.site/uploads/1/2/6/1/126110068/s634804415629712800_p806_i2_w1600.jpeg?dpr=2',
     options: {
-      milk: 'Whole Milk',
+      milk: [{ name: 'Whole Milk' }],
       toppings: [
         { name: 'Boba', price: 0.5 },
         { name: 'Pudding', price: 0.5 },
@@ -83,7 +83,7 @@ export const bobaList: BobaProps[] = [
     imageLink:
       'https://boba-guys.square.site/uploads/1/2/6/1/126110068/s634804415629712800_p784_i2_w1600.jpeg?dpr=2',
     options: {
-      milk: 'Whole Milk',
+      milk: [{ name: 'Whole Milk' }],
       toppings: [{ name: 'Boba', price: 0.5 }],
     },
   },
@@ -96,7 +96,7 @@ export const bobaList: BobaProps[] = [
     imageLink:
       'https://boba-guys.square.site/uploads/1/2/6/1/126110068/s634804415629712800_p845_i2_w5507.jpeg?width=2560&dpr=2',
     options: {
-      milk: 'Oat Milk',
+      milk: [{ name: 'Oat Milk' }],
       toppings: [{ name: 'Boba', price: 0.5 }],
     },
   },
@@ -109,7 +109,7 @@ export const bobaList: BobaProps[] = [
     imageLink:
       'https://boba-guys.square.site/uploads/1/2/6/1/126110068/s634804415629712800_p1043_i1_w1600.jpeg?dpr=2',
     options: {
-      milk: 'Whole Milk',
+      milk: [{ name: 'Whole Milk' }],
       toppings: [
         { name: 'Boba', price: 0.5 },
         { name: 'Aloe Vera', price: 0.75 },
@@ -124,7 +124,7 @@ export const bobaList: BobaProps[] = [
     imageLink:
       'https://boba-guys.square.site/uploads/1/2/6/1/126110068/s634804415629712800_p1132_i2_w1600.jpeg?dpr=2',
     options: {
-      milk: 'Whole Milk',
+      milk: [{ name: 'Whole Milk' }],
       toppings: [
         { name: 'Boba', price: 0.5 },
         { name: 'Popping Boba', price: 0.75 },
@@ -139,7 +139,7 @@ export const bobaList: BobaProps[] = [
     imageLink:
       'https://boba-guys.square.site/uploads/1/2/6/1/126110068/s634804415629712800_p1046_i2_w2048.jpeg?dpr=2',
     options: {
-      milk: 'Whole Milk',
+      milk: [{ name: 'Whole Milk' }],
       toppings: [
         { name: 'Boba', price: 0.5 },
         { name: 'Popping Boba', price: 0.75 },
@@ -154,7 +154,7 @@ export const bobaList: BobaProps[] = [
     imageLink:
       'https://boba-guys.square.site/uploads/1/2/6/1/126110068/s634804415629712800_p871_i2_w1600.jpeg?dpr=2',
     options: {
-      milk: 'Whole Milk',
+      milk: [{ name: 'Whole Milk' }],
       toppings: [
         { name: 'Milk Foam', price: 1.0 },
         { name: 'Pudding', price: 0.5 },
