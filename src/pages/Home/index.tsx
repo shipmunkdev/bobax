@@ -1,11 +1,12 @@
 import { Container } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { OrderProps, BobaProps } from 'types/common/main';
-import { bobaList } from 'assets/sampleBobaAPI';
+import { bobaList, toppingsList, milkList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 import CustomizeModal from 'components/Modal';
 import BobaModalForm from './CustomizeBobaModalBody';
+import Button from 'react-bootstrap/Button';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(bobaList);
@@ -27,6 +28,29 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     );
   };
 
+  const customizeBobaHandle = () => {
+    const selectedtopping = [];
+
+    for (const [key, value] of Object.entries(toppings)) {
+      if (value == true) {
+        selectedtopping.push(toppingsList[key]);
+      }
+    }
+
+    const bobaInfoModalWithOptions = {
+      ...bobaInfoModal,
+      options: {
+        milk: milkList[milk].name,
+        toppings: selectedtopping,
+      },
+    };
+    const cartList = [...order, bobaInfoModalWithOptions];
+    setOrder(cartList);
+    setModalShow(false);
+    setMilk('');
+    setToppings({});
+  };
+
   useEffect(() => {
     if (searchQuery) {
       const filterlist = filterBobaList(bobaList, searchQuery);
@@ -40,6 +64,8 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     }
   }, [searchQuery]);
 
+  // console.log(order, 'this is order3'); // this is for you, u said you want to see the console.log
+
   const BobaModalBody = ({ name, description, imageLink }: BobaProps) => (
     <>
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
@@ -50,6 +76,13 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         setMilkType={setMilk}
         setToppingsType={setToppings}
       />
+      <Button
+        id='modal-addtocart-button'
+        data-testid='modal-addtocart-button'
+        onClick={customizeBobaHandle}
+      >
+        Add to cart
+      </Button>
     </>
   );
 

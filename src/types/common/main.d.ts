@@ -6,7 +6,7 @@ export interface BobaProps {
   imageLink: string;
   defaultOptions?: {
     milk: string;
-    toppings: Array<{ name: string; price: number }>;
+    toppings?: Array<{ name: string; price: number }>;
   };
 }
 
