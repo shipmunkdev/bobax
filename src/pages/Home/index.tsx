@@ -28,12 +28,12 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     );
   };
 
-  const customizeBobaHandle = () => {
-    const selectedtopping = [];
+  const handleCustomizeBoba = () => {
+    const selectedTopping = [];
 
     for (const [key, value] of Object.entries(toppings)) {
       if (value == true) {
-        selectedtopping.push(toppingsList[key]);
+        selectedTopping.push(toppingsList[key]);
       }
     }
 
@@ -41,7 +41,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
       ...bobaInfoModal,
       options: {
         milk: milkList[milk],
-        toppings: selectedtopping,
+        toppings: selectedTopping,
       },
     };
     const cartList = [...order, bobaInfoModalWithOptions];
@@ -76,11 +76,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         setMilkType={setMilk}
         setToppingsType={setToppings}
       />
-      <Button
-        id='modal-addtocart-button'
-        data-testid='modal-addtocart-button'
-        onClick={customizeBobaHandle}
-      >
+      <Button id='addtocart-button' data-testid='addtocart-button' onClick={handleCustomizeBoba}>
         Add to cart
       </Button>
     </>
