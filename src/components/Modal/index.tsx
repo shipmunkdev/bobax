@@ -5,6 +5,7 @@ export interface BaseModalProps {
   title: string;
   modalShow: boolean;
   onHide: () => void;
+
   ModalBody?: React.FC;
 }
 
