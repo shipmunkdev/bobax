@@ -1,0 +1,15 @@
+{
+    "toppingsList":
+        {
+            "topping-1": { "name": "Boba", "price": 0.5 },
+            "topping-2": { "name": "Popping Boba", "price": 0.5 },
+            "topping-3": { "name": "Aloe Vera", "price": 0.5 },
+            "topping-4": { "name": "Lychee Jelly", "price": 0.5 },
+            "topping-5": { "name": "Coconut Jelly", "price": 1 },
+            "topping-6": { "name": "Red Bean", "price": 1 },
+            "topping-7": { "name": "Mango Jelly", "price": 1 },
+            "topping-8": { "name": "Pudding", "price": 1.5 },
+            "topping-9": { "name": "Milk Foam", "price": 1.5 },
+            "topping-10": { "name": "Jelly", "price": 0.5 }
+        }
+}
