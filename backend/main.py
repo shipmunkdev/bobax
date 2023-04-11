@@ -12,18 +12,16 @@ async def get_boba_list():
   with open('./database/bobalist.json') as f:
       # Load the JSON data into a Python object
     bobaList = json.load(f)
-  return bobaList["bobaList"]
+  return bobaList["data"]
 
 @app.get('/milk_option')
 async def get_milk_option():
   with open('./database/milkoption.json') as f:
     milkOption = json.load(f)
-  return milkOption["milkOption"]
+  return milkOption["data"]
 
 @app.get('/toppings_option')
 async def get_milk_option():
   with open('./database/toppingsoption.json') as f:
     toppingsOption = json.load(f)
-  return toppingsOption["toppingsList"]
-
-
+  return toppingsOption["data"]
