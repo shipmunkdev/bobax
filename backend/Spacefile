@@ -1,0 +1,10 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+icon: ../frontend/public/favicon.ico
+app_name: 'BobaXBackend'
+micros:
+  - name: backend
+    src: ./
+    engine: python3.9
+    primary: true
+    dev: .venv/bin/uvicorn main:app --reload
