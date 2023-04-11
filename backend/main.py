@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-
 import json
 
 app = FastAPI()
@@ -26,3 +25,5 @@ async def get_milk_option():
   with open('./database/toppingsoption.json') as f:
     toppingsOption = json.load(f)
   return toppingsOption["toppingsList"]
+
+
