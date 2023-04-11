@@ -12,8 +12,8 @@ async def root():
 async def get_boba_list():
   with open('../database/bobalist.json') as f:
       # Load the JSON data into a Python object
-    data = json.load(f)
-  return data["bobaList"]
+    bobaList = json.load(f)
+  return bobaList["bobaList"]
 
 @app.get('/milk_option')
 async def get_milk_option():
