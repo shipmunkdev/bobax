@@ -69,7 +69,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   // console.log(order, 'this is order3'); // this is for you, u said you want to see the console.log
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/boba_list')
+    fetch('http://127.0.0.1:8000/boba_list',{mode:'cors'})
     .then(response => {
       if (response.ok){
         return response.json()
@@ -77,6 +77,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
       throw response;
     })
     .then(data => {
+      console.log(data, 'this is data')
       setFilteredBobaList(data)
     })
     .catch(error => {
