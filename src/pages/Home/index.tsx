@@ -9,9 +9,11 @@ import BobaModalForm from './CustomizeBobaModalBody';
 import Button from 'react-bootstrap/Button';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
-  const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(bobaList);
+  const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [modalShow, setModalShow] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+  const [loading, setLoading ] = useState<boolean>(true);
   const [bobaInfoModal, setBobaInfoModal] = useState<BobaProps>({
     id: '',
     name: '',
@@ -65,6 +67,30 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   }, [searchQuery]);
 
   // console.log(order, 'this is order3'); // this is for you, u said you want to see the console.log
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/boba_list')
+    .then(response => {
+      if (response.ok){
+        return response.json()
+      }
+      throw response;
+    })
+    .then(data => {
+      setFilteredBobaList(data)
+    })
+    .catch(error => {
+      console.log(error,'this is error')
+      setError(error)
+    })
+    .finally(()=>{
+      setLoading(false)
+    })
+  },[])
+
+  if (loading) return <div>Loading...</div>
+
+  if (error) return <div>Error!</div>
 
   const BobaModalBody = ({ name, description, imageLink }: BobaProps) => (
     <>
