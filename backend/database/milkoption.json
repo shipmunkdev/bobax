@@ -1,0 +1,10 @@
+{
+    "data":
+    {
+        "milk-1": { "name": "Whole Milk" },
+        "milk-2": { "name": "2% Milk" },
+        "milk-3": { "name": "Almond Milk" },
+        "milk-4": { "name": "Soy Milk" },
+        "milk-5": { "name": "Oat Milk" }
+    }
+}
