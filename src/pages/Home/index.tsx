@@ -1,19 +1,20 @@
 import { Container } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { OrderProps, BobaProps } from 'types/common/main';
-import { bobaList, toppingsList, milkList } from 'assets/sampleBobaAPI';
+import { toppingsList, milkList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 import CustomizeModal from 'components/Modal';
 import BobaModalForm from './CustomizeBobaModalBody';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import useApi from 'hooks/API';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
-  const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
+  const { data, loading } = useApi('http://127.0.0.1:8000/boba_list');
+  const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(data);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [modalShow, setModalShow] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(true);
   const [bobaInfoModal, setBobaInfoModal] = useState<BobaProps>({
     id: '',
     name: '',
@@ -21,11 +22,12 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     price: 0,
     imageLink: '',
   });
+
   const [milk, setMilk] = useState<string>('');
   const [toppings, setToppings] = useState<{ [key: string]: boolean }>({});
 
-  const filterBobaList = (bobaList: BobaProps[], query: string): BobaProps[] => {
-    return bobaList.filter((filtered: BobaProps) =>
+  const filterBobaList = (data: BobaProps[], query: string, searchkey?: string): BobaProps[] => {
+    return data.filter((filtered: BobaProps) =>
       filtered.name.toLowerCase().includes(query.toLowerCase()),
     );
   };
@@ -46,6 +48,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         toppings: selectedTopping,
       },
     };
+
     const cartList = [...order, bobaInfoModalWithOptions];
     setOrder(cartList);
     setModalShow(false);
@@ -55,31 +58,29 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
 
   useEffect(() => {
     if (searchQuery) {
-      const filterlist = filterBobaList(bobaList, searchQuery);
+      const filterlist = filterBobaList(data, searchQuery);
       if (filterlist.length === 0) {
         setFilteredBobaList([]);
       } else {
         setFilteredBobaList(filterlist);
       }
-    } else {
-      setFilteredBobaList(bobaList);
     }
   }, [searchQuery]);
 
-  useEffect(() => {
-    fetch('http://127.0.0.1:8000/boba_list')
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then((data) => {
-        setFilteredBobaList(data);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://127.0.0.1:8000/boba_list')
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       }
+  //     })
+  //     .then((data) => {
+  //       setBobaList(data);
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //     });
+  // }, []);
 
   if (loading)
     return (
@@ -87,6 +88,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         <span className='visually-hidden'>Loading...</span>
       </Spinner>
     );
+
   const BobaModalBody = ({ name, description, imageLink }: BobaProps) => (
     <>
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
