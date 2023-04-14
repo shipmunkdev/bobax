@@ -58,7 +58,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
 
   useEffect(() => {
     if (data) {
-      setFilteredBobaList(data)
+      setFilteredBobaList(data);
     }
     if (searchQuery) {
       const filterlist = filterBobaList(data, searchQuery);
@@ -68,8 +68,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         setFilteredBobaList(filterlist);
       }
     }
-
-  }, [searchQuery,data]);
+  }, [searchQuery, data]);
 
   if (loading)
     return (
