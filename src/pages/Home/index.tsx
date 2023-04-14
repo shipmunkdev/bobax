@@ -9,13 +9,11 @@ import BobaModalForm from './CustomizeBobaModalBody';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 
-
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [modalShow, setModalShow] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
-  const [loading, setLoading ] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const [bobaInfoModal, setBobaInfoModal] = useState<BobaProps>({
     id: '',
     name: '',
@@ -70,26 +68,25 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/boba_list')
-    .then(response => {
-      if (response.ok){
-        return response.json()
-      }
-    })
-    .then(data => {
-      console.log(data, 'this is data')
-      setFilteredBobaList(data)
-    })
-    .finally(()=>{
-      setLoading(false)
-    })
-  },[])
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        setFilteredBobaList(data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   if (loading)
     return (
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-      )
+      <Spinner animation='border' role='status'>
+        <span className='visually-hidden'>Loading...</span>
+      </Spinner>
+    );
   const BobaModalBody = ({ name, description, imageLink }: BobaProps) => (
     <>
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
