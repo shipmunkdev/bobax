@@ -12,7 +12,7 @@ import useApi from 'hooks/API';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const { data, loading } = useApi('http://127.0.0.1:8000/boba_list');
-  const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(data);
+  const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [modalShow, setModalShow] = useState<boolean>(false);
   const [bobaInfoModal, setBobaInfoModal] = useState<BobaProps>({
@@ -57,6 +57,9 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   };
 
   useEffect(() => {
+    if (data) {
+      setFilteredBobaList(data)
+    }
     if (searchQuery) {
       const filterlist = filterBobaList(data, searchQuery);
       if (filterlist.length === 0) {
@@ -65,22 +68,8 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         setFilteredBobaList(filterlist);
       }
     }
-  }, [searchQuery]);
 
-  // useEffect(() => {
-  //   fetch('http://127.0.0.1:8000/boba_list')
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       }
-  //     })
-  //     .then((data) => {
-  //       setBobaList(data);
-  //     })
-  //     .finally(() => {
-  //       setLoading(false);
-  //     });
-  // }, []);
+  }, [searchQuery,data]);
 
   if (loading)
     return (
