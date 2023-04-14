@@ -7,6 +7,8 @@ import SearchBar from 'components/SearchBar';
 import CustomizeModal from 'components/Modal';
 import BobaModalForm from './CustomizeBobaModalBody';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
+
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
@@ -66,33 +68,28 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     }
   }, [searchQuery]);
 
-  // console.log(order, 'this is order3'); // this is for you, u said you want to see the console.log
-
   useEffect(() => {
     fetch('http://127.0.0.1:8000/boba_list')
     .then(response => {
       if (response.ok){
         return response.json()
       }
-      throw response;
     })
     .then(data => {
       console.log(data, 'this is data')
       setFilteredBobaList(data)
-    })
-    .catch(error => {
-      console.log(error,'this is error')
-      setError(error)
     })
     .finally(()=>{
       setLoading(false)
     })
   },[])
 
-  if (loading) return <div>Loading...</div>
-
-  if (error) return <div>Error!</div>
-
+  if (loading)
+    return (
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+      )
   const BobaModalBody = ({ name, description, imageLink }: BobaProps) => (
     <>
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
