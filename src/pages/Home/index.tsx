@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { OrderProps, BobaProps } from 'types/common/main';
-import { toppingsList, milkList } from 'assets/sampleBobaAPI';
+import { bobaList, toppingsList, milkList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 import CustomizeModal from 'components/Modal';
@@ -11,8 +11,17 @@ import Spinner from 'react-bootstrap/Spinner';
 import useApi from 'hooks/API';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [data, setData] = useState<BobaProps[]>([]);
 
-  const { data, loading } = useApi(process.env.REACT_APP_BOBA_FETCH as string);
+  if (process.env.NODE_ENV === 'production') {
+    setData(bobaList);
+    setLoading(false);
+  } else {
+    const { data, loading } = useApi(process.env.REACT_APP_BOBA_FETCH as string);
+    setData(data);
+    setLoading(loading);
+  }
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [modalShow, setModalShow] = useState<boolean>(false);

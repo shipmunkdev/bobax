@@ -5,7 +5,6 @@ const useApi = (url: string) => {
   const [data, setData] = useState([]);
 
   const fetchApi = () => {
-
     fetch(url)
       .then((response) => {
         return response.json();
@@ -17,12 +16,7 @@ const useApi = (url: string) => {
   };
 
   useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      setData(require('./bobalist.json'));
-      setLoading(false);
-    } else {
-      fetchApi();
-    }
+    fetchApi();
   }, []);
 
   return { loading, data };
