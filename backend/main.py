@@ -1,14 +1,14 @@
 import json
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
 # this is to allow CORS so that you can connect backend and frontend locally
-origins = ["http://localhost",
-    "http://localhost:8000",
-    "http://localhost:3000",
-]
+load_dotenv()
+origins = os.environ.get("ALLOW_CORS", "").split(",")
 
 app.add_middleware(
     CORSMiddleware,

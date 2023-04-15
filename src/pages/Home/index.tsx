@@ -11,7 +11,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import useApi from 'hooks/API';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
-  const { data, loading } = useApi('http://127.0.0.1:8000/boba_list');
+  const { data, loading } = useApi(process.env.REACT_APP_BOBA_FETCH as string);
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [modalShow, setModalShow] = useState<boolean>(false);
