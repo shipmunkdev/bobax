@@ -36,7 +36,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const [milk, setMilk] = useState<string>('');
   const [toppings, setToppings] = useState<{ [key: string]: boolean }>({});
 
-  const filterBobaList = (data: BobaProps[], query: string, searchkey?: string): BobaProps[] => {
+  const filterBobaList = (data: BobaProps[], query: string): BobaProps[] => {
     return data.filter((filtered: BobaProps) =>
       filtered.name.toLowerCase().includes(query.toLowerCase()),
     );
