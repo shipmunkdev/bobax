@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { OrderProps, BobaProps } from 'types/common/main';
-import { bobaList, toppingsList, milkList } from 'assets/sampleBobaAPI';
+import { toppingsList, milkList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 import CustomizeModal from 'components/Modal';
