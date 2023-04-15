@@ -1,19 +1,17 @@
 import { Container } from 'react-bootstrap';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { OrderProps, BobaProps } from 'types/common/main';
 import { toppingsList, milkList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 import CustomizeModal from 'components/Modal';
+import Loading from 'components/Loading';
 import BobaModalForm from './CustomizeBobaModalBody';
 import Button from 'react-bootstrap/Button';
-import Spinner from 'react-bootstrap/Spinner';
 import useApi from 'hooks/API';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
-
-  const { data, loading } = useApi(process.env.REACT_APP_BOBA_FETCH as string);
-
+  const { data, error } = useApi(`${process.env.REACT_APP_BOBA_FETCH}/boba_list` as string);
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [modalShow, setModalShow] = useState<boolean>(false);
@@ -59,25 +57,14 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   };
 
   useEffect(() => {
-    if(data){
-      setFilteredBobaList(data)
+    if (data) {
+      setFilteredBobaList(data);
     }
     if (searchQuery) {
       const filterlist = filterBobaList(data, searchQuery);
-      if (filterlist.length === 0) {
-        setFilteredBobaList([]);
-      } else {
-        setFilteredBobaList(filterlist);
-      }
+      setFilteredBobaList(filterlist);
     }
-  }, [searchQuery,data]);
-
-  if (loading)
-    return (
-      <Spinner animation='border' role='status'>
-        <span className='visually-hidden'>Loading...</span>
-      </Spinner>
-    );
+  }, [searchQuery, data]);
 
   const BobaModalBody = ({ name, description, imageLink }: BobaProps) => (
     <>
@@ -96,30 +83,38 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   );
 
   return (
-    <Container>
-      <SearchBar
-        searchLabel='Search Drink Here'
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-      <BobaContainer
-        order={order}
-        setOrder={setOrder}
-        bobaList={filteredBobaList}
-        setModalShow={setModalShow}
-        setBobaInfoModal={setBobaInfoModal}
-      />
-      <CustomizeModal
-        title={bobaInfoModal.name}
-        modalShow={modalShow}
-        onHide={() => {
-          setModalShow(false);
-          setMilk('');
-          setToppings({});
-        }}
-        ModalBody={() => BobaModalBody(bobaInfoModal)}
-      />
-    </Container>
+    <>
+      {error ? (
+        <div> Error!! </div>
+      ) : (
+        <Suspense fallback={<Loading />}>
+          <Container>
+            <SearchBar
+              searchLabel='Search Drink Here'
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+            <BobaContainer
+              order={order}
+              setOrder={setOrder}
+              bobaList={filteredBobaList}
+              setModalShow={setModalShow}
+              setBobaInfoModal={setBobaInfoModal}
+            />
+            <CustomizeModal
+              title={bobaInfoModal.name}
+              modalShow={modalShow}
+              onHide={() => {
+                setModalShow(false);
+                setMilk('');
+                setToppings({});
+              }}
+              ModalBody={() => BobaModalBody(bobaInfoModal)}
+            />
+          </Container>
+        </Suspense>
+      )}
+    </>
   );
 };
 

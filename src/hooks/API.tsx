@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 
 const useApi = (url: string) => {
-
-  const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [error, setError] = useState(false);
 
   const fetchApi = () => {
     fetch(url)
@@ -11,8 +10,10 @@ const useApi = (url: string) => {
         return response.json();
       })
       .then((json) => {
-        setLoading(false);
         setData(json);
+      })
+      .catch((err) => {
+        setError(true);
       });
   };
 
@@ -20,7 +21,7 @@ const useApi = (url: string) => {
     fetchApi();
   }, []);
 
-  return { loading, data };
+  return { data, error };
 };
 
 export default useApi;
