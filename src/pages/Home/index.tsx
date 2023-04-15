@@ -11,17 +11,9 @@ import Spinner from 'react-bootstrap/Spinner';
 import useApi from 'hooks/API';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [data, setData] = useState<BobaProps[]>([]);
 
-  if (process.env.NODE_ENV === 'production') {
-    setData(bobaList);
-    setLoading(false);
-  } else {
-    const { data, loading } = useApi(process.env.REACT_APP_BOBA_FETCH as string);
-    setData(data);
-    setLoading(loading);
-  }
+  const { data, loading } = useApi(process.env.REACT_APP_BOBA_FETCH as string);
+
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [modalShow, setModalShow] = useState<boolean>(false);
@@ -67,8 +59,8 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   };
 
   useEffect(() => {
-    if (data) {
-      setFilteredBobaList(data);
+    if(data){
+      setFilteredBobaList(data)
     }
     if (searchQuery) {
       const filterlist = filterBobaList(data, searchQuery);
@@ -78,7 +70,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         setFilteredBobaList(filterlist);
       }
     }
-  }, [searchQuery, data]);
+  }, [searchQuery,data]);
 
   if (loading)
     return (

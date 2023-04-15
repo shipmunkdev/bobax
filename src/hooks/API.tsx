@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const useApi = (url: string) => {
+
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
