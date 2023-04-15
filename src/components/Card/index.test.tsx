@@ -18,6 +18,7 @@ describe('BobaCard', () => {
     const setOrderMock = jest.fn();
     const setModalMock = jest.fn();
     const setBobaInfoModalMock = jest.fn();
+
     render(
       <BobaCard
         order={[]}
