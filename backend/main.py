@@ -6,6 +6,15 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+if os.environ.get("ENVIRONMENT") == "production":
+    boba_list_path = os.environ.get("BOBA_LIST_PATH")
+    milk_option_path = os.environ.get("MILK_OPTION_PATH")
+    toppings_option_path = os.environ.get("TOPPINGS_OPTION_PATH")
+else:
+    boba_list_path = "./database/bobalist.json"
+    milk_option_path = "./database/milkoption.json"
+    toppings_option_path = "./database/toppingsoption.json"
+
 # this is to allow CORS so that you can connect backend and frontend locally
 load_dotenv()
 origins = os.environ.get("ALLOW_CORS", "").split(",")
