@@ -14,10 +14,11 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     `${process.env.REACT_APP_BOBA_FETCH}/boba_list` as string,
   );
 
-  const toppingsListdata = useApi(`${process.env.REACT_APP_BOBA_FETCH}/toppings_option` as string);
-  const toppingsList = toppingsListdata.data;
-  const milkListdata = useApi(`${process.env.REACT_APP_BOBA_FETCH}/milk_option` as string);
-  const milkList = milkListdata.data;
+  const { data: toppingsList } = useApi(
+    `${process.env.REACT_APP_BOBA_FETCH}/toppings_option` as string,
+  );
+
+  const { data: milkList } = useApi(`${process.env.REACT_APP_BOBA_FETCH}/milk_option` as string);
 
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
