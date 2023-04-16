@@ -1,7 +1,6 @@
 import { Container } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { OrderProps, BobaProps } from 'types/common/main';
-import { toppingsList, milkList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 import CustomizeModal from 'components/Modal';
@@ -14,6 +13,12 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const { data, error, loading } = useApi(
     `${process.env.REACT_APP_BOBA_FETCH}/boba_list` as string,
   );
+
+  const toppingsListdata = useApi(`${process.env.REACT_APP_BOBA_FETCH}/toppings_option` as string);
+  const toppingsList = toppingsListdata.data;
+  const milkListdata = useApi(`${process.env.REACT_APP_BOBA_FETCH}/milk_option` as string);
+  const milkList = milkListdata.data;
+
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [modalShow, setModalShow] = useState<boolean>(false);
@@ -73,6 +78,8 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
       <p>{description}</p>
       <BobaModalForm
+        milkList={milkList}
+        toppingsList={toppingsList}
         milkType={milk}
         toppingsType={toppings}
         setMilkType={setMilk}

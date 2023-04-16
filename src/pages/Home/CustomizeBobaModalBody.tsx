@@ -3,11 +3,12 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
-import { milkList, toppingsList } from 'assets/sampleBobaAPI';
 import RadioCheckboxGroup from 'components/RadioCheckboxGroup';
 import './CustomizeBobaModalBody.css';
 
 interface BobaModalProps {
+  milkList: { [key: string]: { name: string } };
+  toppingsList: { [key: string]: { name: string; price: number } };
   milkType: string;
   toppingsType: { [key: string]: boolean };
   setMilkType: (milkType: string) => void;
@@ -15,6 +16,8 @@ interface BobaModalProps {
 }
 
 const BobaModalForm = ({
+  milkList,
+  toppingsList,
   milkType,
   toppingsType,
   setMilkType,
