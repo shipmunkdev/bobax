@@ -23,6 +23,7 @@ const useApi = (url: string) => {
         });
     } else {
       setData(bobaList);
+      setLoading(false);
     }
   };
   useEffect(() => {
