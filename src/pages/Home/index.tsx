@@ -10,15 +10,11 @@ import Button from 'react-bootstrap/Button';
 import useApi from 'hooks/API';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
-  const { data, error, loading } = useApi(
-    `${process.env.REACT_APP_BOBA_FETCH}/boba_list` as string,
-  );
+  const { data, error, loading } = useApi(`${process.env.REACT_APP_BOBA_FETCH}`, '/boba_list');
 
-  const { data: toppingsList } = useApi(
-    `${process.env.REACT_APP_BOBA_FETCH}/toppings_option` as string,
-  );
+  const { data: toppingsList } = useApi(`${process.env.REACT_APP_BOBA_FETCH}`, '/toppings_option');
 
-  const { data: milkList } = useApi(`${process.env.REACT_APP_BOBA_FETCH}/milk_option` as string);
+  const { data: milkList } = useApi(`${process.env.REACT_APP_BOBA_FETCH}`, '/milk_option');
 
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');

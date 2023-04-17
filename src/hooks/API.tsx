@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { bobaList } from 'assets/sampleBobaAPI';
+import { bobaList, toppingsList, milkList } from 'assets/sampleBobaAPI';
 
 const useApi = (url: string, endpoint: string) => {
   // eslint-disable-next-line  @typescript-eslint/no-explicit-any
@@ -23,7 +23,13 @@ const useApi = (url: string, endpoint: string) => {
           setLoading(false);
         });
     } else {
-      setData(bobaList);
+      if (endpoint == '/bobalist') {
+        setData(bobaList);
+      } else if (endpoint == '/toppings') {
+        setData(toppingsList);
+      } else {
+        setData(milkList);
+      }
       setLoading(false);
     }
   };
