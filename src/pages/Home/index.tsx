@@ -1,15 +1,18 @@
 import { Container } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { OrderProps, BobaProps } from 'types/common/main';
-import { bobaList, toppingsList, milkList } from 'assets/sampleBobaAPI';
+import { toppingsList, milkList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 import CustomizeModal from 'components/Modal';
+import Loading from 'components/Loading';
 import BobaModalForm from './CustomizeBobaModalBody';
 import Button from 'react-bootstrap/Button';
+import useApi from 'hooks/API';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
-  const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>(bobaList);
+  const { data, error, loading } = useApi(`${process.env.REACT_APP_BOBA_FETCH}`, '/boba_list');
+  const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [modalShow, setModalShow] = useState<boolean>(false);
   const [bobaInfoModal, setBobaInfoModal] = useState<BobaProps>({
@@ -19,11 +22,12 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     price: 0,
     imageLink: '',
   });
+
   const [milk, setMilk] = useState<string>('');
   const [toppings, setToppings] = useState<{ [key: string]: boolean }>({});
 
-  const filterBobaList = (bobaList: BobaProps[], query: string): BobaProps[] => {
-    return bobaList.filter((filtered: BobaProps) =>
+  const filterBobaList = (data: BobaProps[], query: string): BobaProps[] => {
+    return data.filter((filtered: BobaProps) =>
       filtered.name.toLowerCase().includes(query.toLowerCase()),
     );
   };
@@ -44,6 +48,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         toppings: selectedTopping,
       },
     };
+
     const cartList = [...order, bobaInfoModalWithOptions];
     setOrder(cartList);
     setModalShow(false);
@@ -52,19 +57,14 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   };
 
   useEffect(() => {
-    if (searchQuery) {
-      const filterlist = filterBobaList(bobaList, searchQuery);
-      if (filterlist.length === 0) {
-        setFilteredBobaList([]);
-      } else {
-        setFilteredBobaList(filterlist);
-      }
-    } else {
-      setFilteredBobaList(bobaList);
+    if (data) {
+      setFilteredBobaList(data);
     }
-  }, [searchQuery]);
-
-  // console.log(order, 'this is order3'); // this is for you, u said you want to see the console.log
+    if (searchQuery) {
+      const filterlist = filterBobaList(data, searchQuery);
+      setFilteredBobaList(filterlist);
+    }
+  }, [searchQuery, data]);
 
   const BobaModalBody = ({ name, description, imageLink }: BobaProps) => (
     <>
@@ -83,30 +83,40 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   );
 
   return (
-    <Container>
-      <SearchBar
-        searchLabel='Search Drink Here'
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-      <BobaContainer
-        order={order}
-        setOrder={setOrder}
-        bobaList={filteredBobaList}
-        setModalShow={setModalShow}
-        setBobaInfoModal={setBobaInfoModal}
-      />
-      <CustomizeModal
-        title={bobaInfoModal.name}
-        modalShow={modalShow}
-        onHide={() => {
-          setModalShow(false);
-          setMilk('');
-          setToppings({});
-        }}
-        ModalBody={() => BobaModalBody(bobaInfoModal)}
-      />
-    </Container>
+    <>
+      {error ? (
+        <div> Error!! </div>
+      ) : (
+        <Container>
+          <SearchBar
+            searchLabel='Search Drink Here'
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+          {loading ? (
+            <Loading />
+          ) : (
+            <BobaContainer
+              order={order}
+              setOrder={setOrder}
+              bobaList={filteredBobaList}
+              setModalShow={setModalShow}
+              setBobaInfoModal={setBobaInfoModal}
+            />
+          )}
+          <CustomizeModal
+            title={bobaInfoModal.name}
+            modalShow={modalShow}
+            onHide={() => {
+              setModalShow(false);
+              setMilk('');
+              setToppings({});
+            }}
+            ModalBody={() => BobaModalBody(bobaInfoModal)}
+          />
+        </Container>
+      )}
+    </>
   );
 };
 
