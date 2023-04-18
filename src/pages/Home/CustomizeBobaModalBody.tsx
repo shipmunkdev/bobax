@@ -4,11 +4,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
 import RadioCheckboxGroup from 'components/RadioCheckboxGroup';
+import { MilkListProps, ToppingListProps } from 'types/common/main';
 import './CustomizeBobaModalBody.css';
 
 interface BobaModalProps {
-  milkList: { [key: string]: { name: string } };
-  toppingsList: { [key: string]: { name: string; price: number } };
+  milkList: MilkListProps;
+  toppingsList: ToppingListProps;
   milkType: string;
   toppingsType: { [key: string]: boolean };
   setMilkType: (milkType: string) => void;
