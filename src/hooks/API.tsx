@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
 import { bobaList, toppingsList, milkList } from 'assets/sampleBobaAPI';
-
-interface Error {
-  status: number;
-  message: string;
-}
+import { ErrorProps } from 'types/common/main';
 
 const useApi = (url: string, endpoint: string) => {
   // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any>();
-  const [error, setError] = useState<Error>({ status: 0, message: '' });
+  const [error, setError] = useState<ErrorProps>({ status: 0, message: '' });
   const [loading, setLoading] = useState<boolean>(true);
   const fetchApi = () => {
     const fullurl = url + endpoint;

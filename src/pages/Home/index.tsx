@@ -91,7 +91,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
 
   return (
     <>
-      {error.status != 0 ? (
+      {error.status ? (
         <Card>
           <Card.Body>
             {error.status} {error.message}

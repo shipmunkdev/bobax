@@ -37,3 +37,8 @@ export interface MilkListProps {
 export interface ToppingListProps {
   [key: string]: ToppingProps;
 }
+
+export interface ErrorProps {
+  status: number;
+  message: string;
+}
