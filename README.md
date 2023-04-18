@@ -56,6 +56,13 @@ Launches Storybook, an isolated development environment for UI components.
 Requires `yarn storybook` instance to be running before running this command.
 Launches Storybook Test Runner, an isolated development environment for testing UI components.
 
+## `For Backend server`
+Require uvicorn locally before running this command.
+Runs pip install uvicorn if you do not have uvicorn already.
+
+Please cd into backend folder
+Runs uvicorn main:app --reload
+
 ## Project Structure
 
 The project has the following directory structure:
