@@ -1,7 +1,6 @@
 import { Container } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { OrderProps, BobaProps } from 'types/common/main';
-import { toppingsList, milkList } from 'assets/sampleBobaAPI';
 import BobaContainer from 'components/BobaContainer';
 import SearchBar from 'components/SearchBar';
 import CustomizeModal from 'components/Modal';
@@ -9,9 +8,15 @@ import Loading from 'components/Loading';
 import BobaModalForm from './CustomizeBobaModalBody';
 import Button from 'react-bootstrap/Button';
 import useApi from 'hooks/API';
+import Card from 'react-bootstrap/Card';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
-  const { data, error, loading } = useApi(`${process.env.REACT_APP_BOBA_FETCH}`, '/boba_list');
+  const BACKEND_API = process.env.REACT_APP_BOBA_FETCH;
+  const { data, error, loading } = useApi(BACKEND_API as string, '/boba_list');
+  const { data: toppingsList } = useApi(BACKEND_API as string, '/toppings_list');
+
+  const { data: milkList } = useApi(BACKEND_API as string, '/milk_list');
+
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [modalShow, setModalShow] = useState<boolean>(false);
@@ -71,6 +76,8 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
       <p>{description}</p>
       <BobaModalForm
+        milkList={milkList}
+        toppingsList={toppingsList}
         milkType={milk}
         toppingsType={toppings}
         setMilkType={setMilk}
@@ -84,8 +91,12 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
 
   return (
     <>
-      {error ? (
-        <div> Error!! </div>
+      {error.status ? (
+        <Card>
+          <Card.Body>
+            {error.status} {error.message}
+          </Card.Body>
+        </Card>
       ) : (
         <Container>
           <SearchBar

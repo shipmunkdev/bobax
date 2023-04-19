@@ -29,14 +29,14 @@ async def get_boba_list():
     bobaList = json.load(f)
   return bobaList["data"]
 
-@app.get('/milk_option')
-async def get_milk_option():
+@app.get('/milk_list')
+async def get_milk_list():
   with open('./database/milkoption.json') as f:
     milkOption = json.load(f)
   return milkOption["data"]
 
-@app.get('/toppings_option')
-async def get_milk_option():
+@app.get('/toppings_list')
+async def get_toppings_list():
   with open('./database/toppingsoption.json') as f:
     toppingsOption = json.load(f)
   return toppingsOption["data"]
