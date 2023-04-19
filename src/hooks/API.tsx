@@ -32,7 +32,7 @@ const useApi = (url: string, endpoint: string) => {
     } else {
       if (endpoint == '/boba_list') {
         setData(bobaList);
-      } else if (endpoint == '/toppings_option') {
+      } else if (endpoint == '/toppings_list') {
         setData(toppingsList);
       } else {
         setData(milkList);

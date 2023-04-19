@@ -13,9 +13,9 @@ import Card from 'react-bootstrap/Card';
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const BACKEND_API = process.env.REACT_APP_BOBA_FETCH;
   const { data, error, loading } = useApi(BACKEND_API as string, '/boba_list');
-  const { data: toppingsList } = useApi(BACKEND_API as string, '/toppings_option');
+  const { data: toppingsList } = useApi(BACKEND_API as string, '/toppings_list');
 
-  const { data: milkList } = useApi(BACKEND_API as string, '/milk_option');
+  const { data: milkList } = useApi(BACKEND_API as string, '/milk_list');
 
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
