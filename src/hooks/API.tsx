@@ -14,6 +14,8 @@ const useApi = (url: string, endpoint: string) => {
         .then((response) => {
           if (response.ok) {
             return response.json();
+          } else if (response == undefined) {
+            throw { status: 503, message: 'You forget to turn on backend server...tsk tsk' };
           } else {
             throw { status: response.status, message: response.statusText };
           }
@@ -28,9 +30,9 @@ const useApi = (url: string, endpoint: string) => {
           setLoading(false);
         });
     } else {
-      if (endpoint == '/bobalist') {
+      if (endpoint == '/boba_list') {
         setData(bobaList);
-      } else if (endpoint == '/toppings') {
+      } else if (endpoint == '/toppings_option') {
         setData(toppingsList);
       } else {
         setData(milkList);
