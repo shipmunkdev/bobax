@@ -1,10 +1,18 @@
 import json
 import os
+import graphene
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+class Query(graphene.ObjectType):
+    testing = graphene.String()
+
+    def resolve_hello(self, info):
+        return 'World'
+
+
+schema = graphene.Schema(query=Query)
 
 # this is to allow CORS so that you can connect backend and frontend locally
 load_dotenv()
