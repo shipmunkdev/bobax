@@ -1,18 +1,12 @@
 import json
 import os
 import graphene
+from starlette_graphene3 import GraphQLApp
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-class Query(graphene.ObjectType):
-    testing = graphene.String()
-
-    def resolve_hello(self, info):
-        return 'World'
-
-
-schema = graphene.Schema(query=Query)
+app = FastAPI()
 
 # this is to allow CORS so that you can connect backend and frontend locally
 load_dotenv()
@@ -26,9 +20,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get('/')
-async def root():
-  return {"message": "Hello World"}
+class Query(graphene.ObjectType):
+    testing = graphene.String(name=graphene.String(default_value="Sein"))
+
+    def resolve_hello(self, info,name):
+        return 'Hello ,' + name
+
+app.add_route('/', GraphQLApp(schema=graphene.Schema(query=Query)))
+
+# @app.get('/')
+# async def root():
+#   return {"message": "Hello World"}
 
 @app.get('/boba_list')
 async def get_boba_list():
