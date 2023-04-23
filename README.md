@@ -61,12 +61,22 @@ Launches Storybook Test Runner, an isolated development environment for testing 
 Require uvicorn inorder to run FastAPI backend server.
 find out more here at https://www.uvicorn.org/.
 
+## `cd backend/`
+It is important to cd into backend folder before running the next step.
+
+## `python -m venv venv`
+
+## `source venv/bin/activate`
+
+## `pip install -r requirement.txt`
+
+## `pip freeze > requirements.txt`
+
 ## `pip install uvicorn`
 
 Runs `pip install uvicorn` if you do not have uvicorn already as it is required.
 
-## `cd backend/`
-It is important to cd into backend folder before running the next step.
+
 
 ## `uvicorn main:app --reload`
 Runs the code inside the backend folder in order to start up the backend server.
