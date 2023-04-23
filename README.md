@@ -62,23 +62,31 @@ Require uvicorn inorder to run FastAPI backend server.
 find out more here at https://www.uvicorn.org/.
 
 ## `cd backend/`
+
 It is important to cd into backend folder before running the next step.
 
 ## `python -m venv venv`
 
+It allow you to manage separate package installations for different projects
+
 ## `source venv/bin/activate`
+
+Activate the virtual environment in Python
 
 ## `pip install -r requirement.txt`
 
+It will looks for the package in PyPI, resolves its dependencies, and installs everything in your current Python environment to ensure that requests will work.
+
 ## `pip freeze > requirements.txt`
+
+It records an environment's current package list into requirements. txt
 
 ## `pip install uvicorn`
 
 Runs `pip install uvicorn` if you do not have uvicorn already as it is required.
 
-
-
 ## `uvicorn main:app --reload`
+
 Runs the code inside the backend folder in order to start up the backend server.
 Make sure to run this before front-end server `yarn start` to fully functionable.
 

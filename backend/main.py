@@ -21,32 +21,32 @@ app.add_middleware(
 )
 
 class BobaOptionMilkType(graphene.ObjectType):
-    name = graphene.String()
+  name = graphene.String()
 
 class BobaOptionToppingsType(graphene.ObjectType):
-    name = graphene.String()
-    price = graphene.Float()
+  name = graphene.String()
+  price = graphene.Float()
 
 class BobaOptionType(graphene.ObjectType):
-    milk = graphene.Field(lambda: BobaOptionMilkType)
-    toppings = graphene.List(lambda: BobaOptionToppingsType)
+  milk = graphene.Field(lambda: BobaOptionMilkType)
+  toppings = graphene.List(lambda: BobaOptionToppingsType)
 
 
 class BobaType(graphene.ObjectType):
-    id = graphene.ID()
-    name = graphene.String()
-    description = graphene.String()
-    price = graphene.Float()
-    imageLink = graphene.String()
-    options = graphene.Field(lambda: BobaOptionType)
+  id = graphene.ID()
+  name = graphene.String()
+  description = graphene.String()
+  price = graphene.Float()
+  imageLink = graphene.String()
+  options = graphene.Field(lambda: BobaOptionType)
 
 class BobaQuery(graphene.ObjectType):
-    bobaList = graphene.List(BobaType)
+  bobaList = graphene.List(BobaType)
 
-    def resolve_bobaList(self, info):
-      with open('./database/bobalist.json') as f:
-          bobajson = json.load(f)['data']
-      return bobajson
+  def resolve_bobaList(self, info):
+    with open('./database/bobalist.json') as f:
+        bobajson = json.load(f)['data']
+    return bobajson
 
 @app.get('/boba_list')
 async def get_boba_list():
