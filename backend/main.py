@@ -20,11 +20,33 @@ app.add_middleware(
   allow_headers=["*"],
 )
 
-class Query(graphene.ObjectType):
-  testing = graphene.String(name=graphene.String(default_value="Sein"))
+class BobaOptionMilkType(graphene.ObjectType):
+    name = graphene.String()
 
-  def resolve_testing(self, info, name):
-    return 'Hello ,' + name
+class BobaOptionToppingsType(graphene.ObjectType):
+    name = graphene.String()
+    price = graphene.Float()
+
+class BobaOptionType(graphene.ObjectType):
+    milk = graphene.Field(lambda: BobaOptionMilkType)
+    toppings = graphene.List(lambda: BobaOptionToppingsType)
+
+
+class BobaType(graphene.ObjectType):
+    id = graphene.ID()
+    name = graphene.String()
+    description = graphene.String()
+    price = graphene.Float()
+    imageLink = graphene.String()
+    options = graphene.Field(lambda: BobaOptionType)
+
+class BobaQuery(graphene.ObjectType):
+    bobaList = graphene.List(BobaType)
+
+    def resolve_bobaList(self, info):
+      with open('./database/bobalist.json') as f:
+          bobajson = json.load(f)['data']
+      return bobajson
 
 @app.get('/boba_list')
 async def get_boba_list():
@@ -44,5 +66,5 @@ async def get_toppings_list():
     toppingsOption = json.load(f)
   return toppingsOption["data"]
 
-schema = graphene.Schema(query=Query)
-app.mount("/", GraphQLApp(schema, on_get=make_graphiql_handler()))  # Graphiql IDE
+schema = graphene.Schema(query=BobaQuery)
+app.mount("/boba_list", GraphQLApp(schema, on_get=make_graphiql_handler()))  # Graphiql IDE
