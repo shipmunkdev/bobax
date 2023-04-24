@@ -73,6 +73,8 @@ It allow you to manage separate package installations for different projects
 
 Activate the virtual environment in Python
 
+`deactivate` to exit it from venv
+
 ## `pip install -r requirement.txt`
 
 It will looks for the package in PyPI, resolves its dependencies, and installs everything in your current Python environment to ensure that requests will work.
@@ -88,7 +90,12 @@ Runs `pip install uvicorn` if you do not have uvicorn already as it is required.
 ## `uvicorn main:app --reload`
 
 Runs the code inside the backend folder in order to start up the backend server.
+
 Make sure to run this before front-end server `yarn start` to fully functionable.
+
+## Open a browser and test out GraphQL locally
+
+`http://127.0.0.1:8000/boba_list` to Query BobaList
 
 ## Project Structure
 
