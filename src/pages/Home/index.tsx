@@ -9,9 +9,20 @@ import BobaModalForm from './CustomizeBobaModalBody';
 import Button from 'react-bootstrap/Button';
 import useApi from 'hooks/API';
 import Card from 'react-bootstrap/Card';
+// import { ApolloClient, InMemoryCache, HttpLink, useQuery } from '@apollo/client';
+// import {GET_BOBA_LIST} from 'hooks/QueryGraphQL'
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const BACKEND_API = process.env.REACT_APP_BOBA_FETCH;
+  // console.log(GET_BOBA_LIST, 'query for boba')
+  // const client = new ApolloClient({
+  //   cache: new InMemoryCache(),
+  //   link: new HttpLink({
+  //     uri: BACKEND_API+'/boba_list', // Replace with your API endpoint
+  //   }),
+  // });
+  // const { loading, error, data } = useQuery(GET_BOBA_LIST, { client });
+  // console.log(loading, error, data , 'testing')
   const { data, error, loading } = useApi(BACKEND_API as string, '/boba_list');
   const { data: toppingsList, error:toppingsError } = useApi(BACKEND_API as string, '/boba_list');
 
@@ -91,11 +102,11 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
 
   return (
     <>
-      {error.status || milkError.status || toppingsError.status ? (
+      {error || milkError.status || toppingsError.status ? (
         <Card>
-          {error.status?
+          {error?
           <Card.Body>
-            {error.status} {error.message}
+            {error.message}
           </Card.Body>
           :null
           }
