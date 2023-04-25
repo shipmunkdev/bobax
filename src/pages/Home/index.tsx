@@ -13,9 +13,9 @@ import Card from 'react-bootstrap/Card';
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const BACKEND_API = process.env.REACT_APP_BOBA_FETCH;
   const { data, error, loading } = useApi(BACKEND_API as string, '/boba_list');
-  const { data: toppingsList } = useApi(BACKEND_API as string, '/toppings_list');
+  const { data: toppingsList, error:toppingsError } = useApi(BACKEND_API as string, '/boba_list');
 
-  const { data: milkList } = useApi(BACKEND_API as string, '/milk_list');
+  const { data: milkList ,error:milkError} = useApi(BACKEND_API as string, '/boba_list');
 
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -70,7 +70,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
       setFilteredBobaList(filterlist);
     }
   }, [searchQuery, data]);
-
+  console.log(data,toppingsList, milkList ,'xxxx' )
   const BobaModalBody = ({ name, description, imageLink }: BobaProps) => (
     <>
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
@@ -91,11 +91,26 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
 
   return (
     <>
-      {error.status ? (
+      {error.status || milkError.status || toppingsError.status ? (
         <Card>
+          {error.status?
           <Card.Body>
             {error.status} {error.message}
           </Card.Body>
+          :null
+          }
+          {milkError.status?
+          <Card.Body>
+            {milkError.status} {milkError.message}
+          </Card.Body>
+          :null
+          }
+          {toppings.status?
+          <Card.Body>
+            {toppings.status} {toppings.message}
+          </Card.Body>
+          :null
+          }
         </Card>
       ) : (
         <Container>

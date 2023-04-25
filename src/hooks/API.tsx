@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { bobaList, toppingsList, milkList } from 'assets/sampleBobaAPI';
 import { ErrorProps } from 'types/common/main';
+import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
 const useApi = (url: string, endpoint: string) => {
   // eslint-disable-next-line  @typescript-eslint/no-explicit-any
@@ -13,14 +14,14 @@ const useApi = (url: string, endpoint: string) => {
       fetch(fullurl)
         .then((response) => {
           if (response.ok) {
+            console.log(response,' this is response')
             return response.json();
-          } else if (response == undefined) {
-            throw { status: 503, message: 'You forget to turn on backend server...tsk tsk' };
           } else {
-            throw { status: response.status, message: response.statusText };
+            throw {status: response.status, message: response.statusText };
           }
         })
         .then((json) => {
+          console.log(json,' this is json')
           setData(json);
         })
         .catch((err) => {
@@ -43,7 +44,7 @@ const useApi = (url: string, endpoint: string) => {
   useEffect(() => {
     fetchApi();
   }, []);
-
+  console.log(data, 'this is data')
   return { data, error, loading };
 };
 
