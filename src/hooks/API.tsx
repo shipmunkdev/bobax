@@ -24,7 +24,7 @@ const useApi = (url: string, endpoint: string) => {
             query: GET_BOBA_LIST,
           });
           setLoading(loading);
-          setData(data.bobaList);
+          setData(data);
         } catch (error) {
           setError({ status: 500, message: 'Error' });
         } finally {
