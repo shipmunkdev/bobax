@@ -1,17 +1,18 @@
+import { useState } from 'react';
+
 import NavigationBar from 'components/NavigationBar';
 import Homepage from 'pages/Home';
-import { useState } from 'react';
 import { BobaProps } from 'types/common/main';
 
 const Main = () => {
-  const [order, setOrder] = useState<BobaProps[]>([]);
+    const [order, setOrder] = useState<BobaProps[]>([]);
 
-  return (
-    <>
-      <NavigationBar cartItemsCount={order.length} />
-      <Homepage order={order} setOrder={setOrder} />
-    </>
-  );
+    return (
+        <>
+            <NavigationBar cartItemsCount={order.length} />
+            <Homepage order={order} setOrder={setOrder} />
+        </>
+    );
 };
 
 export default Main;

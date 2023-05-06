@@ -45,7 +45,7 @@ const useApi = (url: string, endpoint: string, query: DocumentNode) => {
     }
   }, [url, endpoint]);
 
-  return { data, error, loading };
+    return { data, error, loading };
 };
 
 export default useApi;

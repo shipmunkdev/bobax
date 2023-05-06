@@ -8,6 +8,7 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
+        "plugin:storybook/recommended",
         "prettier"
     ],
     "overrides": [],
@@ -19,22 +20,16 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": [
-        "react",
-        "react-hooks",
-        "@typescript-eslint",
-        "prettier"
-    ],
+    "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
     "rules": {
         "no-console": ["error", { "allow": ["warn", "error"] }],
         "react/react-in-jsx-scope": "off",
         "camelcase": "error",
         "spaced-comment": ["error", "always", { "markers": ["/"] }],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "no-duplicate-imports": "error"
+        "quotes": ["error", "single"],
+        "no-duplicate-imports": "error",
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-explicit-any": "error"
     },
     "settings": {
         "import/resolver": {
