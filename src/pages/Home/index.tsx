@@ -14,18 +14,20 @@ import { OrderProps, BobaProps } from 'types/common/main';
 import BobaModalForm from './CustomizeBobaModalBody';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
-  const BACKEND_API = process.env.REACT_APP_BOBA_FETCH;
+    const BACKEND_API = process.env.REACT_APP_BOBA_FETCH;
 
-  const client = new ApolloClient({
-    uri: BACKEND_API + '/boba_list',
-    cache: new InMemoryCache(),
-  });
+    const client = new ApolloClient({
+        uri: BACKEND_API + '/boba_list',
+        cache: new InMemoryCache(),
+    });
 
-  const { data, error, loading } = useApi(BACKEND_API as string, '/boba_list', GET_BOBA_LIST_SCHEMA);
-
-  const { data: toppingsList } = useApiv2(BACKEND_API as string, '/milk_list');
-  const { data: milkList } = useApiv2(BACKEND_API as string, '/toppings_list');
-
+    const { data, error, loading } = useApi(
+        BACKEND_API as string,
+        '/boba_list',
+        GET_BOBA_LIST_SCHEMA,
+    );
+    const { data: toppingsList } = useApiv2(BACKEND_API as string, '/toppings_list');
+    const { data: milkList } = useApiv2(BACKEND_API as string, '/milk_list');
 
     const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
     const [searchQuery, setSearchQuery] = useState<string>('');
@@ -82,64 +84,66 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     }, [searchQuery, data]);
 
     const BobaModalBody = ({ name, description, imageLink }: BobaProps) => (
-      <>
-          <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
-          <p>{description}</p>
-          <BobaModalForm
-              milkList={milkList}
-              toppingsList={toppingsList}
-              milkType={milk}
-              toppingsType={toppings}
-              setMilkType={setMilk}
-              setToppingsType={setToppings}
-          />
-          <Button
-              id='addtocart-button'
-              data-testid='addtocart-button'
-              onClick={handleCustomizeBoba}
-          >
-              Add to cart
-          </Button>
-      </>
-  );
+        <>
+            <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
+            <p>{description}</p>
+            <BobaModalForm
+                milkList={milkList}
+                toppingsList={toppingsList}
+                milkType={milk}
+                toppingsType={toppings}
+                setMilkType={setMilk}
+                setToppingsType={setToppings}
+            />
+            <Button
+                id='addtocart-button'
+                data-testid='addtocart-button'
+                onClick={handleCustomizeBoba}
+            >
+                Add to cart
+            </Button>
+        </>
+    );
 
-  return (
-    <>
-      {error.status ? (
-        <Card><Card.Body>{error.message}</Card.Body></Card>
-      ) : (
-        <ApolloProvider client={client}>
-          <Container>
-            <SearchBar
-              searchLabel='Search Drink Here'
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-            />
-            {loading ? (
-              <Loading />
+    return (
+        <>
+            {error.status ? (
+                <Card>
+                    <Card.Body>{error.message}</Card.Body>
+                </Card>
             ) : (
-              <BobaContainer
-                order={order}
-                setOrder={setOrder}
-                bobaList={filteredBobaList}
-                setModalShow={setModalShow}
-                setBobaInfoModal={setBobaInfoModal}
-              />
+                <ApolloProvider client={client}>
+                    <Container>
+                        <SearchBar
+                            searchLabel='Search Drink Here'
+                            searchQuery={searchQuery}
+                            setSearchQuery={setSearchQuery}
+                        />
+                        {loading ? (
+                            <Loading />
+                        ) : (
+                            <BobaContainer
+                                order={order}
+                                setOrder={setOrder}
+                                bobaList={filteredBobaList}
+                                setModalShow={setModalShow}
+                                setBobaInfoModal={setBobaInfoModal}
+                            />
+                        )}
+                        <CustomizeModal
+                            title={bobaInfoModal.name}
+                            modalShow={modalShow}
+                            onHide={() => {
+                                setModalShow(false);
+                                setMilk('');
+                                setToppings({});
+                            }}
+                            ModalBody={() => BobaModalBody(bobaInfoModal)}
+                        />
+                    </Container>
+                </ApolloProvider>
             )}
-            <CustomizeModal
-              title={bobaInfoModal.name}
-              modalShow={modalShow}
-              onHide={() => {
-                setModalShow(false);
-                setMilk('');
-                setToppings({});
-              }}
-              ModalBody={() => BobaModalBody(bobaInfoModal)}
-            />
-          </Container>
-        </ApolloProvider>
-      )}
-    </>
-  );
-            }
+        </>
+    );
+};
 export default Homepage;
