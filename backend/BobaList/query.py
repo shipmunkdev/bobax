@@ -25,8 +25,8 @@ class BobaQuery(graphene.ObjectType):
   List = graphene.List(BobaType)
 
   def resolve_List(self, info):
-    with open('./database/bobalist.json') as f:
-        bobajson = json.load(f)['data']
+    with open('./database/data.json') as f:
+        bobajson = json.load(f)['bobaData']
     return bobajson
 
 schemaBoba = graphene.Schema(query=BobaQuery)

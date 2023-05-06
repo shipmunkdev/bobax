@@ -8,8 +8,10 @@ import Loading from 'components/Loading';
 import BobaModalForm from './CustomizeBobaModalBody';
 import Button from 'react-bootstrap/Button';
 import useApi from 'hooks/API';
+import useApiv2 from 'hooks/APIv2';
 import Card from 'react-bootstrap/Card';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { GET_BOBA_LIST } from 'hooks/QueryGraphQL';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const BACKEND_API = process.env.REACT_APP_BOBA_FETCH;
@@ -19,9 +21,9 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     cache: new InMemoryCache(),
   });
 
-  const { data, error, loading } = useApi(BACKEND_API as string, '/boba_list');
-  const { data: toppingsList, error: toppingsError } = useApi(BACKEND_API as string, '/boba_list');
-  const { data: milkList, error: milkError } = useApi(BACKEND_API as string, '/boba_list');
+  const { data, error, loading } = useApi(BACKEND_API as string, '/boba_list', GET_BOBA_LIST);
+  const { data: toppingsList } = useApiv2(BACKEND_API as string, '/milk_list');
+  const { data: milkList } = useApiv2(BACKEND_API as string, '/toppings_list');
 
   const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -97,20 +99,8 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
 
   return (
     <>
-      {error.status || milkError.status || toppingsError.status ? (
-        <Card>
-          {error ? <Card.Body>{error.message}</Card.Body> : null}
-          {milkError.status ? (
-            <Card.Body>
-              {milkError.status} {milkError.message}
-            </Card.Body>
-          ) : null}
-          {toppings.status ? (
-            <Card.Body>
-              {toppings.status} {toppings.message}
-            </Card.Body>
-          ) : null}
-        </Card>
+      {error.status ? (
+        <Card>{error ? <Card.Body>{error.message}</Card.Body> : null}</Card>
       ) : (
         <ApolloProvider client={client}>
           <Container>

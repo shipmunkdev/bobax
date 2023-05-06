@@ -1,4 +1,5 @@
 import os
+import json
 from starlette_graphene3 import GraphQLApp, make_graphiql_handler
 from dotenv import load_dotenv
 from fastapi import FastAPI
@@ -18,5 +19,18 @@ app.add_middleware(
   allow_methods=["*"],
   allow_headers=["*"],
 )
+
+@app.get('/milk_list')
+async def get_milk_list():
+  with open('./database/milkoption.json') as f:
+    milkOption = json.load(f)
+  return milkOption["data"]
+
+@app.get('/toppings_list')
+async def get_toppings_list():
+  with open('./database/toppingsoption.json') as f:
+    toppingsOption = json.load(f)
+  return toppingsOption["data"]
+
 
 app.mount("/boba_list", GraphQLApp(schema=schemaBoba, on_get=make_graphiql_handler()))  # Graphiql IDE
