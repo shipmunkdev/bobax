@@ -1,53 +1,55 @@
 {
-    "name": "bobax",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@testing-library/jest-dom": "^5.14.1",
-        "@testing-library/react": "^14.0.0",
-        "@testing-library/user-event": "^13.2.1",
-        "@types/jest": "^27.0.1",
-        "@types/node": "^16.7.13",
-        "@types/react": "^18.0.0",
-        "@types/react-dom": "^18.0.0",
-        "bootstrap": "^5.2.3",
-        "bootstrap-icons": "^1.10.3",
-        "react": "^18.2.0",
-        "react-bootstrap": "^2.7.2",
-        "react-dom": "^18.2.0",
-        "react-scripts": "5.0.1",
-        "storybook": "^6.5.16",
-        "typescript": "^4.4.2",
-        "web-vitals": "^2.1.0"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "test:nowatch": "react-scripts test --watchAll=false",
-        "eject": "react-scripts eject",
-        "lint": "eslint --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
-        "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
-        "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
-        "storybook": "start-storybook -p 6006 -s public",
-        "build-storybook": "build-storybook -o docs-build -s ./src/stories/assets",
-        "test-storybook": "test-storybook"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ],
-        "overrides": [
-            {
-                "files": [
-                    "**/*.stories.*"
-                ],
-                "rules": {
-                    "import/no-anonymous-default-export": "off"
-                }
+  "name": "bobax",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@apollo/client": "^3.7.14",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.3",
+    "graphql": "^16.6.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "storybook": "^6.5.16",
+    "typescript": "^4.4.2",
+    "web-vitals": "^2.1.0"
+  },
+  "scripts": {
+    "start": "GENERATE_SOURCEMAP=false && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test:nowatch": "react-scripts test --watchAll=false",
+    "eject": "react-scripts eject",
+    "lint": "eslint --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -o docs-build -s ./src/stories/assets",
+    "test-storybook": "test-storybook"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "**/*.stories.*"
+            ],
+            "rules": {
+                "import/no-anonymous-default-export": "off"
             }
-        ]
+        }
+    ]
     },
     "browserslist": {
         "production": [

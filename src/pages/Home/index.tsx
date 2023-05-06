@@ -2,22 +2,32 @@ import { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
 import BobaContainer from 'components/BobaContainer';
 import Loading from 'components/Loading';
 import CustomizeModal from 'components/Modal';
 import SearchBar from 'components/SearchBar';
 import useApi from 'hooks/API';
+import useApiv2 from 'hooks/APIv2';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { GET_BOBA_LIST_SCHEMA } from 'hooks/QueryGraphQL';
 import { OrderProps, BobaProps } from 'types/common/main';
-
 import BobaModalForm from './CustomizeBobaModalBody';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     const BACKEND_API = process.env.REACT_APP_BOBA_FETCH;
-    const { data, error, loading } = useApi(BACKEND_API as string, '/boba_list');
-    const { data: toppingsList } = useApi(BACKEND_API as string, '/toppings_list');
 
-    const { data: milkList } = useApi(BACKEND_API as string, '/milk_list');
+    const client = new ApolloClient({
+        uri: BACKEND_API + '/boba_list',
+        cache: new InMemoryCache(),
+    });
+
+    const { data, error, loading } = useApi(
+        BACKEND_API as string,
+        '/boba_list',
+        GET_BOBA_LIST_SCHEMA,
+    );
+    const { data: toppingsList } = useApiv2(BACKEND_API as string, '/toppings_list');
+    const { data: milkList } = useApiv2(BACKEND_API as string, '/milk_list');
 
     const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
     const [searchQuery, setSearchQuery] = useState<string>('');
@@ -99,42 +109,41 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         <>
             {error.status ? (
                 <Card>
-                    <Card.Body>
-                        {error.status} {error.message}
-                    </Card.Body>
+                    <Card.Body>{error.message}</Card.Body>
                 </Card>
             ) : (
-                <Container>
-                    <SearchBar
-                        searchLabel='Search Drink Here'
-                        searchQuery={searchQuery}
-                        setSearchQuery={setSearchQuery}
-                    />
-                    {loading ? (
-                        <Loading />
-                    ) : (
-                        <BobaContainer
-                            order={order}
-                            setOrder={setOrder}
-                            bobaList={filteredBobaList}
-                            setModalShow={setModalShow}
-                            setBobaInfoModal={setBobaInfoModal}
+                <ApolloProvider client={client}>
+                    <Container>
+                        <SearchBar
+                            searchLabel='Search Drink Here'
+                            searchQuery={searchQuery}
+                            setSearchQuery={setSearchQuery}
                         />
-                    )}
-                    <CustomizeModal
-                        title={bobaInfoModal.name}
-                        modalShow={modalShow}
-                        onHide={() => {
-                            setModalShow(false);
-                            setMilk('');
-                            setToppings({});
-                        }}
-                        ModalBody={() => BobaModalBody(bobaInfoModal)}
-                    />
-                </Container>
+                        {loading ? (
+                            <Loading />
+                        ) : (
+                            <BobaContainer
+                                order={order}
+                                setOrder={setOrder}
+                                bobaList={filteredBobaList}
+                                setModalShow={setModalShow}
+                                setBobaInfoModal={setBobaInfoModal}
+                            />
+                        )}
+                        <CustomizeModal
+                            title={bobaInfoModal.name}
+                            modalShow={modalShow}
+                            onHide={() => {
+                                setModalShow(false);
+                                setMilk('');
+                                setToppings({});
+                            }}
+                            ModalBody={() => BobaModalBody(bobaInfoModal)}
+                        />
+                    </Container>
+                </ApolloProvider>
             )}
         </>
     );
 };
-
 export default Homepage;

@@ -41,4 +41,5 @@ export interface ToppingListProps {
 export interface ErrorProps {
     status: number;
     message: string;
+    response?: Response;
 }
