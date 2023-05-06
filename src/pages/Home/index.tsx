@@ -11,7 +11,7 @@ import useApi from 'hooks/API';
 import useApiv2 from 'hooks/APIv2';
 import Card from 'react-bootstrap/Card';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { GET_BOBA_LIST } from 'hooks/QueryGraphQL';
+import { GET_BOBA_LIST_SCHEMA } from 'hooks/QueryGraphQL';
 
 const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   const BACKEND_API = process.env.REACT_APP_BOBA_FETCH;
@@ -21,7 +21,8 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
     cache: new InMemoryCache(),
   });
 
-  const { data, error, loading } = useApi(BACKEND_API as string, '/boba_list', GET_BOBA_LIST);
+  const { data, error, loading } = useApi(BACKEND_API as string, '/boba_list', GET_BOBA_LIST_SCHEMA);
+
   const { data: toppingsList } = useApiv2(BACKEND_API as string, '/milk_list');
   const { data: milkList } = useApiv2(BACKEND_API as string, '/toppings_list');
 
@@ -78,7 +79,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
       setFilteredBobaList(filterlist);
     }
   }, [searchQuery, data]);
-  // console.log(data,toppingsList, milkList ,'xxxx' )
+
   const BobaModalBody = ({ name, description, imageLink }: BobaProps) => (
     <>
       <img style={{ width: '24rem' }} src={imageLink} alt={name}></img>
@@ -100,7 +101,7 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
   return (
     <>
       {error.status ? (
-        <Card>{error ? <Card.Body>{error.message}</Card.Body> : null}</Card>
+        <Card><Card.Body>{error.message}</Card.Body></Card>
       ) : (
         <ApolloProvider client={client}>
           <Container>

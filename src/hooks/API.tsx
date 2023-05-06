@@ -25,6 +25,7 @@ const useApi = (url: string, endpoint: string, query: DocumentNode) => {
           setLoading(loading);
           setData(data.List);
         } catch (error) {
+          console.error(error)
           setError({ status: 500, message: 'Error' });
         } finally {
           setLoading(false);

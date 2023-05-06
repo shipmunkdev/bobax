@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const GET_BOBA_LIST = gql`
+export const GET_BOBA_LIST_SCHEMA = gql`
   query {
     List {
       id
