@@ -188,19 +188,19 @@
         }
     ],
     "milkData": {
-        "milk-1": {
+        "milk_1": {
             "name": "Whole Milk"
         },
-        "milk-2": {
+        "milk_2": {
             "name": "2% Milk"
         },
-        "milk-3": {
+        "milk_3": {
             "name": "Almond Milk"
         },
-        "milk-4": {
+        "milk_4": {
             "name": "Soy Milk"
         },
-        "milk-5": {
+        "milk_5": {
             "name": "Oat Milk"
         }
     },

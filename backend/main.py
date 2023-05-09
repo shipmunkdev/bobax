@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from BobaList.query import schemaBoba
+from MilkList.query import schemaMilk
 
 app = FastAPI()
 
@@ -20,11 +21,11 @@ app.add_middleware(
   allow_headers=["*"],
 )
 
-@app.get('/milk_list')
-async def get_milk_list():
-  with open('./database/milkoption.json') as f:
-    milkOption = json.load(f)
-  return milkOption["data"]
+# @app.get('/milk_list')
+# async def get_milk_list():
+#   with open('./database/milkoption.json') as f:
+#     milkOption = json.load(f)
+#   return milkOption["data"]
 
 @app.get('/toppings_list')
 async def get_toppings_list():
@@ -34,3 +35,4 @@ async def get_toppings_list():
 
 
 app.mount("/boba_list", GraphQLApp(schema=schemaBoba, on_get=make_graphiql_handler()))  # Graphiql IDE
+app.mount("/milk_list", GraphQLApp(schema=schemaMilk, on_get=make_graphiql_handler()))  # Graphiql IDE
