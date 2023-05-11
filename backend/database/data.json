@@ -205,19 +205,19 @@
         }
     },
     "toppingData": {
-        "topping-1": {
+        "topping_1": {
             "name": "Boba",
             "price": 0.5
         },
-        "topping-2": {
+        "topping_2": {
             "name": "Popping Boba",
             "price": 0.5
         },
-        "topping-3": {
+        "topping_3": {
             "name": "Aloe Vera",
             "price": 0.5
         },
-        "topping-4": {
+        "topping_4": {
             "name": "Lychee Jelly",
             "price": 0.5
         },
@@ -225,23 +225,23 @@
             "name": "Coconut Jelly",
             "price": 1
         },
-        "topping-6": {
+        "topping_6": {
             "name": "Red Bean",
             "price": 1
         },
-        "topping-7": {
+        "topping_7": {
             "name": "Mango Jelly",
             "price": 1
         },
-        "topping-8": {
+        "topping_8": {
             "name": "Pudding",
             "price": 1.5
         },
-        "topping-9": {
+        "topping_9": {
             "name": "Milk Foam",
             "price": 1.5
         },
-        "topping-10": {
+        "topping_10": {
             "name": "Jelly",
             "price": 0.5
         }

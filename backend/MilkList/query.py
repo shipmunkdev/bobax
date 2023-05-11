@@ -4,12 +4,22 @@ import json
 class MilkOptionType(graphene.ObjectType):
     name = graphene.String()
 
-class MilkKeyType(graphene.ObjectType):
-    milk_1 = graphene.Field(MilkOptionType)
-    milk_2 = graphene.Field(MilkOptionType)
-    milk_3 = graphene.Field(MilkOptionType)
-    milk_4 = graphene.Field(MilkOptionType)
-    milk_5 = graphene.Field(MilkOptionType)
+# helper function
+def create_milk_fields():
+    with open('./database/data.json') as f:
+        milkjson = json.load(f)['milkData']
+
+    fields = {}
+    for i, (key, value) in enumerate(milkjson.items(), start=1):
+        field_name = f"milk_{i}"
+        field = graphene.Field(MilkOptionType)
+        fields[field_name] = field
+
+    return type('MilkKeyType', (graphene.ObjectType,), fields)
+
+# since calling inside take care of the object Type as it is already define in helper funciton
+class MilkKeyType(create_milk_fields()):
+    pass
 
 class MilkQuery(graphene.ObjectType):
     List = graphene.Field(MilkKeyType)
@@ -18,18 +28,12 @@ class MilkQuery(graphene.ObjectType):
         with open('./database/data.json') as f:
             milkjson = json.load(f)['milkData']
 
-        milk_1 = MilkOptionType(name=milkjson['milk_1']['name'])
-        milk_2 = MilkOptionType(name=milkjson['milk_2']['name'])
-        milk_3 = MilkOptionType(name=milkjson['milk_3']['name'])
-        milk_4 = MilkOptionType(name=milkjson['milk_4']['name'])
-        milk_5 = MilkOptionType(name=milkjson['milk_5']['name'])
+        # dynamically creating in query
+        milk_fields = create_milk_fields()
+        milk_values = {}
+        for key, value in milkjson.items():
+            milk_values[key] = MilkOptionType(name=value['name'])
 
-        return MilkKeyType(
-            milk_1=milk_1,
-            milk_2=milk_2,
-            milk_3=milk_3,
-            milk_4=milk_4,
-            milk_5=milk_5
-        )
+        return MilkKeyType(**milk_values)
 
 schemaMilk = graphene.Schema(query=MilkQuery)
