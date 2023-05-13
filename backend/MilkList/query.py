@@ -29,7 +29,6 @@ class MilkQuery(graphene.ObjectType):
             milkjson = json.load(f)['milkData']
 
         # dynamically creating in query
-        milk_fields = create_milk_fields()
         milk_values = {}
         for key, value in milkjson.items():
             milk_values[key] = MilkOptionType(name=value['name'])
