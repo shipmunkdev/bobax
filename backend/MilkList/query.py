@@ -2,7 +2,7 @@ import graphene
 import json
 
 class MilkOptionType(graphene.ObjectType):
-    id = graphene.UUID()
+    uuid = graphene.UUID()
     name = graphene.String()
 
 class MilkQuery(graphene.ObjectType):
@@ -12,5 +12,5 @@ class MilkQuery(graphene.ObjectType):
         with open('./database/data.json') as f:
             milkjson = json.load(f)['milkData']
         return milkjson
-        
+
 schemaMilk = graphene.Schema(query=MilkQuery)

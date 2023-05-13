@@ -17,7 +17,7 @@ interface ToppingProps {
 }
 
 interface MilkProps {
-    id: string;
+    uuid: string;
     name: string;
 }
 
@@ -166,11 +166,11 @@ export const bobaList: BobaProps[] = [
 ];
 
 export const milkList: MilkProps[] = [
-    { id: 'b19dd65c-e087-4925-b041-35c4f45db7b3', name: 'Whole Milk' },
-    { id: '17a9b305-a9b6-49ea-afb9-0c0f4fa3d24e', name: '2% Milk' },
-    { id: 'd3b993b0-41ed-4ea7-9348-f1c9b31308f9', name: 'Almond Milk' },
-    { id: '081c423a-8348-4886-ad5f-1237b3b44487', name: 'Soy Milk' },
-    { id: '7077e01b-3aa8-4fd0-9e0f-3fc0e1fb5b03', name: 'Oat Milk' },
+    { uuid: 'b19dd65c-e087-4925-b041-35c4f45db7b3', name: 'Whole Milk' },
+    { uuid: '17a9b305-a9b6-49ea-afb9-0c0f4fa3d24e', name: '2% Milk' },
+    { uuid: 'd3b993b0-41ed-4ea7-9348-f1c9b31308f9', name: 'Almond Milk' },
+    { uuid: '081c423a-8348-4886-ad5f-1237b3b44487', name: 'Soy Milk' },
+    { uuid: '7077e01b-3aa8-4fd0-9e0f-3fc0e1fb5b03', name: 'Oat Milk' },
 ];
 
 export const toppingsList: ToppingListProps = {
