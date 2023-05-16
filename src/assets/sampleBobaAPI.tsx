@@ -21,10 +21,6 @@ interface MilkProps {
     name: string;
 }
 
-// interface MilkListProps {
-//     [key: string]: MilkProps;
-// }
-
 interface ToppingListProps {
     [key: string]: ToppingProps;
 }
