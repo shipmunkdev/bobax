@@ -1,4 +1,3 @@
-//  Raw sample data for BobaList component
 export interface BobaProps {
     id: string;
     name: string;
@@ -17,8 +16,11 @@ interface ToppingProps {
 }
 
 interface MilkProps {
-    uuid: string;
     name: string;
+}
+
+interface MilkListProps {
+    [key: string]: MilkProps;
 }
 
 interface ToppingListProps {
@@ -161,13 +163,13 @@ export const bobaList: BobaProps[] = [
     },
 ];
 
-export const milkList: MilkProps[] = [
-    { uuid: 'b19dd65c-e087-4925-b041-35c4f45db7b3', name: 'Whole Milk' },
-    { uuid: '17a9b305-a9b6-49ea-afb9-0c0f4fa3d24e', name: '2% Milk' },
-    { uuid: 'd3b993b0-41ed-4ea7-9348-f1c9b31308f9', name: 'Almond Milk' },
-    { uuid: '081c423a-8348-4886-ad5f-1237b3b44487', name: 'Soy Milk' },
-    { uuid: '7077e01b-3aa8-4fd0-9e0f-3fc0e1fb5b03', name: 'Oat Milk' },
-];
+export const milkList: MilkListProps = {
+    'milk-1': { name: 'Whole Milk' },
+    'milk-2': { name: '2% Milk' },
+    'milk-3': { name: 'Almond Milk' },
+    'milk-4': { name: 'Soy Milk' },
+    'milk-5': { name: 'Oat Milk' },
+};
 
 export const toppingsList: ToppingListProps = {
     'topping-1': { name: 'Boba', price: 0.5 },

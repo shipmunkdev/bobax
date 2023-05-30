@@ -21,12 +21,6 @@ app.add_middleware(
   allow_headers=["*"],
 )
 
-# @app.get('/milk_list')
-# async def get_milk_list():
-#   with open('./database/milkoption.json') as f:
-#     milkOption = json.load(f)
-#   return milkOption["data"]
-
 @app.get('/toppings_list')
 async def get_toppings_list():
   with open('./database/toppingsoption.json') as f:
