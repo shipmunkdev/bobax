@@ -10,7 +10,7 @@ const useApi = (url: string, endpoint: string, query: DocumentNode) => {
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        if (process.env.NODE_ENV === 'production') {
+        if (process.env.NODE_ENV === 'development') {
             const fullurl = url + endpoint;
             const client = new ApolloClient({
                 uri: fullurl,

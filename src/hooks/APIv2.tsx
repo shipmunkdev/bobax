@@ -23,7 +23,6 @@ const useApiv2 = (url: string, endpoint: string) => {
                     setLoading(false);
                 });
         } else {
-
             setData(toppingsList);
             setLoading(false);
         }
