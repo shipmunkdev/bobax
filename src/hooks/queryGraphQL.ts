@@ -20,3 +20,12 @@ export const GET_BOBA_LIST_SCHEMA = gql`
         }
     }
 `;
+
+export const GET_MILK_LIST_SCHEMA = gql`
+    query {
+        List {
+            uuid
+            name
+        }
+    }
+`;

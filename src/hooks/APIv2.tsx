@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { milkList, toppingsList } from 'assets/sampleBobaAPI';
+import { toppingsList } from 'assets/sampleBobaAPI';
 
 const useApiv2 = (url: string, endpoint: string) => {
     // eslint-disable-next-line  @typescript-eslint/no-explicit-any
@@ -23,11 +23,7 @@ const useApiv2 = (url: string, endpoint: string) => {
                     setLoading(false);
                 });
         } else {
-            if (endpoint == '/milk_list') {
-                setData(milkList);
-            } else if (endpoint == '/toppings_list') {
-                setData(toppingsList);
-            }
+            setData(toppingsList);
             setLoading(false);
         }
     };
