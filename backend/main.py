@@ -21,6 +21,6 @@ app.add_middleware(
   allow_headers=["*"],
 )
 
-app.mount("/boba_list", GraphQLApp(schema=schemaBoba, on_get=make_graphiql_handler()))  # Graphiql IDE
-app.mount("/milk_list", GraphQLApp(schema=schemaMilk, on_get=make_graphiql_handler()))  # Graphiql IDE
-app.mount("/toppings_list", GraphQLApp(schema=schemaToppings, on_get=make_graphiql_handler()))  # Graphiql IDE
+app.mount("/boba_list", GraphQLApp(schema=schemaBoba, on_get=make_graphiql_handler())) 
+app.mount("/milk_list", GraphQLApp(schema=schemaMilk, on_get=make_graphiql_handler())) 
+app.mount("/toppings_list", GraphQLApp(schema=schemaToppings, on_get=make_graphiql_handler())) 
