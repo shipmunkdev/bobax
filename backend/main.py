@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from BobaList.query import schemaBoba
 from MilkList.query import schemaMilk
-
+from ToppingsList.query import schemaToppings
 app = FastAPI()
 
 # this is to allow CORS so that you can connect backend and frontend locally
@@ -21,12 +21,6 @@ app.add_middleware(
   allow_headers=["*"],
 )
 
-@app.get('/toppings_list')
-async def get_toppings_list():
-  with open('./database/toppingsoption.json') as f:
-    toppingsOption = json.load(f)
-  return toppingsOption["data"]
-
-
 app.mount("/boba_list", GraphQLApp(schema=schemaBoba, on_get=make_graphiql_handler()))  # Graphiql IDE
 app.mount("/milk_list", GraphQLApp(schema=schemaMilk, on_get=make_graphiql_handler()))  # Graphiql IDE
+app.mount("/toppings_list", GraphQLApp(schema=schemaToppings, on_get=make_graphiql_handler()))  # Graphiql IDE
