@@ -7,9 +7,12 @@ import Loading from 'components/Loading';
 import CustomizeModal from 'components/Modal';
 import SearchBar from 'components/SearchBar';
 import useApi from 'hooks/API';
-import useApiv2 from 'hooks/APIv2';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { GET_BOBA_LIST_SCHEMA, GET_MILK_LIST_SCHEMA } from 'hooks/queryGraphQL';
+import {
+    GET_BOBA_LIST_SCHEMA,
+    GET_MILK_LIST_SCHEMA,
+    GET_TOPPING_LIST_SCHEMA,
+} from 'hooks/queryGraphQL';
 import { OrderProps, BobaProps } from 'types/common/main';
 import BobaModalForm from './CustomizeBobaModalBody';
 
@@ -27,7 +30,11 @@ const Homepage = ({ order, setOrder }: OrderProps): JSX.Element => {
         GET_BOBA_LIST_SCHEMA,
     );
     const { data: milkList } = useApi(BACKEND_API as string, '/milk_list', GET_MILK_LIST_SCHEMA);
-    const { data: toppingsList } = useApiv2(BACKEND_API as string, '/toppings_list');
+    const { data: toppingsList } = useApi(
+        BACKEND_API as string,
+        '/toppings_list',
+        GET_TOPPING_LIST_SCHEMA,
+    );
 
     const [filteredBobaList, setFilteredBobaList] = useState<BobaProps[]>([]);
     const [searchQuery, setSearchQuery] = useState<string>('');

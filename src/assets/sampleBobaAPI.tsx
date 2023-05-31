@@ -10,7 +10,8 @@ export interface BobaProps {
     };
 }
 
-interface ToppingProps {
+interface ToppingListProps {
+    uuid: string;
     name: string;
     price: number;
 }
@@ -18,10 +19,6 @@ interface ToppingProps {
 interface MilkListProps {
     uuid: string;
     name: string;
-}
-
-interface ToppingListProps {
-    [key: string]: ToppingProps;
 }
 
 export const bobaList: BobaProps[] = [
@@ -168,15 +165,15 @@ export const milkList: MilkListProps[] = [
     { uuid: '7077e01b-3aa8-4fd0-9e0f-3fc0e1fb5b03', name: 'Oat Milk' },
 ];
 
-export const toppingsList: ToppingListProps = {
-    'topping-1': { name: 'Boba', price: 0.5 },
-    'topping-2': { name: 'Popping Boba', price: 0.5 },
-    'topping-3': { name: 'Aloe Vera', price: 0.5 },
-    'topping-4': { name: 'Lychee Jelly', price: 0.5 },
-    'topping-5': { name: 'Coconut Jelly', price: 1 },
-    'topping-6': { name: 'Red Bean', price: 1 },
-    'topping-7': { name: 'Mango Jelly', price: 1 },
-    'topping-8': { name: 'Pudding', price: 1.5 },
-    'topping-9': { name: 'Milk Foam', price: 1.5 },
-    'topping-10': { name: 'Jelly', price: 0.5 },
-};
+export const toppingsList: ToppingListProps[] = [
+    { uuid: 'da44e5cd-0356-42b7-9934-f55ed686cba1', name: 'Boba', price: 0.5 },
+    { uuid: 'bbeaaac3-b674-4c34-a570-48fbd4851703', name: 'Popping Boba', price: 0.5 },
+    { uuid: '1ecaf461-81fd-4149-b3f3-4a676187d832', name: 'Aloe Vera', price: 0.5 },
+    { uuid: 'b6f11955-21e4-469e-8f14-3955e93a5fcf', name: 'Lychee Jelly', price: 0.5 },
+    { uuid: '6e0a98fd-b16d-4187-a2b5-7b9c1e6ce538', name: 'Coconut Jelly', price: 1 },
+    { uuid: '7468e630-eba8-4f7e-9ac4-4c8afb501728', name: 'Red Bean', price: 1 },
+    { uuid: '8243fd45-aaa4-4f09-9cc2-ae0f4d92141c', name: 'Mango Jelly', price: 1 },
+    { uuid: 'b3bf4c1c-72e0-45c1-b5bd-5086bc678749', name: 'Pudding', price: 1.5 },
+    { uuid: '61a5f7c4-442f-45b2-9c35-71c8590ca69c', name: 'Milk Foam', price: 1.5 },
+    { uuid: '27d76081-7b4a-4330-8093-bd736f33af2c', name: 'Jelly', price: 0.5 },
+];
