@@ -29,3 +29,13 @@ export const GET_MILK_LIST_SCHEMA = gql`
         }
     }
 `;
+
+export const GET_TOPPING_LIST_SCHEMA = gql`
+    query {
+        List {
+            uuid
+            name
+            price
+        }
+    }
+`;
