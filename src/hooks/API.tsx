@@ -34,7 +34,7 @@ const useApi = (url: string, endpoint: string, query: DocumentNode) => {
 
             fetchData();
         } else {
-            if (endpoint == '/boba_list') {
+            if (endpoint == '/boba_list') {                
                 setData(bobaList);
             } else if (endpoint == '/toppings_list') {
                 setData(toppingsList);
