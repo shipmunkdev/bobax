@@ -75,7 +75,7 @@ Activate the virtual environment in Python
 
 `deactivate` to exit it from venv
 
-## `pip install -r requirement.txt`
+## `pip install -r requirements.txt`
 
 It will looks for the package in PyPI, resolves its dependencies, and installs everything in your current Python environment to ensure that requests will work.
 
