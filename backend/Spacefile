@@ -9,4 +9,8 @@ micros:
     primary: true
     dev: .venv/bin/uvicorn main:app --reload
     public_routes: [/*]
-
+    presets:
+      env:
+        - name: ALLOW_CORS
+          description: allow Cors issue
+          default: "http://localhost:3000,http://localhost:5000,https://backend_bobax-1-f0092940.deta.app,https://stbobax.netlify.app"
