@@ -15,7 +15,7 @@ origins = os.environ.get("ALLOW_CORS", "").split(",")
 
 app.add_middleware(
   CORSMiddleware,
-  allow_origins=["https://stbobax.netlify.app","https://backend_bobax-1-f0092940.deta.app",],
+  allow_origins=origins,
   allow_credentials=True,
   allow_methods=["*"],
   allow_headers=["*"],
