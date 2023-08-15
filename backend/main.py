@@ -11,7 +11,8 @@ app = FastAPI()
 
 # this is to allow CORS so that you can connect backend and frontend locally
 load_dotenv()
-origins = os.environ.get("ALLOW_CORS", "").split(",")
+allow_cors = os.getenv("ALLOW_CORS", "").split(",")
+origins = [origin.strip() for origin in allow_cors]
 
 app.add_middleware(
   CORSMiddleware,
