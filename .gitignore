@@ -27,7 +27,3 @@ yarn-error.log*
 
 #backend
 __pycache__/
-
-Spacefile
-# Local Netlify folder
-.netlify
