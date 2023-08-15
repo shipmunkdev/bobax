@@ -19,6 +19,7 @@
 .env.production.local
 .space
 .env
+.netlify
 
 venv
 npm-debug.log*
