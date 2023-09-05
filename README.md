@@ -89,6 +89,49 @@ Runs the code inside the backend folder in order to start up the backend server.
 
 Make sure to run this before front-end server `yarn start` to fully functionable.
 
+## `How to host backend server on deta space`
+
+- Create an Account on Deta Space at [Sign Up](https://deta.space/signup) or [Login](https://deta.space/login) if you had one already.
+
+- Install Space CLI
+
+    ```
+    Mac: curl -fsSL <https://get.deta.dev/space-cli.sh> | sh
+    Linux: curl -fsSL <https://deta.space/assets/space-cli.sh> | sh
+    Windows: iwr <https://deta.space/assets/space-cli.ps1> -useb | iex
+    ```
+
+- Authenticate
+
+    ```
+    cd backend/
+    space login
+    ```
+- Access Token
+    - log in to your Deta Space. Enter your search bar and click "Settings."
+    - Click "Generate Token" and copy the new token and paste it to your terminal.
+
+- Create a project on DetaSpace
+    - create a new project within terminal  
+        ```
+        space new
+        ```
+
+    - go to Speacefile inside backend and change the name to same name as what you enter when ask in terminal 
+
+    - push to create a new project on DetaSpace
+        ```
+        space push
+        ```
+- Update Environment Variable
+
+    - Navigate to the project you've recently created, then click on the three dots located within a circle at the bottom right corner of the project square. From there, select 'Settings' and then 'Configuration'
+
+    - fill the following in ALLOW_CORS to allow Cors
+        ```
+        https://stbobax.netlify.app,http://localhost:3000
+        ```
+
 ## Open a browser and test out GraphQL locally
 
 `http://localhost:8000/boba_list` to Query BobaList
