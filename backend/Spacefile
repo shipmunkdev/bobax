@@ -8,3 +8,8 @@ micros:
     engine: python3.9
     primary: true
     dev: .venv/bin/uvicorn main:app --reload
+    public_routes: [/*]
+    presets:
+      env:
+        - name: ALLOW_CORS
+          description: Allow CORS issue

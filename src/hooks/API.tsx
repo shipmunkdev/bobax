@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ApolloClient, InMemoryCache, DocumentNode } from '@apollo/client';
 import { ErrorProps } from 'types/common/main';
-import { bobaList, toppingsList, milkList } from 'assets/sampleBobaAPI';
 
 const useApi = (url: string, endpoint: string, query: DocumentNode) => {
     // eslint-disable-next-line  @typescript-eslint/no-explicit-any
@@ -9,8 +8,7 @@ const useApi = (url: string, endpoint: string, query: DocumentNode) => {
     const [error, setError] = useState<ErrorProps>({ status: 0, message: '' });
     const [loading, setLoading] = useState<boolean>(true);
 
-    useEffect(() => {
-        if (process.env.NODE_ENV === 'development') {
+    useEffect(() => {            
             const fullurl = url + endpoint;
             const client = new ApolloClient({
                 uri: fullurl,
@@ -33,16 +31,7 @@ const useApi = (url: string, endpoint: string, query: DocumentNode) => {
             };
 
             fetchData();
-        } else {
-            if (endpoint == '/boba_list') {
-                setData(bobaList);
-            } else if (endpoint == '/toppings_list') {
-                setData(toppingsList);
-            } else {
-                setData(milkList);
-            }
-            setLoading(false);
-        }
+        
     }, [url, endpoint]);
 
     return { data, error, loading };
