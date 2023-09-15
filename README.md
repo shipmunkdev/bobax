@@ -10,131 +10,72 @@
 
 To get started with this project, follow these steps:
 
-- Clone this repository to your local machine using git clone.
-- Install the necessary dependencies using yarn install.
-- Start the development server using yarn start.
-- Open http://localhost:3000 to view the app in the browser.
+- Clone this repository to your local machine using `git clone git@github.com:shipmunkdev/bobax-web.git`
+- Open http://localhost:3000 to view the web application in the browser.
+- Open http://localhost:8000/docs or its relevant endpoints `boba_list` to view the backend in the browser.
 
-## Available Scripts
+## Create `.env` for local development
 
-In the project directory, you can run:
+```
+# Local API endpoint
+REACT_APP_BOBA_FETCH='http://localhost:8000'
 
-## `yarn start`
+# Allow CORS for local development
+ALLOW_CORS=http://localhost:3000
+```
 
-Runs the app in the development mode. Open http://localhost:3000 to view it in the browser.
+## Inside the project root directory:
 
-The page will reload if you make edits. You will also see any lint errors in the console.
+```
+yarn install
+yarn start
+```
 
-## `yarn build`
+> This will launch BobaX web application
 
-Builds the app for production to the build folder. It correctly bundles React in production mode and optimizes the build for the best performance.
+## UI Miscellaneous
 
-The build is minified and the filenames include the hashes. Your app is ready to be deployed!
+| Command               | Description                                                                                                                                                                                                                                      |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `yarn start`          | Runs the app in the development mode. Open http://localhost:3000 to view it in the browser.                                                                                                                                                      |
+| `yarn build`          | Builds the app for production to the build folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes. Your app is ready to be deployed! |
+| `yarn test`           | Launches the test runner in the interactive watch mode.                                                                                                                                                                                          |
+| `yarn lint`           | Runs ESLint to check for any linting errors in the project.                                                                                                                                                                                      |
+| `yarn lint:fix`       | Runs ESLint to fix for any linting errors in the project.                                                                                                                                                                                        |
+| `yarn format`         | Runs Prettier to fix for any formatting errors in the project.                                                                                                                                                                                   |
+| `yarn storybook`      | Launches Storybook, an isolated development environment for UI components.                                                                                                                                                                       |
+| `yarn test-storybook` | Requires `yarn storybook` instance to be running before running this command. Launches Storybook Test Runner, an isolated development environment for testing UI components.                                                                     |
 
-## `yarn test`
+## Inside backend directory:
 
-Launches the test runner in the interactive watch mode.
+> It is important to cd into backend folder before running the next step.
 
-## `yarn lint`
+```
+cd backend/
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
 
-Runs ESLint to check for any linting errors in the project.
+> Make sure to run `uvicorn main:app --reload` before front-end server `yarn start` to fully functionable.
 
-## `yarn lint:fix`
+### Open a browser and test out GraphQL locally
 
-Runs ESLint to fix for any linting errors in the project.
+Visit `http://localhost:8000/boba_list` to query BobaList
 
-## `yarn format`
+## Backend Miscellaneous
 
-Runs Prettier to fix for any formatting errors in the project.
+| Command                           | Description                                                                                                           |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `python -m venv venv`             | Creates a virtual environment named `venv` for isolating the project's dependencies.                                  |
+| `source venv/bin/activate`        | Activates the virtual environment, allowing you to use the isolated Python environment.                               |
+| `deactivate`                      | Exits the virtual environment (venv).                                                                                 |
+| `pip install -r requirements.txt` | Installs the required Python packages specified in the `requirements.txt` file.                                       |
+| `pip freeze > requirements.txt`   | Records the current package list into requirements.txt. Make sure to run this command after installing new libraries. |
+| `uvicorn main:app --reload`       | Runs the code inside the backend folder to start up the backend server.                                               |
 
-## `yarn storybook`
-
-Launches Storybook, an isolated development environment for UI components.
-
-## `yarn test-storybook`
-
-Requires `yarn storybook` instance to be running before running this command.
-Launches Storybook Test Runner, an isolated development environment for testing UI components.
-
-## Backend server
-
-Require uvicorn inorder to run FastAPI backend server.
-find out more here at https://www.uvicorn.org/.
-
-## `cd backend/`
-
-It is important to cd into backend folder before running the next step.
-
-## `python -m venv venv`
-
-It allow you to manage separate package installations for different projects
-
-## `source venv/bin/activate`
-
-Activate the virtual environment in Python
-
-`deactivate` to exit it from venv
-
-## `pip install -r requirements.txt`
-
-It will looks for the package in PyPI, resolves its dependencies, and installs everything in your current Python environment to ensure that requests will work.
-
-## `pip freeze > requirements.txt`
-
-It records an environment's current package list into requirements.txt. If any new library is installed, make sure to run this command to store library version.
-
-## `uvicorn main:app --reload`
-
-Runs the code inside the backend folder in order to start up the backend server.
-
-Make sure to run this before front-end server `yarn start` to fully functionable.
-
-## `How to host backend server on deta space`
-
-- Create an Account on Deta Space at [Sign Up](https://deta.space/signup) or [Login](https://deta.space/login) if you had one already.
-
-- Install Space CLI
-
-    ```
-    Mac: curl -fsSL <https://get.deta.dev/space-cli.sh> | sh
-    Linux: curl -fsSL <https://deta.space/assets/space-cli.sh> | sh
-    Windows: iwr <https://deta.space/assets/space-cli.ps1> -useb | iex
-    ```
-
-- Authenticate
-
-    ```
-    cd backend/
-    space login
-    ```
-- Access Token
-    - log in to your Deta Space. Enter your search bar and click "Settings."
-    - Click "Generate Token" and copy the new token and paste it to your terminal.
-
-- Create a project on DetaSpace
-    - create a new project within terminal  
-        ```
-        space new
-        ```
-
-    - go to Speacefile inside backend and change the name to same name as what you enter when ask in terminal 
-
-    - push to create a new project on DetaSpace
-        ```
-        space push
-        ```
-- Update Environment Variable
-
-    - Navigate to the project you've recently created, then click on the three dots located within a circle at the bottom right corner of the project square. From there, select 'Settings' and then 'Configuration'
-
-    - fill the following in ALLOW_CORS to allow Cors
-        ```
-        https://stbobax.netlify.app,http://localhost:3000
-        ```
-
-## Open a browser and test out GraphQL locally
-
-`http://localhost:8000/boba_list` to Query BobaList
+## For deployment-related documentation, please visit [docs/DeployBackend.MD](docs/DeployBackend.MD).
 
 ## Project Structure
 
@@ -144,32 +85,40 @@ The project has the following directory structure:
 bobax-project/        - Main project folder
 node_modules/         - Folder containing all installed dependencies
 .github/workflows     - Folder containing GitHub Actions workflows
-README.md             - A file containing project documentation
+README.md             - A file containing project development setup documentation
 package.json          - A file containing project metadata and dependencies
-tsconfig.json         - A file containing TypeScript compiler options
 yarn.lock             - A file containing exact versions of all installed dependencies
+tsconfig.json         - A file containing TypeScript compiler options
 public/               - Folder containing public files
     index.html        - The main HTML file that is used to render the app
     favicon.ico       - The favicon for the app
+docs/                 - Folder containing project documentation
+backend/              - Folder containing backend code
+    venv/             - Folder containing Python virtual environment
+    database/         - Folder containing database related files
+    BobaList/         - Folder containing BobaList related files
+    main.py           - The main Python file for the backend
+    requirement.txt   - A file containing Python dependencies
+    Spacefile         - A file containing deployment configuration
 src/                  - Folder containing source code
     index.tsx         - The main entry point for the app
-assets/              - Folder containing assets used in the app
-components/          - Folder containing UI components
-    Button/           - A sub-folder containing a Button component
-        index.tsx     - The code for the Button component
-    Card/             - A sub-folder containing a Card component
-        index.tsx     - The code for the Card component
-pages/               - Folder containing page components
-    Main/            - A sub-folder containing the main page component
-        index.tsx    - The code for the main page component
-    Home/            - A sub-folder containing the home page component
-        index.tsx    - The code for the home page component
-stories/             - Folder containing Storybook stories
-    Button.stories.tsx - The story for the Button component
-    Card.stories.tsx   - The story for the Card component
-types/               - Folder containing TypeScript types
-hooks/               - Folder containing custom React hooks
-utils/               - Folder containing utility functions and modules
+    assets/                 - Folder containing assets used in the app
+    components/             - Folder containing UI components
+        Button/             - A sub-folder containing a Button component
+            index.tsx       - The code for the Button component
+        Card/               - A sub-folder containing a Card component
+            index.tsx       - The code for the Card component
+    pages/                  - Folder containing page components
+        Main/               - A sub-folder containing the main page component
+            index.tsx       - The code for the main page component
+        Home/               - A sub-folder containing the home page component
+            index.tsx       - The code for the home page component
+    stories/                - Folder containing Storybook stories
+        Button.stories.tsx  - The story for the Button component
+        Card.stories.tsx    - The story for the Card component
+    types/               - Folder containing TypeScript types
+    hooks/               - Folder containing custom React hooks
+    utils/               - Folder containing utility functions and modules
 ```
 
 ## Contributing

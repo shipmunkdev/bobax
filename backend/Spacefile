@@ -12,4 +12,4 @@ micros:
     presets:
       env:
         - name: ALLOW_CORS
-          description: allow Cors issue
+          description: Allow CORS issue
