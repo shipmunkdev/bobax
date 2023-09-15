@@ -10,9 +10,11 @@
 
 To get started with this project, follow these steps:
 
-- Clone this repository to your local machine using `git clone git@github.com:shipmunkdev/bobax-web.git`
-- Open http://localhost:3000 to view the web application in the browser.
-- Open http://localhost:8000/docs or its relevant endpoints `boba_list` to view the backend in the browser.
+- Clone this repository to your local machine using
+
+`git clone git@github.com:shipmunkdev/bobax-web.git`
+
+- Install Docker from https://docs.docker.com/engine/install
 
 ## Create `.env` for local development
 
@@ -24,106 +26,40 @@ REACT_APP_BOBA_FETCH='http://localhost:8000'
 ALLOW_CORS=http://localhost:3000
 ```
 
-## Inside the project root directory:
+## Web App
+
+### Inside the project root directory:
 
 ```
 yarn install
 yarn start
 ```
 
-> This will launch BobaX web application
+> This will launch BobaX web application at http://localhost:3000
 
-## UI Miscellaneous
+## Backend App
 
-| Command               | Description                                                                                                                                                                                                                                      |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `yarn start`          | Runs the app in the development mode. Open http://localhost:3000 to view it in the browser.                                                                                                                                                      |
-| `yarn build`          | Builds the app for production to the build folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes. Your app is ready to be deployed! |
-| `yarn test`           | Launches the test runner in the interactive watch mode.                                                                                                                                                                                          |
-| `yarn lint`           | Runs ESLint to check for any linting errors in the project.                                                                                                                                                                                      |
-| `yarn lint:fix`       | Runs ESLint to fix for any linting errors in the project.                                                                                                                                                                                        |
-| `yarn format`         | Runs Prettier to fix for any formatting errors in the project.                                                                                                                                                                                   |
-| `yarn storybook`      | Launches Storybook, an isolated development environment for UI components.                                                                                                                                                                       |
-| `yarn test-storybook` | Requires `yarn storybook` instance to be running before running this command. Launches Storybook Test Runner, an isolated development environment for testing UI components.                                                                     |
-
-## Inside backend directory:
-
-> It is important to cd into backend folder before running the next step.
+To spin-up Backend docker container, without active backend development
 
 ```
-cd backend/
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-uvicorn main:app --reload
+docker-compose up -d --build
 ```
 
-> Make sure to run `uvicorn main:app --reload` before front-end server `yarn start` to fully functionable.
+### You may start/stop/pause Docker container from Docker desktop application in the Dashboard
 
-### Open a browser and test out GraphQL locally
+> This will enable api endpoints at http://localhost:8000 to query with GraphQL
 
-Visit `http://localhost:8000/boba_list` to query BobaList
-
-## Backend Miscellaneous
-
-| Command                           | Description                                                                                                           |
-| --------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `python -m venv venv`             | Creates a virtual environment named `venv` for isolating the project's dependencies.                                  |
-| `source venv/bin/activate`        | Activates the virtual environment, allowing you to use the isolated Python environment.                               |
-| `deactivate`                      | Exits the virtual environment (venv).                                                                                 |
-| `pip install -r requirements.txt` | Installs the required Python packages specified in the `requirements.txt` file.                                       |
-| `pip freeze > requirements.txt`   | Records the current package list into requirements.txt. Make sure to run this command after installing new libraries. |
-| `uvicorn main:app --reload`       | Runs the code inside the backend folder to start up the backend server.                                               |
+## Miscellaneous
 
 ## `yarn storybook`
 
 Launches Storybook, an isolated development environment for UI components.
 
-## `yarn test-storybook`
+## For active backend development,
 
-Requires `yarn storybook` instance to be running before running this command.
-Launches Storybook Test Runner, an isolated development environment for testing UI components.
+### Terminate `backend-app` Docker container and use `uvicorn` for live reload instead.
 
-## Backend server
-
-Require uvicorn inorder to run FastAPI backend server.
-find out more here at https://www.uvicorn.org/.
-
-## `cd backend/`
-
-It is important to cd into backend folder before running the next step.
-
-## `python -m venv venv`
-
-It allow you to manage separate package installations for different projects
-
-## `source venv/bin/activate`
-
-Activate the virtual environment in Python
-
-`deactivate` to exit it from venv
-
-## `pip install -r requirements.txt`
-
-It will looks for the package in PyPI, resolves its dependencies, and installs everything in your current Python environment to ensure that requests will work.
-
-## `pip freeze > requirements.txt`
-
-It records an environment's current package list into requirements. txt
-
-## `pip install uvicorn`
-
-Runs `pip install uvicorn` if you do not have uvicorn already as it is required.
-
-## `uvicorn main:app --reload`
-
-Runs the code inside the backend folder in order to start up the backend server.
-
-Make sure to run this before front-end server `yarn start` to fully functionable.
-
-## Open a browser and test out GraphQL locally
-
-`http://127.0.0.1:8000/boba_list` to Query BobaList
+### Refer [detailed local dev set-up guide](docs/dev_set_up.md) at `docs/dev_set_up.md`
 
 ## Project Structure
 
