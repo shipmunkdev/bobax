@@ -4,9 +4,9 @@
 
 # BobaX Project
 
-## This is a React project for a boba website that uses TypeScript, Yarn, ESLint, and Storybook.
+This is a React project for a boba website that uses TypeScript, Yarn, ESLint, and Storybook.
 
-## Getting Started
+## 1. Getting Started & Requirements
 
 To get started with this project, follow these steps:
 
@@ -16,7 +16,7 @@ To get started with this project, follow these steps:
 
 - Install Docker from https://docs.docker.com/engine/install
 
-## Create `.env` for local development
+## 2. Create `.env` for local development
 
 ```
 # Local API endpoint
@@ -26,7 +26,7 @@ REACT_APP_BOBA_FETCH='http://localhost:8000'
 ALLOW_CORS=http://localhost:3000
 ```
 
-## Web App
+## 3. Web App
 
 ### Inside the project root directory:
 
@@ -37,7 +37,7 @@ yarn start
 
 > This will launch BobaX web application at http://localhost:3000
 
-## Backend App
+## 4. Backend App
 
 To spin-up Backend docker container, without active backend development
 
@@ -45,21 +45,21 @@ To spin-up Backend docker container, without active backend development
 docker-compose up -d --build
 ```
 
-### You may start/stop/pause Docker container from Docker desktop application in the Dashboard
+You may start/stop/pause Docker container from Docker desktop application in the Dashboard
 
 > This will enable api endpoints at http://localhost:8000 to query with GraphQL
 
-## Miscellaneous
+## 5. Storybook Testing
 
-## `yarn storybook`
+### `yarn storybook`
 
 Launches Storybook, an isolated development environment for UI components.
 
 ## For active backend development,
 
-### Terminate `backend-app` Docker container and use `uvicorn` for live reload instead.
+Terminate `backend-app` Docker container and use `uvicorn` for live reload instead.
 
-### Refer [detailed local dev set-up guide](docs/dev_set_up.md) at `docs/dev_set_up.md`
+Refer [detailed local dev set-up guide](docs/dev_set_up.md) at `docs/dev_set_up.md`
 
 ## Project Structure
 
